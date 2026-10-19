@@ -1,5 +1,5 @@
 {
-  "started_utc": "2026-10-19T19:50:30.732138+00:00",
+  "started_utc": "2026-10-19T22:00:52.296779+00:00",
   "checks": [
     {
       "name": "Kernel has the netem module required for latency injection",
@@ -102,7 +102,7 @@
       "name": "Injected delay makes readiness slow while both probes still succeed",
       "passed": true,
       "detail": {
-        "readyz_seconds": 0.823819827
+        "readyz_seconds": 0.842877784
       }
     },
     {
@@ -223,14 +223,14 @@
     },
     {
       "name": "02-database-delay",
-      "readyz_seconds": 0.823819827,
+      "readyz_seconds": 0.842877784,
       "recovery": "delete through normal finalizers",
       "data_equal": true
     },
     {
       "name": "03-database-partition",
       "duration": "60s",
-      "seconds_until_recovery_checked": 64.39,
+      "seconds_until_recovery_checked": 65.36,
       "recovery": "automatic duration expiry; object still present",
       "data_equal": true
     },
@@ -247,8 +247,8 @@
   ],
   "notifications": [
     {
-      "id": 7,
-      "received_at": "2026-10-19T19:51:02Z",
+      "id": 13,
+      "received_at": "2026-10-19T22:01:17Z",
       "status": "firing",
       "name": "ChaosApiSlow",
       "fingerprint": "a05606dfd165c416",
@@ -264,8 +264,8 @@
       }
     },
     {
-      "id": 8,
-      "received_at": "2026-10-19T19:51:11Z",
+      "id": 14,
+      "received_at": "2026-10-19T22:01:26Z",
       "status": "resolved",
       "name": "ChaosApiSlow",
       "fingerprint": "a05606dfd165c416",
@@ -281,8 +281,8 @@
       }
     },
     {
-      "id": 9,
-      "received_at": "2026-10-19T19:51:32Z",
+      "id": 15,
+      "received_at": "2026-10-19T22:01:47Z",
       "status": "firing",
       "name": "ChaosDatabaseUnavailable",
       "fingerprint": "0e10ff22f8b6ca8a",
@@ -298,8 +298,8 @@
       }
     },
     {
-      "id": 10,
-      "received_at": "2026-10-19T19:52:17Z",
+      "id": 16,
+      "received_at": "2026-10-19T22:02:32Z",
       "status": "resolved",
       "name": "ChaosDatabaseUnavailable",
       "fingerprint": "0e10ff22f8b6ca8a",
@@ -315,8 +315,8 @@
       }
     },
     {
-      "id": 11,
-      "received_at": "2026-10-19T19:52:35Z",
+      "id": 17,
+      "received_at": "2026-10-19T22:02:56Z",
       "status": "firing",
       "name": "ChaosApiUnavailable",
       "fingerprint": "97f2e38f48c04258",
@@ -329,8 +329,8 @@
       }
     },
     {
-      "id": 12,
-      "received_at": "2026-10-19T19:52:47Z",
+      "id": 18,
+      "received_at": "2026-10-19T22:03:11Z",
       "status": "resolved",
       "name": "ChaosApiUnavailable",
       "fingerprint": "97f2e38f48c04258",
@@ -379,14 +379,14 @@
     "postgres_replicas": 1,
     "all_api_pods_ready": true,
     "postgres_pod_ready": true,
-    "rows": 4,
+    "rows": 7,
     "pvc_uid": "d545431c-ed04-4f89-a7a0-24969aea58e9",
-    "row_sha256": "84bf161364a807f8ad563604563b69f0c40bcf474e21aa7e1be0c6fe3250bfd2",
+    "row_sha256": "a294c39c9c135d62db8775fce9851d637885bc739362a08a5a7e8f3981c3b0cd",
     "healthz_probe": 1.0,
     "readyz_probe": 1.0,
     "active_alerts": 0
   },
   "passed": true,
   "cleanup_errors": [],
-  "duration_seconds": 183.53
+  "duration_seconds": 191.68
 }

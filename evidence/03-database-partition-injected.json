@@ -53,11 +53,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:51:14Z",
+              "timestamp": "2026-10-19T22:01:28Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-8dcsd",
+          "id": "chaos-demo/api-5459756fdf-fp8bg",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -67,11 +67,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:51:14Z",
+              "timestamp": "2026-10-19T22:01:28Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-skb2z",
+          "id": "chaos-demo/api-5459756fdf-jctzb",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -81,11 +81,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:51:14Z",
+              "timestamp": "2026-10-19T22:01:28Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/postgres-7f8555b8c4-s922b",
+          "id": "chaos-demo/postgres-7f8555b8c4-kpwz5",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -95,15 +95,15 @@
       "desiredPhase": "Run"
     },
     "instances": {
-      "chaos-demo/api-778d7d4d78-8dcsd": 7,
-      "chaos-demo/api-778d7d4d78-skb2z": 3,
-      "chaos-demo/postgres-7f8555b8c4-s922b": 2
+      "chaos-demo/api-5459756fdf-fp8bg": 3,
+      "chaos-demo/api-5459756fdf-jctzb": 3,
+      "chaos-demo/postgres-7f8555b8c4-kpwz5": 2
     }
   },
   "metadata": {
     "name": "03-database-partition",
     "namespace": "chaos-demo",
-    "uid": "2ce42832-5113-478d-b1a8-dc5877ab0be9",
-    "creationTimestamp": "2026-10-19T19:51:13Z"
+    "uid": "2b075554-90ea-4d42-abe8-57439af05023",
+    "creationTimestamp": "2026-10-19T22:01:28Z"
   }
 }

@@ -80,6 +80,12 @@ The dependency rule indicates that the API is alive but cannot serve a database-
 
 The test waits for an alert in Prometheus, finds its firing notification in the local inbox and matches its fingerprint to the resolved notification. It restarts the receiver to check notification persistence. Before and after faults, it compares every row, ID and timestamp and PostgreSQL's PVC identity. Sample notes remain for inspection; credentials and reference values stay under `.local`, outside Git.
 
+## Reducing failures during replica removal
+
+The investigation now compares abrupt and graceful removal, a draining wait and retries for GET only. The [English investigation](docs/connections.en.md) includes traffic comparisons, remaining errors and a POST with a lost response. The original zero-grace experiment and earlier results remain available.
+
+The follow-up passed 70 checks locally and 70 in CI. Graceful removal went from 7/1,592 to 0/1,645 direct failures locally and from 10/1,172 to 1/1,425 in CI: draining did not eliminate every failure.
+
 ## Results and limits
 
 All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.

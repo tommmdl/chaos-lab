@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "rounds_per_scenario": 4,
+  "duration_seconds": 180.29,
+  "final_ready": true,
+  "summary": [
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1468,
+      "failures": 1,
+      "failure_rate": 0.0006811989100817438,
+      "attempts": 1468,
+      "transport_failures": 1
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1456,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1461,
+      "transport_failures": 5
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1172,
+      "failures": 10,
+      "failure_rate": 0.008532423208191127,
+      "attempts": 1172,
+      "transport_failures": 10
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1252,
+      "failures": 1,
+      "failure_rate": 0.0007987220447284345,
+      "attempts": 1265,
+      "transport_failures": 14
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1218,
+      "failures": 3,
+      "failure_rate": 0.0024630541871921183,
+      "attempts": 1218,
+      "transport_failures": 3
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1218,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1219,
+      "transport_failures": 1
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1425,
+      "failures": 1,
+      "failure_rate": 0.0007017543859649122,
+      "attempts": 1425,
+      "transport_failures": 1
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1484,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1485,
+      "transport_failures": 1
+    }
+  ],
+  "checks": 23
+}

@@ -6,7 +6,7 @@ Comece com `python3 scripts/lab.py status`. Devem existir duas réplicas prontas
 
 ## Aplicar um experimento
 
-Use `python3 scripts/experiment.py apply NOME`, com o nome do arquivo sem `.json`. A primeira experiência pode ser `01-api-pod-kill`. Guarde os UIDs dos Pods antes e depois. Para rede, use `02-database-delay` ou `03-database-partition`. A indisponibilidade das duas réplicas fica em `04-api-failure`; o reinício do banco, em `05-database-pod-kill`.
+Use `python3 scripts/experiment.py apply NOME`, com o nome do arquivo sem `.json`. A primeira experiência pode ser `01-api-pod-kill`. Esse corte mantém prazo zero e ignora o hook de drenagem. Para comparar uma remoção com prazo, use `06-api-graceful-removal`. Guarde os UIDs dos Pods antes e depois. Para rede, use `02-database-delay` ou `03-database-partition`. A indisponibilidade das duas réplicas fica em `04-api-failure`; o reinício do banco, em `05-database-pod-kill`.
 
 O executor verifica o escopo e usa o mesmo lock do teste completo. Cada recurso tem o namespace `chaos-demo` e um seletor com o nome da aplicação e a identificação do lab. `up` recusa reconfigurar o ambiente enquanto houver experimentos registrados. Uma instalação existente de Chaos Mesh que não pertença ao lab também é recusada.
 
@@ -53,3 +53,7 @@ Se a limpeza ficar presa, consulte o recurso e os logs. Recupere o controlador e
 A instalação do Helm é `chaos-lab`, no namespace `chaos-system`. Uma desinstalação deve acontecer depois da recuperação de todos os experimentos; ela não remove automaticamente os dados da aplicação. CRDs são recursos do cluster: confira outros usos antes de removê-los. Não há comando local que apague o cluster ou todos os volumes. A limpeza automática do workflow se limita ao cluster descartável criado naquele runner.
 
 Os NodePorts 30434–30437 servem o acesso na rede local do Docker; o processo de navegação publica 8024–8027 apenas em 127.0.0.1. Não há autenticação de produção nesse caminho. Credenciais do banco, kubeconfig, arquivos Helm gerados e referências de dados ficam em `.local`, fora do Git.
+
+## Conferir as conexões durante a remoção
+
+`python3 tests/resilience.py --rounds 4` compara os dois tipos de remoção, com e sem espera, sob tráfego direto e pelo acesso local. O processo de acesso precisa ser reiniciado após atualizar o código. Em localhost:8024, confira `X-Lab-Upstream-Attempts` e `X-Lab-Transport-Failures`; uma leitura recuperada pode esconder uma falha se você olhar apenas o status final. Os relatórios guardam ambos. POST e DELETE nunca são repetidos automaticamente: confira o banco antes de reenviar uma escrita com resultado incerto. [Diagnóstico, números e limites](connections.md).

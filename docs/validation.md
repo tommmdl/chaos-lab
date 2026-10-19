@@ -18,7 +18,7 @@ Ao fim dessa primeira execução havia duas réplicas prontas da API, um Postgre
 
 Passaram novamente **43 verificações**, em **183,53 segundos**. Nessa execução, as 16 amostras do primeiro experimento responderam 200. A latência observada sob atraso foi de cerca de 824 ms, e a verificação completa da recuperação da partição levou 64,39 s.
 
-As duas réplicas da API e o novo Pod do PostgreSQL terminaram prontos. As quatro notas acumuladas das execuções ficaram preservadas no mesmo PVC, as duas sondas voltaram a 1 e nenhum alerta ficou ativo. O [relatório atual](../evidence/verification.json) registra esse estado. A diferença entre 14/16 e 16/16 respostas bem-sucedidas reforça o limite da amostragem; a falha inicial continua documentada.
+As duas réplicas da API e o novo Pod do PostgreSQL terminaram prontos. As quatro notas acumuladas das execuções ficaram preservadas no mesmo PVC, as duas sondas voltaram a 1 e nenhum alerta ficou ativo. O [relatório atual](../evidence/chaos-first-release-verification.json) registra esse estado. A diferença entre 14/16 e 16/16 respostas bem-sucedidas reforça o limite da amostragem; a falha inicial continua documentada.
 
 ## As duas falhas de conexão fazem parte do resultado
 
@@ -52,10 +52,14 @@ O [relatório do CI](../evidence/ci-verification.json), os [objetos de experimen
 
 ## Ler as evidências
 
-[verification.json](../evidence/verification.json) contém as verificações, as amostras de HTTP, a latência observada, notificações conferidas, imagens e o estado final. Os arquivos JSON numerados guardam os objetos de experimento com seus alvos e registros de injeção e recuperação. `03-database-partition-injected.json` e `03-database-partition-recovered.json` permitem comparar o mesmo UID antes e depois de expirar a duração.
+[verification.json](../evidence/chaos-first-release-verification.json) contém as verificações, as amostras de HTTP, a latência observada, notificações conferidas, imagens e o estado final. Os arquivos JSON numerados guardam os objetos de experimento com seus alvos e registros de injeção e recuperação. `03-database-partition-injected.json` e `03-database-partition-recovered.json` permitem comparar o mesmo UID antes e depois de expirar a duração.
 
 O tempo `seconds_until_recovery_checked` termina depois de conferir a recuperação, a mensagem resolved e os dados. Não é uma medição contínua de indisponibilidade. O tempo da execução completa inclui esperas de sondas, regras, entrega e recuperação, mas não inclui a instalação inicial.
 
 As notas reais usadas como referência e a senha ficam em `.local`. O relatório público guarda contagens, verificações e hash das linhas, sem exportar a base de dados ou credenciais. O GitHub Actions cria um cluster novo e repete o mesmo roteiro; seus resultados são guardados em artefato.
 
 Os resultados cobrem este ambiente e estes parâmetros. Não houve perda da máquina, falha de armazenamento físico, falha simultânea do controlador de caos e da aplicação ou entrega a uma ferramenta externa de plantão. A amostragem de HTTP também não estabelece um percentual de disponibilidade para produção.
+
+## Continuação: remoção de réplicas
+
+A execução original acima foi preservada. Uma investigação separada compara 16 remoções sob tráfego HTTP, drenagem e tentativas limitadas de GET, incluindo as falhas restantes e a segurança das escritas. [Resultados e novas evidências locais e do CI](connections.md).

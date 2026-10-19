@@ -39,11 +39,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:50:35Z",
+              "timestamp": "2026-10-19T22:00:55Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-knct7",
+          "id": "chaos-demo/api-5459756fdf-cqprg",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -56,7 +56,7 @@
   "metadata": {
     "name": "01-api-pod-kill",
     "namespace": "chaos-demo",
-    "uid": "bd456b00-a50b-4402-9d6f-42a19c903328",
-    "creationTimestamp": "2026-10-19T19:50:35Z"
+    "uid": "28905455-7f77-4ed8-8ae8-8225cdf2e0e6",
+    "creationTimestamp": "2026-10-19T22:00:55Z"
   }
 }

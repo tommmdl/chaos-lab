@@ -37,10 +37,6 @@
     "conditions": [
       {
         "status": "False",
-        "type": "AllRecovered"
-      },
-      {
-        "status": "False",
         "type": "Paused"
       },
       {
@@ -50,6 +46,10 @@
       {
         "status": "True",
         "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
       }
     ],
     "experiment": {
@@ -58,11 +58,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:50:45Z",
+              "timestamp": "2026-10-19T22:01:02Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-8dcsd",
+          "id": "chaos-demo/api-5459756fdf-fp8bg",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -72,11 +72,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:50:45Z",
+              "timestamp": "2026-10-19T22:01:02Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-skb2z",
+          "id": "chaos-demo/api-5459756fdf-jctzb",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -86,11 +86,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:50:45Z",
+              "timestamp": "2026-10-19T22:01:02Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/postgres-7f8555b8c4-s922b",
+          "id": "chaos-demo/postgres-7f8555b8c4-kpwz5",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -100,14 +100,14 @@
       "desiredPhase": "Run"
     },
     "instances": {
-      "chaos-demo/api-778d7d4d78-8dcsd": 5,
-      "chaos-demo/api-778d7d4d78-skb2z": 1
+      "chaos-demo/api-5459756fdf-fp8bg": 1,
+      "chaos-demo/api-5459756fdf-jctzb": 1
     }
   },
   "metadata": {
     "name": "02-database-delay",
     "namespace": "chaos-demo",
-    "uid": "6bc8044f-99ad-450f-b3fa-c2e82fb0d1a3",
-    "creationTimestamp": "2026-10-19T19:50:44Z"
+    "uid": "ee02173e-55a5-41b2-9e9d-18117dcc36fb",
+    "creationTimestamp": "2026-10-19T22:01:02Z"
   }
 }

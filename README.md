@@ -80,6 +80,10 @@ A regra de dependência indica que a API está viva, mas não consegue atender u
 
 O teste espera o alerta aparecer no Prometheus, encontra a mensagem firing na caixa local e compara seu fingerprint com a mensagem resolved. Reinicia o receptor para conferir a persistência das notificações. Antes e depois das falhas, compara todas as linhas, IDs e timestamps e a identidade do PVC do PostgreSQL. As notas de teste ficam no banco para inspeção; credenciais e valores de referência ficam em `.local`, fora do Git.
 
+## Reduzir as falhas ao remover uma réplica
+
+A investigação agora compara remoção abrupta e remoção com prazo, espera de drenagem e novas tentativas apenas para GET. O [relato em português](docs/connections.md) mostra a comparação sob tráfego, os erros que continuaram acontecendo e o teste de POST com resposta perdida. Foram 70 verificações locais e 70 no CI. A remoção com prazo caiu de 7/1.592 para 0/1.645 falhas diretas localmente, e de 10/1.172 para 1/1.425 no CI: ainda houve falha com drenagem. O experimento original com prazo zero e os resultados anteriores continuam disponíveis.
+
 ## Resultados e limites
 
 Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.

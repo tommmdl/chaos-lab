@@ -1,0 +1,41 @@
+{
+  "checked_utc": "2026-10-19T22:05:27.379580+00:00",
+  "termination_grace_seconds": 30,
+  "pre_stop": {
+    "sleep": {
+      "seconds": 5
+    }
+  },
+  "gunicorn_args": "--graceful-timeout 20",
+  "applications": [
+    {
+      "port": 8021,
+      "status": 200,
+      "notes": 8
+    },
+    {
+      "port": 8022,
+      "status": 200,
+      "notes": 7
+    },
+    {
+      "port": 8023,
+      "status": 200,
+      "notes": 14
+    },
+    {
+      "port": 8024,
+      "status": 200,
+      "notes": 7
+    }
+  ],
+  "gateway": {
+    "status": 200,
+    "attempts": "1",
+    "transport_failures": "0"
+  },
+  "remaining_experiments": {
+    "podchaos": 0,
+    "networkchaos": 0
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "passed": true,
+  "checks": 23,
+  "trials": 16,
+  "duration_seconds": 246.89,
+  "summary": [
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1809,
+      "failures": 23,
+      "failure_rate": 0.01271420674405749,
+      "attempts": 1809,
+      "transport_failures": 23
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1940,
+      "failures": 3,
+      "failure_rate": 0.0015463917525773195,
+      "attempts": 1959,
+      "transport_failures": 22
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1592,
+      "failures": 7,
+      "failure_rate": 0.0043969849246231155,
+      "attempts": 1592,
+      "transport_failures": 7
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1760,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1764,
+      "transport_failures": 4
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1654,
+      "failures": 5,
+      "failure_rate": 0.003022974607013301,
+      "attempts": 1654,
+      "transport_failures": 5
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1653,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1655,
+      "transport_failures": 2
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1645,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1645,
+      "transport_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1645,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1645,
+      "transport_failures": 0
+    }
+  ],
+  "raw_error_types": {
+    "ConnectionResetError": 12,
+    "ConnectionRefusedError": 18,
+    "TimeoutError": 5
+  },
+  "timing_observations": [
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "trial": 1,
+      "target": "api-778d7d4d78-7lzbd",
+      "term_log_after_deletion_watch_seconds": 0.118,
+      "endpoint_retired_after_injection_seconds": 1.475,
+      "raw_failures": 19,
+      "retry_failures": 3
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "trial": 2,
+      "target": "api-778d7d4d78-p92dh",
+      "term_log_after_deletion_watch_seconds": 0.122,
+      "endpoint_retired_after_injection_seconds": 1.086,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "trial": 3,
+      "target": "api-778d7d4d78-q2d5q",
+      "term_log_after_deletion_watch_seconds": 0.058,
+      "endpoint_retired_after_injection_seconds": 0.938,
+      "raw_failures": 3,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "trial": 4,
+      "target": "api-778d7d4d78-8j45l",
+      "term_log_after_deletion_watch_seconds": 0.039,
+      "endpoint_retired_after_injection_seconds": 0.817,
+      "raw_failures": 1,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "trial": 1,
+      "target": "api-778d7d4d78-nnznx",
+      "term_log_after_deletion_watch_seconds": 0.044,
+      "endpoint_retired_after_injection_seconds": 2.044,
+      "raw_failures": 1,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "trial": 2,
+      "target": "api-778d7d4d78-n44ws",
+      "term_log_after_deletion_watch_seconds": 0.054,
+      "endpoint_retired_after_injection_seconds": 0.823,
+      "raw_failures": 3,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "trial": 3,
+      "target": "api-778d7d4d78-xm6w8",
+      "term_log_after_deletion_watch_seconds": 0.04,
+      "endpoint_retired_after_injection_seconds": 0.64,
+      "raw_failures": 1,
+      "retry_failures": 0
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "trial": 4,
+      "target": "api-778d7d4d78-v2nvr",
+      "term_log_after_deletion_watch_seconds": 0.015,
+      "endpoint_retired_after_injection_seconds": 0.75,
+      "raw_failures": 2,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "trial": 1,
+      "target": "api-5459756fdf-zmx2z",
+      "term_log_after_deletion_watch_seconds": 1.018,
+      "endpoint_retired_after_injection_seconds": 0.559,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "trial": 2,
+      "target": "api-5459756fdf-8x9tb",
+      "term_log_after_deletion_watch_seconds": 1.014,
+      "endpoint_retired_after_injection_seconds": 0.563,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "trial": 3,
+      "target": "api-5459756fdf-lkj6z",
+      "term_log_after_deletion_watch_seconds": 1.015,
+      "endpoint_retired_after_injection_seconds": 0.568,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "trial": 4,
+      "target": "api-5459756fdf-mw8m6",
+      "term_log_after_deletion_watch_seconds": 1.02,
+      "endpoint_retired_after_injection_seconds": 0.623,
+      "raw_failures": 5,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "trial": 1,
+      "target": "api-5459756fdf-5bzch",
+      "term_log_after_deletion_watch_seconds": 5.01,
+      "endpoint_retired_after_injection_seconds": 0.556,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "trial": 2,
+      "target": "api-5459756fdf-lvdgx",
+      "term_log_after_deletion_watch_seconds": 5.009,
+      "endpoint_retired_after_injection_seconds": 0.536,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "trial": 3,
+      "target": "api-5459756fdf-gjrxr",
+      "term_log_after_deletion_watch_seconds": 5.02,
+      "endpoint_retired_after_injection_seconds": 0.536,
+      "raw_failures": 0,
+      "retry_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "trial": 4,
+      "target": "api-5459756fdf-z9zh6",
+      "term_log_after_deletion_watch_seconds": 5.011,
+      "endpoint_retired_after_injection_seconds": 0.548,
+      "raw_failures": 0,
+      "retry_failures": 0
+    }
+  ],
+  "timing_note": "Watch/log receipt times, not packet capture or exact kube-proxy convergence times"
+}

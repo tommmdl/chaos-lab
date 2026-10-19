@@ -18,7 +18,7 @@ That first run ended with two ready API replicas, one PostgreSQL, two notes, bot
 
 All **43 checks passed again**, in **183.53 seconds**. This run's first experiment returned 200 for all 16 samples. Observed readiness latency under injected delay was about 824 ms, and checking partition recovery took 64.39 s.
 
-Both API replicas and the replacement PostgreSQL Pod finished ready. Four notes accumulated across the runs remained on the same PVC, both probes returned to 1 and no alert remained active. The [current report](../evidence/verification.json) records this state. The difference between 14/16 and 16/16 successful responses reinforces the sampling limitation; the initial failure remains documented.
+Both API replicas and the replacement PostgreSQL Pod finished ready. Four notes accumulated across the runs remained on the same PVC, both probes returned to 1 and no alert remained active. The [current report](../evidence/chaos-first-release-verification.json) records this state. The difference between 14/16 and 16/16 successful responses reinforces the sampling limitation; the initial failure remains documented.
 
 ## Connection failures are part of the result
 
@@ -52,10 +52,14 @@ The [CI report](../evidence/ci-verification.json), [experiment objects](../evide
 
 ## Read the evidence
 
-[verification.json](../evidence/verification.json) includes checks, HTTP samples, observed latency, verified notifications, images and final state. Numbered JSON files retain experiment objects, targets and injection/recovery records. `03-database-partition-injected.json` and `03-database-partition-recovered.json` show the same resource UID before and after duration expiry.
+[verification.json](../evidence/chaos-first-release-verification.json) includes checks, HTTP samples, observed latency, verified notifications, images and final state. Numbered JSON files retain experiment objects, targets and injection/recovery records. `03-database-partition-injected.json` and `03-database-partition-recovered.json` show the same resource UID before and after duration expiry.
 
 `seconds_until_recovery_checked` ends after checking recovery, the resolved notification and data. It is not a continuous downtime measurement. Full test duration includes waiting for probes, rules, delivery and recovery, but excludes initial installation.
 
 Actual reference notes and the password stay under `.local`. Public evidence includes counts, checks and a hash of rows, without exporting the database or credentials. GitHub Actions creates a fresh cluster and repeats the same exercise, retaining its results as an artifact.
 
 These results cover this environment and these parameters. Machine loss, physical storage failure, simultaneous chaos controller/application failure and external on-call delivery were not tested. HTTP sampling also does not establish a production availability percentage.
+
+## Follow-up: replica removal
+
+The original run above is retained. A separate investigation compares 16 removals under concurrent HTTP traffic, draining and bounded GET retries, including remaining failures and write safety. [Results and new local/CI evidence](connections.en.md).

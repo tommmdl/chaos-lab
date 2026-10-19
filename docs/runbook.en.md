@@ -53,3 +53,7 @@ If cleanup stalls, inspect the resource and logs. Restore the controller and dae
 The Helm release is `chaos-lab` in `chaos-system`. Uninstall only after recovering every experiment; uninstalling does not automatically remove application data. CRDs are cluster resources: check other uses before deleting them. There is no local command that deletes the cluster or every volume. Automatic workflow cleanup targets only the disposable cluster created on that runner.
 
 NodePorts 30434–30437 provide access within the local Docker network; the browser access process exposes 8024–8027 only on 127.0.0.1. This path has no production authentication. Database credentials, kubeconfig, generated Helm files and reference data remain in `.local`, outside Git.
+
+## Inspect connections during removal
+
+Original `01-api-pod-kill` uses zero grace and skips the draining hook. Use `06-api-graceful-removal` for a removal with a grace period. `python3 tests/resilience.py --rounds 4` compares both removals, with and without waiting, under direct and local gateway traffic. Restart the access process after updating its code. At localhost:8024, inspect `X-Lab-Upstream-Attempts` and `X-Lab-Transport-Failures`; a recovered read can conceal a failure if you only inspect the final status. Reports retain both. POST and DELETE are never retried automatically: reconcile an uncertain write against the database before resending it. [Diagnosis, measurements and limits](connections.en.md).
