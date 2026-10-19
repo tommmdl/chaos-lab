@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Local browser access that survives replacement of application Pods."""
+"""Local access with bounded, visible transport retries for API GET only."""
 
-import http.client, json, subprocess, threading
+import http.client
+import json
+import subprocess
+import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 
+POLICY = json.loads(
+    (Path(__file__).resolve().parents[1] / "config/api-resilience.json").read_text()
+)
 HOST = subprocess.check_output(
     [
         "docker",
@@ -16,43 +24,128 @@ HOST = subprocess.check_output(
 ).strip()
 
 
-def handler(port):
+def upstream(method, path, data, headers, host, port, get_attempts=None, api=None):
+    retryable = method == "GET" and (port == 30434 if api is None else api)
+    maximum = (
+        (POLICY["get_max_attempts"] if get_attempts is None else get_attempts)
+        if retryable
+        else 1
+    )
+    started = time.monotonic()
+    failures = []
+    for attempt in range(1, maximum + 1):
+        connection = None
+        remaining = POLICY["get_total_budget_seconds"] - (time.monotonic() - started)
+        if attempt > 1 and remaining <= 0:
+            break
+        timeout = (
+            min(POLICY["get_attempt_timeout_seconds"], max(0.01, remaining))
+            if retryable
+            else 12
+        )
+        try:
+            connection = http.client.HTTPConnection(host, port, timeout=timeout)
+            connection.request(method, path, body=data, headers=headers)
+            response = connection.getresponse()
+            body = response.read()
+            # An HTTP response, including 4xx/5xx, is returned without another attempt.
+            return response.status, response.getheaders(), body, attempt, failures
+        except (OSError, http.client.HTTPException) as error:
+            failures.append({"type": type(error).__name__, "message": str(error)[:300]})
+            if attempt == maximum:
+                break
+            delay = POLICY["get_retry_delays_seconds"][attempt - 1]
+            if time.monotonic() - started + delay >= POLICY["get_total_budget_seconds"]:
+                break
+            time.sleep(delay)
+        finally:
+            if connection:
+                connection.close()
+    return (
+        502,
+        [("Content-Type", "application/json")],
+        json.dumps(
+            {
+                "error": "upstream_unavailable",
+                "write_outcome": (
+                    "unknown; reconcile before retrying"
+                    if method != "GET"
+                    else "not applicable"
+                ),
+            }
+        ).encode(),
+        len(failures),
+        failures,
+    )
+
+
+def handler(port, host=None, get_attempts=None, observer=None, quiet=False, api=None):
     class Proxy(BaseHTTPRequestHandler):
         def request(self):
-            connection = None
-            try:
-                data = self.rfile.read(int(self.headers.get("Content-Length", "0")))
-                connection = http.client.HTTPConnection(HOST, port, timeout=12)
-                headers = {
-                    k: v
-                    for k, v in self.headers.items()
-                    if k.lower() not in {"host", "connection", "transfer-encoding"}
-                }
-                connection.request(self.command, self.path, body=data, headers=headers)
-                upstream = connection.getresponse()
-                body = upstream.read()
-                self.send_response(upstream.status)
-                for key, value in upstream.getheaders():
-                    if key.lower() not in {
-                        "content-length",
-                        "transfer-encoding",
-                        "connection",
-                        "server",
-                        "date",
-                    }:
-                        self.send_header(key, value)
-                self.send_header("Content-Length", str(len(body)))
-                self.end_headers()
-                self.wfile.write(body)
-            except OSError:
-                self.send_error(
-                    502, "Lab upstream unavailable; failed writes are never retried"
+            data = self.rfile.read(int(self.headers.get("Content-Length", "0")))
+            headers = {
+                k: v
+                for k, v in self.headers.items()
+                if k.lower() not in {"host", "connection", "transfer-encoding"}
+            }
+            status, returned, body, attempts, failures = upstream(
+                self.command,
+                self.path,
+                data,
+                headers,
+                host or HOST,
+                port,
+                get_attempts,
+                api,
+            )
+            if failures and not quiet:
+                print(
+                    json.dumps(
+                        {
+                            "event": "upstream_transport_failure",
+                            "method": self.command,
+                            "path": self.path.split("?")[0],
+                            "attempts": attempts,
+                            "failures": failures,
+                        }
+                    ),
+                    flush=True,
                 )
-            finally:
-                if connection:
-                    connection.close()
+            if observer:
+                observer(
+                    {
+                        "method": self.command,
+                        "status": status,
+                        "attempts": attempts,
+                        "transport_failures": failures,
+                    }
+                )
+            self.send_response(status)
+            for key, value in returned:
+                if key.lower() not in {
+                    "content-length",
+                    "transfer-encoding",
+                    "connection",
+                    "server",
+                    "date",
+                    "x-lab-upstream-attempts",
+                    "x-lab-transport-failures",
+                }:
+                    self.send_header(key, value)
+            self.send_header("X-Lab-Upstream-Attempts", str(attempts))
+            self.send_header("X-Lab-Transport-Failures", str(len(failures)))
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            try:
+                self.wfile.write(body)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
 
         do_GET = do_POST = do_DELETE = request
+
+        def log_message(self, format, *args):
+            if not quiet:
+                super().log_message(format, *args)
 
     return Proxy
 

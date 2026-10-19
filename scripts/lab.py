@@ -239,6 +239,19 @@ def deployment(
         "volumes": [{"name": "tmp", "emptyDir": {"sizeLimit": "64Mi"}}]
         + (volumes or []),
     }
+    if name == "api":
+        resilience = json.loads((ROOT / "config/api-resilience.json").read_text())
+        spec["terminationGracePeriodSeconds"] = resilience["termination_grace_seconds"]
+        c["lifecycle"] = {
+            "preStop": {"sleep": {"seconds": resilience["pre_stop_sleep_seconds"]}}
+        }
+        c["env"].append(
+            {
+                "name": "GUNICORN_CMD_ARGS",
+                "value": "--graceful-timeout "
+                + str(resilience["gunicorn_graceful_timeout_seconds"]),
+            }
+        )
     # Spread API replicas across nodes when possible, without making CI depend on a second node.
     if name == "api":
         spec["affinity"] = {
@@ -262,7 +275,15 @@ def deployment(
             "metadata": meta(ns, name),
             "spec": {
                 "replicas": replicas,
-                "strategy": {"type": "Recreate" if name != "api" else "RollingUpdate"},
+                **({"minReadySeconds": 2} if name == "api" else {}),
+                "strategy": (
+                    {
+                        "type": "RollingUpdate",
+                        "rollingUpdate": {"maxSurge": 1, "maxUnavailable": 0},
+                    }
+                    if name == "api"
+                    else {"type": "Recreate"}
+                ),
                 "selector": {"matchLabels": {"app": name}},
                 "template": {
                     "metadata": {
