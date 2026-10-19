@@ -1,0 +1,62 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "kind": "PodChaos",
+  "spec": {
+    "action": "pod-kill",
+    "mode": "one",
+    "selector": {
+      "labelSelectors": {
+        "app": "postgres",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      },
+      "namespaces": [
+        "chaos-demo"
+      ]
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "status": "False",
+        "type": "Paused"
+      },
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      }
+    ],
+    "experiment": {
+      "containerRecords": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:54:55Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/postgres-7f8555b8c4-mc2sg",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        }
+      ],
+      "desiredPhase": "Run"
+    }
+  },
+  "metadata": {
+    "name": "05-database-pod-kill",
+    "namespace": "chaos-demo",
+    "uid": "bcd7a6b3-35fc-456f-8495-67defc77174c",
+    "creationTimestamp": "2026-10-19T19:54:55Z"
+  }
+}

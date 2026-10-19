@@ -1,0 +1,77 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "kind": "PodChaos",
+  "spec": {
+    "action": "pod-failure",
+    "duration": "60s",
+    "mode": "all",
+    "selector": {
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      },
+      "namespaces": [
+        "chaos-demo"
+      ]
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
+      }
+    ],
+    "experiment": {
+      "containerRecords": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:54:25Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-778d7d4d78-j8czd",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        },
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:54:25Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-778d7d4d78-62h22",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        }
+      ],
+      "desiredPhase": "Run"
+    }
+  },
+  "metadata": {
+    "name": "04-api-failure",
+    "namespace": "chaos-demo",
+    "uid": "33e50d6b-2ea4-4dc9-a08a-3bf617f4ed2d",
+    "creationTimestamp": "2026-10-19T19:54:25Z"
+  }
+}

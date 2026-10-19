@@ -28,11 +28,11 @@ flowchart LR
 
 Network and unavailability experiments have bounded durations. The test cancels some through normal resource deletion and lets the network partition expire to verify timed recovery. The controller must remain available to perform that recovery.
 
-In the local run, abruptly removing one replica produced **2 connection failures in 16 samples**. The other 14 returned 200, and no sustained outage alert fired. This remains in the report: replica recovery did not mean an absence of transient errors.
+In the first local run, abruptly removing one replica produced **2 connection failures in 16 samples**. The other 14 returned 200, and no sustained outage alert fired. This remains in the initial report: replica recovery did not mean an absence of transient errors.
 
 ## Run
 
-Use Linux or WSL, Docker, Python 3 and the existing `devops-notes` kind cluster from [kubernetes-lab](https://github.com/tommmdl/kubernetes-lab). Keep the repositories side by side. The script uses that lab's kubeconfig and kubectl with an explicit context. Override paths through `KUBECTL` and `KUBECONFIG_CHAOS` when needed.
+Use Linux or WSL on x86_64, Docker, Python 3 and the existing `devops-notes` kind cluster from [kubernetes-lab](https://github.com/tommmdl/kubernetes-lab). Keep the repositories side by side. The script uses that lab's kubeconfig and kubectl with an explicit context. Override paths through `KUBECTL` and `KUBECONFIG_CHAOS` when needed.
 
 The kernel needs `sch_netem`. On this computer it was loaded by the WSL root user. On Linux with sudo:
 
@@ -82,7 +82,7 @@ The test waits for an alert in Prometheus, finds its firing notification in the 
 
 ## Results and limits
 
-The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.
+All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.
 
 Chaos Mesh needs privileged access to the kind nodes' runtime to inject faults. The controller can mutate Pods in `chaos-demo`; namespace filtering and selectors also constrain targets. Discovery has global read permissions. These controls reduce experiment scope, but the privileged daemon requires a trusted study environment. The dashboard is not part of this installation.
 

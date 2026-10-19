@@ -36,20 +36,20 @@
   "status": {
     "conditions": [
       {
-        "status": "True",
-        "type": "Selected"
-      },
-      {
-        "status": "True",
-        "type": "AllInjected"
-      },
-      {
         "status": "False",
         "type": "AllRecovered"
       },
       {
         "status": "False",
         "type": "Paused"
+      },
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
       }
     ],
     "experiment": {
@@ -58,7 +58,7 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:08Z",
+              "timestamp": "2026-10-19T19:50:45Z",
               "type": "Succeeded"
             }
           ],
@@ -72,11 +72,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:08Z",
+              "timestamp": "2026-10-19T19:50:45Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-knct7",
+          "id": "chaos-demo/api-778d7d4d78-skb2z",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -86,11 +86,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:08Z",
+              "timestamp": "2026-10-19T19:50:45Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/postgres-7f8555b8c4-ptvvz",
+          "id": "chaos-demo/postgres-7f8555b8c4-s922b",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -100,14 +100,14 @@
       "desiredPhase": "Run"
     },
     "instances": {
-      "chaos-demo/api-778d7d4d78-8dcsd": 1,
-      "chaos-demo/api-778d7d4d78-knct7": 1
+      "chaos-demo/api-778d7d4d78-8dcsd": 5,
+      "chaos-demo/api-778d7d4d78-skb2z": 1
     }
   },
   "metadata": {
     "name": "02-database-delay",
     "namespace": "chaos-demo",
-    "uid": "0125c530-43dd-4e7a-9097-dcf9d6d2d936",
-    "creationTimestamp": "2026-10-19T19:39:08Z"
+    "uid": "6bc8044f-99ad-450f-b3fa-c2e82fb0d1a3",
+    "creationTimestamp": "2026-10-19T19:50:44Z"
   }
 }

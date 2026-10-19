@@ -17,20 +17,20 @@
   "status": {
     "conditions": [
       {
-        "status": "True",
-        "type": "AllInjected"
-      },
-      {
-        "status": "False",
-        "type": "AllRecovered"
-      },
-      {
         "status": "False",
         "type": "Paused"
       },
       {
         "status": "True",
         "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
       }
     ],
     "experiment": {
@@ -39,11 +39,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:41:10Z",
+              "timestamp": "2026-10-19T19:52:48Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/postgres-7f8555b8c4-ptvvz",
+          "id": "chaos-demo/postgres-7f8555b8c4-s922b",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -56,7 +56,7 @@
   "metadata": {
     "name": "05-database-pod-kill",
     "namespace": "chaos-demo",
-    "uid": "5129fdaf-31ba-4bcf-9a35-fc7fd41b87a8",
-    "creationTimestamp": "2026-10-19T19:41:10Z"
+    "uid": "2ab96daf-f7a3-47e0-8cf9-5648f329c196",
+    "creationTimestamp": "2026-10-19T19:52:48Z"
   }
 }

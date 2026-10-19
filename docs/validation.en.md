@@ -2,9 +2,9 @@
 
 [Português](validation.md) · [Procedure](runbook.en.md)
 
-On 19 October 2026, **43 local checks passed in 183.87 seconds**. Five real Chaos Mesh experiments were executed, with three alerts followed from Prometheus through the local webhook. Each alert's firing and resolved notifications shared the same fingerprint. The six verified notifications survived receiver Pod replacement.
+In the first local run on 19 October 2026, **43 checks passed in 183.87 seconds**. The [initial report](../evidence/initial-local-verification.json) is retained. Five real Chaos Mesh experiments were executed, with three alerts followed from Prometheus through the local webhook. Each alert's firing and resolved notifications shared the same fingerprint. The six verified notifications survived receiver Pod replacement.
 
-| Experiment | Local result |
+| Experiment | Initial local result |
 | --- | --- |
 | Abruptly remove one API replica | 14 of 16 samples returned HTTP 200. Two had connection failures. The Pod was replaced and no sustained outage alert fired. |
 | Delay API → database by 100 ms per packet | Readiness took about 837 ms and still succeeded. The latency alert fired and resolved after normal experiment removal. |
@@ -12,7 +12,13 @@ On 19 October 2026, **43 local checks passed in 183.87 seconds**. Five real Chao
 | Fail both API replicas | Both probes failed and the critical alert reached the receiver. Normal removal restored the original API images and delivered resolved. |
 | Abruptly remove PostgreSQL's Pod | PostgreSQL returned with a new Pod UID and the same PVC UID. Rows, IDs and timestamps matched; a new note was written through the API. |
 
-The final state has two ready API replicas, one PostgreSQL, two notes, both probes at 1 and no active alerts. No experiment remained pending and `cleanup_errors` was empty. Other labs' workload configurations, images and PVC UIDs were compared before and after and remained unchanged.
+That first run ended with two ready API replicas, one PostgreSQL, two notes, both probes at 1 and no active alerts. No experiment remained pending and `cleanup_errors` was empty. Other labs' workload configurations, images and PVC UIDs were compared before and after and remained unchanged.
+
+## Local repetition with the corrected wait
+
+All **43 checks passed again**, in **183.53 seconds**. This run's first experiment returned 200 for all 16 samples. Observed readiness latency under injected delay was about 824 ms, and checking partition recovery took 64.39 s.
+
+Both API replicas and the replacement PostgreSQL Pod finished ready. Four notes accumulated across the runs remained on the same PVC, both probes returned to 1 and no alert remained active. The [current report](../evidence/verification.json) records this state. The difference between 14/16 and 16/16 successful responses reinforces the sampling limitation; the initial failure remains documented.
 
 ## Connection failures are part of the result
 
@@ -30,9 +36,23 @@ The first Prometheus configuration had a scrape timeout longer than its interval
 
 The database uses a headless Service so connection destinations match the Pod IPs selected by NetworkChaos. Tests use a dedicated copy of the application; pausing Argo CD or changing previous labs' shared alert rules was unnecessary.
 
+## CI exposed an incorrect recovery wait
+
+The [first GitHub Actions run](https://github.com/tommmdl/chaos-lab/actions/runs/39313601808) verified alerts and recovery for the first four experiments. During PostgreSQL restart, the test saw a new Pod but attempted SQL before its container started. An older healthy Prometheus sample remained available. The [attempt report](../evidence/ci-first-verification.json) records the failure and successful fault cleanup.
+
+The corrected test requires the new Pod to be Running/Ready with its container ready, a successful real SQL query and both API replicas ready. It then waits for both probes to have timestamps newer than that recovery. A changed UID and the last healthy probe value alone no longer complete verification.
+
+## Repetition in GitHub Actions
+
+The [successful CI run](https://github.com/tommmdl/chaos-lab/actions/runs/39314335897) passed the same **43 checks in 185.60 seconds** on a fresh cluster. Readiness under injected delay took about 837 ms; checking partition recovery took 65.36 s. API and PostgreSQL Pods finished ready, with two notes preserved and no active alerts.
+
+Removing one replica produced **15 HTTP 200 responses and one connection failure in 16 samples** in CI. The corrected wait strengthened database recovery verification; brief connection failures remain an observed behavior of abrupt Pod removal.
+
+The [CI report](../evidence/ci-verification.json), [experiment objects](../evidence/ci) and [run metadata](../evidence/ci-run.json) were downloaded and retained in the repository. The earlier failed attempt also remains visible.
+
 ## Read the evidence
 
-[verification.json](../evidence/verification.json) includes checks, HTTP samples, observed latency, verified notifications, images and final state. Other JSON files retain experiment objects, targets and injection/recovery records. `03-database-partition-injected.json` and `03-database-partition-recovered.json` show the same resource UID before and after duration expiry.
+[verification.json](../evidence/verification.json) includes checks, HTTP samples, observed latency, verified notifications, images and final state. Numbered JSON files retain experiment objects, targets and injection/recovery records. `03-database-partition-injected.json` and `03-database-partition-recovered.json` show the same resource UID before and after duration expiry.
 
 `seconds_until_recovery_checked` ends after checking recovery, the resolved notification and data. It is not a continuous downtime measurement. Full test duration includes waiting for probes, rules, delivery and recovery, but excludes initial installation.
 

@@ -28,11 +28,11 @@ flowchart LR
 
 Os experimentos de rede e de indisponibilidade têm duração limitada. O teste cancela alguns pelo caminho normal de remoção e deixa a partição de rede expirar para conferir a recuperação por tempo. O controlador precisa continuar disponível para executar essa recuperação.
 
-No teste local, a remoção abrupta de uma réplica deixou **2 falhas de conexão em 16 amostras**. As outras 14 responderam 200 e não houve alerta de queda sustentada. Esse resultado está mantido no relatório: a recuperação das réplicas não significou ausência de erros transitórios.
+Na primeira execução local, a remoção abrupta de uma réplica deixou **2 falhas de conexão em 16 amostras**. As outras 14 responderam 200 e não houve alerta de queda sustentada. Esse resultado está mantido no relatório inicial: a recuperação das réplicas não significou ausência de erros transitórios.
 
 ## Rodar
 
-Use Linux ou WSL, Docker, Python 3 e o cluster kind `devops-notes` do [kubernetes-lab](https://github.com/tommmdl/kubernetes-lab). Os repositórios ficam lado a lado. O script usa o kubeconfig e o kubectl daquele lab, com contexto explícito. Para usar outros caminhos, configure `KUBECTL` e `KUBECONFIG_CHAOS`.
+Use Linux ou WSL em x86_64, Docker, Python 3 e o cluster kind `devops-notes` do [kubernetes-lab](https://github.com/tommmdl/kubernetes-lab). Os repositórios ficam lado a lado. O script usa o kubeconfig e o kubectl daquele lab, com contexto explícito. Para usar outros caminhos, configure `KUBECTL` e `KUBECONFIG_CHAOS`.
 
 O kernel precisa do módulo `sch_netem`. Neste computador ele foi carregado pelo root do WSL. Em um Linux com sudo, o comando é:
 
@@ -82,7 +82,7 @@ O teste espera o alerta aparecer no Prometheus, encontra a mensagem firing na ca
 
 ## Resultados e limites
 
-Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.
+Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.
 
 O Chaos Mesh usa acesso privilegiado ao runtime dos nós kind para injetar falhas. O controlador tem permissão de alteração de Pods em `chaos-demo`; a filtragem de namespace e os seletores também restringem os alvos. Há permissões globais de leitura para descoberta. Esses controles reduzem o alcance dos experimentos, mas o daemon privilegiado exige um ambiente de estudo confiável. O dashboard não faz parte desta instalação.
 

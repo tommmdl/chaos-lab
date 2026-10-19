@@ -2,9 +2,9 @@
 
 [English](validation.en.md) · [Procedimento](runbook.md)
 
-Em 19/10/2026, passaram **43 verificações locais em 183,87 segundos**. Foram cinco experimentos reais do Chaos Mesh, com três alertas acompanhados do Prometheus até o webhook local. Para cada um desses alertas, firing e resolved tiveram o mesmo fingerprint. As seis notificações conferidas sobreviveram à substituição do Pod do receptor.
+Na primeira execução local, em 19/10/2026, passaram **43 verificações em 183,87 segundos**. O [relatório inicial](../evidence/initial-local-verification.json) foi mantido. Foram cinco experimentos reais do Chaos Mesh, com três alertas acompanhados do Prometheus até o webhook local. Para cada um desses alertas, firing e resolved tiveram o mesmo fingerprint. As seis notificações conferidas sobreviveram à substituição do Pod do receptor.
 
-| Experimento | Resultado local |
+| Experimento | Resultado local inicial |
 | --- | --- |
 | Uma réplica da API removida abruptamente | 14 de 16 amostras responderam HTTP 200. Duas tiveram falha de conexão. O Pod foi substituído e não houve alerta de indisponibilidade sustentada. |
 | Atraso de 100 ms por pacote entre API e banco | A sonda de readiness levou cerca de 837 ms e continuou bem-sucedida. O alerta de lentidão disparou e foi resolvido depois da remoção do experimento. |
@@ -12,7 +12,13 @@ Em 19/10/2026, passaram **43 verificações locais em 183,87 segundos**. Foram c
 | Falha nas duas réplicas da API | As duas sondas falharam e o alerta crítico chegou ao receptor. A remoção normal restaurou as imagens originais da API e entregou resolved. |
 | Pod do PostgreSQL removido abruptamente | O banco voltou com um UID de Pod novo e o mesmo UID de PVC. Linhas, IDs e timestamps permaneceram iguais; uma nova nota foi gravada pela API. |
 
-O estado final tem duas réplicas prontas da API, um PostgreSQL, duas notas, as duas sondas com valor 1 e nenhum alerta ativo. Nenhum experimento ficou pendente e `cleanup_errors` ficou vazio. As configurações de workloads, imagens e UIDs de PVCs dos outros labs foram comparadas antes e depois e permaneceram iguais.
+Ao fim dessa primeira execução havia duas réplicas prontas da API, um PostgreSQL, duas notas, as duas sondas com valor 1 e nenhum alerta ativo. Nenhum experimento ficou pendente e `cleanup_errors` ficou vazio. As configurações de workloads, imagens e UIDs de PVCs dos outros labs foram comparadas antes e depois e permaneceram iguais.
+
+## Repetição local com a espera corrigida
+
+Passaram novamente **43 verificações**, em **183,53 segundos**. Nessa execução, as 16 amostras do primeiro experimento responderam 200. A latência observada sob atraso foi de cerca de 824 ms, e a verificação completa da recuperação da partição levou 64,39 s.
+
+As duas réplicas da API e o novo Pod do PostgreSQL terminaram prontos. As quatro notas acumuladas das execuções ficaram preservadas no mesmo PVC, as duas sondas voltaram a 1 e nenhum alerta ficou ativo. O [relatório atual](../evidence/verification.json) registra esse estado. A diferença entre 14/16 e 16/16 respostas bem-sucedidas reforça o limite da amostragem; a falha inicial continua documentada.
 
 ## As duas falhas de conexão fazem parte do resultado
 
@@ -30,9 +36,23 @@ Na primeira configuração do Prometheus, o timeout de coleta era maior que o in
 
 O banco ficou com um Service headless para que o destino da conexão correspondesse aos IPs de Pod selecionados pelo NetworkChaos. Os testes usam uma cópia própria da aplicação; não houve necessidade de pausar Argo CD ou alterar as regras compartilhadas dos labs anteriores.
 
+## O CI encontrou uma espera incorreta
+
+A [primeira execução no GitHub Actions](https://github.com/tommmdl/chaos-lab/actions/runs/39313601808) confirmou os alertas e a recuperação dos quatro primeiros experimentos. No reinício do PostgreSQL, o teste viu um Pod novo, mas tentou executar SQL antes de seu contêiner iniciar. Uma amostra saudável antiga do Prometheus ainda estava disponível. O [relatório da tentativa](../evidence/ci-first-verification.json) registra a falha e a limpeza sem erros.
+
+O teste foi corrigido para exigir o Pod novo em Running/Ready, o contêiner pronto, uma consulta SQL real bem-sucedida e as duas réplicas da API prontas. Depois espera amostras das duas sondas com timestamp posterior a essa recuperação. A troca de UID e o último valor saudável da sonda, sozinhos, não encerram mais a verificação.
+
+## Repetição no GitHub Actions
+
+A [execução aprovada do CI](https://github.com/tommmdl/chaos-lab/actions/runs/39314335897) passou nas mesmas **43 verificações em 185,60 segundos**, com um cluster criado do zero. A sonda sob atraso levou cerca de 837 ms; a conferência da recuperação da partição levou 65,36 s. Os Pods da API e do PostgreSQL terminaram prontos, com duas notas preservadas e nenhum alerta ativo.
+
+Na remoção de uma réplica, o CI teve **15 respostas 200 e uma falha de conexão em 16 amostras**. A correção da espera fortaleceu o teste de recuperação do banco; as falhas breves de conexão continuam como comportamento observado da remoção abrupta.
+
+O [relatório do CI](../evidence/ci-verification.json), os [objetos de experimento](../evidence/ci) e os [metadados da execução](../evidence/ci-run.json) foram baixados e guardados no repositório. A tentativa anterior que falhou também permanece visível.
+
 ## Ler as evidências
 
-[verification.json](../evidence/verification.json) contém as verificações, as amostras de HTTP, a latência observada, notificações conferidas, imagens e o estado final. Os outros JSONs guardam os objetos de experimento com seus alvos e registros de injeção e recuperação. `03-database-partition-injected.json` e `03-database-partition-recovered.json` permitem comparar o mesmo UID antes e depois de expirar a duração.
+[verification.json](../evidence/verification.json) contém as verificações, as amostras de HTTP, a latência observada, notificações conferidas, imagens e o estado final. Os arquivos JSON numerados guardam os objetos de experimento com seus alvos e registros de injeção e recuperação. `03-database-partition-injected.json` e `03-database-partition-recovered.json` permitem comparar o mesmo UID antes e depois de expirar a duração.
 
 O tempo `seconds_until_recovery_checked` termina depois de conferir a recuperação, a mensagem resolved e os dados. Não é uma medição contínua de indisponibilidade. O tempo da execução completa inclui esperas de sondas, regras, entrega e recuperação, mas não inclui a instalação inicial.
 

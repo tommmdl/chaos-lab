@@ -1,5 +1,5 @@
 {
-  "started_utc": "2026-10-19T19:38:54.183020+00:00",
+  "started_utc": "2026-10-19T19:50:30.732138+00:00",
   "checks": [
     {
       "name": "Kernel has the netem module required for latency injection",
@@ -71,8 +71,8 @@
       "detail": {
         "sample_statuses": [
           200,
-          0,
-          0,
+          200,
+          200,
           200,
           200,
           200,
@@ -87,7 +87,7 @@
           200,
           200
         ],
-        "failed_samples": 2
+        "failed_samples": 0
       }
     },
     {
@@ -102,7 +102,7 @@
       "name": "Injected delay makes readiness slow while both probes still succeed",
       "passed": true,
       "detail": {
-        "readyz_seconds": 0.837485389
+        "readyz_seconds": 0.823819827
       }
     },
     {
@@ -203,8 +203,8 @@
       "name": "01-api-pod-kill",
       "sample_statuses": [
         200,
-        0,
-        0,
+        200,
+        200,
         200,
         200,
         200,
@@ -223,16 +223,16 @@
     },
     {
       "name": "02-database-delay",
-      "readyz_seconds": 0.837485389,
+      "readyz_seconds": 0.823819827,
       "recovery": "delete through normal finalizers",
       "data_equal": true
     },
     {
       "name": "03-database-partition",
       "duration": "60s",
+      "seconds_until_recovery_checked": 64.39,
       "recovery": "automatic duration expiry; object still present",
-      "data_equal": true,
-      "seconds_until_recovery_checked": 64.73
+      "data_equal": true
     },
     {
       "name": "04-api-failure",
@@ -247,8 +247,8 @@
   ],
   "notifications": [
     {
-      "id": 1,
-      "received_at": "2026-10-19T19:39:26Z",
+      "id": 7,
+      "received_at": "2026-10-19T19:51:02Z",
       "status": "firing",
       "name": "ChaosApiSlow",
       "fingerprint": "a05606dfd165c416",
@@ -264,8 +264,8 @@
       }
     },
     {
-      "id": 2,
-      "received_at": "2026-10-19T19:39:32Z",
+      "id": 8,
+      "received_at": "2026-10-19T19:51:11Z",
       "status": "resolved",
       "name": "ChaosApiSlow",
       "fingerprint": "a05606dfd165c416",
@@ -281,8 +281,8 @@
       }
     },
     {
-      "id": 3,
-      "received_at": "2026-10-19T19:39:53Z",
+      "id": 9,
+      "received_at": "2026-10-19T19:51:32Z",
       "status": "firing",
       "name": "ChaosDatabaseUnavailable",
       "fingerprint": "0e10ff22f8b6ca8a",
@@ -298,8 +298,8 @@
       }
     },
     {
-      "id": 4,
-      "received_at": "2026-10-19T19:40:38Z",
+      "id": 10,
+      "received_at": "2026-10-19T19:52:17Z",
       "status": "resolved",
       "name": "ChaosDatabaseUnavailable",
       "fingerprint": "0e10ff22f8b6ca8a",
@@ -315,8 +315,8 @@
       }
     },
     {
-      "id": 5,
-      "received_at": "2026-10-19T19:40:56Z",
+      "id": 11,
+      "received_at": "2026-10-19T19:52:35Z",
       "status": "firing",
       "name": "ChaosApiUnavailable",
       "fingerprint": "97f2e38f48c04258",
@@ -329,8 +329,8 @@
       }
     },
     {
-      "id": 6,
-      "received_at": "2026-10-19T19:41:08Z",
+      "id": 12,
+      "received_at": "2026-10-19T19:52:47Z",
       "status": "resolved",
       "name": "ChaosApiUnavailable",
       "fingerprint": "97f2e38f48c04258",
@@ -377,14 +377,16 @@
   "final": {
     "api_replicas": 2,
     "postgres_replicas": 1,
-    "rows": 2,
+    "all_api_pods_ready": true,
+    "postgres_pod_ready": true,
+    "rows": 4,
     "pvc_uid": "d545431c-ed04-4f89-a7a0-24969aea58e9",
-    "row_sha256": "d51268365f523717b97db5ab0c39f6a6f313b4fdfef90dcf76aa4ac3468b565d",
+    "row_sha256": "84bf161364a807f8ad563604563b69f0c40bcf474e21aa7e1be0c6fe3250bfd2",
     "healthz_probe": 1.0,
     "readyz_probe": 1.0,
     "active_alerts": 0
   },
   "passed": true,
   "cleanup_errors": [],
-  "duration_seconds": 183.87
+  "duration_seconds": 183.53
 }

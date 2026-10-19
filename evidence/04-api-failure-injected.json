@@ -40,11 +40,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:40:40Z",
+              "timestamp": "2026-10-19T19:52:19Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-8dcsd",
+          "id": "chaos-demo/api-778d7d4d78-skb2z",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -54,11 +54,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:40:41Z",
+              "timestamp": "2026-10-19T19:52:19Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-knct7",
+          "id": "chaos-demo/api-778d7d4d78-8dcsd",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -71,7 +71,7 @@
   "metadata": {
     "name": "04-api-failure",
     "namespace": "chaos-demo",
-    "uid": "55900e6f-af76-4b56-ab3e-1491bec6e693",
-    "creationTimestamp": "2026-10-19T19:40:40Z"
+    "uid": "53a79a81-9a02-4b66-96f5-9982e56b76f6",
+    "creationTimestamp": "2026-10-19T19:52:19Z"
   }
 }

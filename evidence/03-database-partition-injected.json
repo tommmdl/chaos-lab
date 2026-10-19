@@ -31,20 +31,20 @@
   "status": {
     "conditions": [
       {
-        "status": "False",
-        "type": "AllRecovered"
-      },
-      {
-        "status": "False",
-        "type": "Paused"
-      },
-      {
         "status": "True",
         "type": "Selected"
       },
       {
         "status": "True",
         "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
       }
     ],
     "experiment": {
@@ -53,7 +53,7 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:34Z",
+              "timestamp": "2026-10-19T19:51:14Z",
               "type": "Succeeded"
             }
           ],
@@ -67,11 +67,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:34Z",
+              "timestamp": "2026-10-19T19:51:14Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/api-778d7d4d78-knct7",
+          "id": "chaos-demo/api-778d7d4d78-skb2z",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -81,11 +81,11 @@
           "events": [
             {
               "operation": "Apply",
-              "timestamp": "2026-10-19T19:39:34Z",
+              "timestamp": "2026-10-19T19:51:14Z",
               "type": "Succeeded"
             }
           ],
-          "id": "chaos-demo/postgres-7f8555b8c4-ptvvz",
+          "id": "chaos-demo/postgres-7f8555b8c4-s922b",
           "injectedCount": 1,
           "phase": "Injected",
           "recoveredCount": 0,
@@ -95,15 +95,15 @@
       "desiredPhase": "Run"
     },
     "instances": {
-      "chaos-demo/api-778d7d4d78-8dcsd": 3,
-      "chaos-demo/api-778d7d4d78-knct7": 3,
-      "chaos-demo/postgres-7f8555b8c4-ptvvz": 2
+      "chaos-demo/api-778d7d4d78-8dcsd": 7,
+      "chaos-demo/api-778d7d4d78-skb2z": 3,
+      "chaos-demo/postgres-7f8555b8c4-s922b": 2
     }
   },
   "metadata": {
     "name": "03-database-partition",
     "namespace": "chaos-demo",
-    "uid": "af7004a2-f71b-43c3-9b14-6c1b718eb8fb",
-    "creationTimestamp": "2026-10-19T19:39:34Z"
+    "uid": "2ce42832-5113-478d-b1a8-dc5877ab0be9",
+    "creationTimestamp": "2026-10-19T19:51:13Z"
   }
 }
