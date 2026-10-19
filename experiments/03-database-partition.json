@@ -1,0 +1,38 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "metadata": {
+    "namespace": "chaos-demo",
+    "labels": {
+      "app.kubernetes.io/part-of": "chaos-lab"
+    },
+    "name": "03-database-partition"
+  },
+  "kind": "NetworkChaos",
+  "spec": {
+    "action": "partition",
+    "mode": "all",
+    "selector": {
+      "namespaces": [
+        "chaos-demo"
+      ],
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      }
+    },
+    "direction": "to",
+    "target": {
+      "mode": "all",
+      "selector": {
+        "namespaces": [
+          "chaos-demo"
+        ],
+        "labelSelectors": {
+          "app": "postgres",
+          "app.kubernetes.io/part-of": "chaos-lab"
+        }
+      }
+    },
+    "duration": "60s"
+  }
+}

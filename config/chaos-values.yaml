@@ -1,0 +1,31 @@
+# The controller watches only chaos-demo; namespace filtering is enabled too.
+clusterScoped: false
+enableProfiling: false
+controllerManager:
+  replicaCount: 1
+  targetNamespace: chaos-demo
+  enableFilterNamespace: true
+  allowHostNetworkTesting: false
+  image:
+    tag: "v2.8.4@sha256:e21637dc1abce1490e8dc74659a0392670f82e87c05a6a75b588e73706748eaf"
+  leaderElection:
+    enabled: false
+  podChaos:
+    podFailure:
+      pauseImage: "registry.k8s.io/pause:3.10.1@sha256:e5b941ef8f71de54dc3a13398226c269ba217d06650a21bd3afcf9d890cf1f41"
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: '1', memory: 512Mi}
+chaosDaemon:
+  privileged: true
+  runtime: containerd
+  socketPath: /run/containerd/containerd.sock
+  image:
+    tag: "v2.8.4@sha256:272721c0b0d5da596f2a3163c51e53cb76dfb3e1feb69faa95e86ce5aec110f8"
+  resources:
+    requests: {cpu: 50m, memory: 64Mi}
+    limits: {cpu: '1', memory: 256Mi}
+dashboard:
+  create: false
+dnsServer:
+  create: false

@@ -1,0 +1,60 @@
+name: Provoca falhas e confere alertas e recuperação
+on:
+  push:
+    branches: [main]
+    paths: ['config/**', 'scripts/**', 'tests/**', 'experiments/**', '.github/workflows/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chaos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      KUBECTL: ${{ github.workspace }}/.local/bin/kubectl
+      KUBECONFIG_CHAOS: ${{ github.workspace }}/.local/kubeconfig
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Prepara um cluster descartável com suporte a netem
+        run: |
+          rm -f evidence/verification.json evidence/0*-*.json
+          python3 scripts/prepare-ci.py
+      - name: Instala Chaos Mesh, aplicação e alertas isolados
+        run: python3 scripts/lab.py up
+      - name: Executa os experimentos reais e confere a recuperação
+        run: python3 tests/verify.py
+      - name: Guarda diagnóstico sem Secrets
+        if: always()
+        run: |
+          mkdir -p .local
+          if [ -x .local/bin/kubectl ] && [ -f .local/kubeconfig ]; then
+            for ns in chaos-demo chaos-observe chaos-system; do
+              .local/bin/kubectl --kubeconfig .local/kubeconfig -n "$ns" get pods,pvc,deploy,ds > ".local/status-$ns.txt" 2>&1 || true
+            done
+            .local/bin/kubectl --kubeconfig .local/kubeconfig -n chaos-system logs deploy/chaos-controller-manager --tail=100 > .local/controller.log 2>&1 || true
+            .local/bin/kubectl --kubeconfig .local/kubeconfig -n chaos-system logs ds/chaos-daemon --tail=100 > .local/daemon.log 2>&1 || true
+            .local/bin/kubectl --kubeconfig .local/kubeconfig -n chaos-observe logs deploy/prometheus --tail=50 > .local/prometheus.log 2>&1 || true
+          fi
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: chaos-results
+          path: |
+            evidence/verification.json
+            evidence/0*-*.json
+            .local/status-*.txt
+            .local/controller.log
+            .local/daemon.log
+            .local/prometheus.log
+          include-hidden-files: true
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Remove apenas o cluster criado no runner
+        if: always()
+        run: |
+          if [ -f .local/ci-cluster-owned ] && [ -x .local/bin/kind ]; then
+            .local/bin/kind delete cluster --name devops-notes
+          fi

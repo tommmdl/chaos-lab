@@ -1,0 +1,25 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "metadata": {
+    "namespace": "chaos-demo",
+    "labels": {
+      "app.kubernetes.io/part-of": "chaos-lab"
+    },
+    "name": "05-database-pod-kill"
+  },
+  "kind": "PodChaos",
+  "spec": {
+    "action": "pod-kill",
+    "mode": "one",
+    "gracePeriod": 0,
+    "selector": {
+      "namespaces": [
+        "chaos-demo"
+      ],
+      "labelSelectors": {
+        "app": "postgres",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      }
+    }
+  }
+}

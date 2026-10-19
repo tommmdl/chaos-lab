@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 3s
+  external_labels: {lab: chaos-lab}
+rule_files: [/etc/prometheus/rules.yml]
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+scrape_configs:
+  - job_name: chaos-http
+    metrics_path: /probe
+    scrape_timeout: 4s
+    params: {module: [http_2xx]}
+    static_configs:
+      - targets: ['http://api-probes.chaos-demo.svc.cluster.local:8000/healthz']
+        labels: {endpoint: healthz}
+      - targets: ['http://api-probes.chaos-demo.svc.cluster.local:8000/readyz']
+        labels: {endpoint: readyz}
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115

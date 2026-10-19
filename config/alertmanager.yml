@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 30s
+route:
+  receiver: chaos-local
+  group_by: [alertname, lab]
+  group_wait: 2s
+  group_interval: 3s
+  repeat_interval: 1h
+receivers:
+  - name: chaos-local
+    webhook_configs:
+      - url: http://receiver:8080/hooks/application
+        send_resolved: true

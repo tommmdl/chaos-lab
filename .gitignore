@@ -1,0 +1,7 @@
+.local/
+__pycache__/
+*.pyc
+*.log
+*.dump
+*.tar
+*.tar.gz

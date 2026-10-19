@@ -1,0 +1,25 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "metadata": {
+    "namespace": "chaos-demo",
+    "labels": {
+      "app.kubernetes.io/part-of": "chaos-lab"
+    },
+    "name": "04-api-failure"
+  },
+  "kind": "PodChaos",
+  "spec": {
+    "action": "pod-failure",
+    "mode": "all",
+    "selector": {
+      "namespaces": [
+        "chaos-demo"
+      ],
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      }
+    },
+    "duration": "60s"
+  }
+}

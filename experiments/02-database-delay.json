@@ -1,0 +1,43 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "metadata": {
+    "namespace": "chaos-demo",
+    "labels": {
+      "app.kubernetes.io/part-of": "chaos-lab"
+    },
+    "name": "02-database-delay"
+  },
+  "kind": "NetworkChaos",
+  "spec": {
+    "action": "delay",
+    "mode": "all",
+    "selector": {
+      "namespaces": [
+        "chaos-demo"
+      ],
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      }
+    },
+    "direction": "to",
+    "target": {
+      "mode": "all",
+      "selector": {
+        "namespaces": [
+          "chaos-demo"
+        ],
+        "labelSelectors": {
+          "app": "postgres",
+          "app.kubernetes.io/part-of": "chaos-lab"
+        }
+      }
+    },
+    "delay": {
+      "latency": "100ms",
+      "jitter": "0ms",
+      "correlation": "100"
+    },
+    "duration": "120s"
+  }
+}

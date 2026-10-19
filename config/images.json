@@ -1,0 +1,31 @@
+{
+  "api": {
+    "image": "ghcr.io/tommmdl/docker-lab@sha256:ae2e93fdbab7bc912897e6524b3e17b982e97cfb29bcb4fc36d9c014d615eb91"
+  },
+  "postgres": {
+    "image": "ghcr.io/tommmdl/docker-lab@sha256:8b6813ec76804698c33e4dac8f501ca8f641affcbd27cbc3b7dd6fdb02874fc3"
+  },
+  "prometheus": {
+    "image": "prom/prometheus@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e"
+  },
+  "blackbox": {
+    "image": "prom/blackbox-exporter@sha256:9613f2884689b6fad9f1939f6a3b0388c93a022cfaededb19545b329b5c83dea"
+  },
+  "alertmanager": {
+    "image": "prom/alertmanager@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a"
+  },
+  "receiver": {
+    "image": "python:3.13.16-alpine3.24@sha256:2d9aefe2fef018a7eb2c13064c89c71929800fd2e5dccdbf52ea5da5bb8d929a"
+  },
+  "controller": {
+    "version": "2.8.4",
+    "image": "ghcr.io/chaos-mesh/chaos-mesh:v2.8.4@sha256:e21637dc1abce1490e8dc74659a0392670f82e87c05a6a75b588e73706748eaf"
+  },
+  "daemon": {
+    "version": "2.8.4",
+    "image": "ghcr.io/chaos-mesh/chaos-daemon:v2.8.4@sha256:272721c0b0d5da596f2a3163c51e53cb76dfb3e1feb69faa95e86ce5aec110f8"
+  },
+  "pause": {
+    "image": "registry.k8s.io/pause:3.10.1@sha256:e5b941ef8f71de54dc3a13398226c269ba217d06650a21bd3afcf9d890cf1f41"
+  }
+}

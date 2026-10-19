@@ -1,0 +1,109 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "kind": "NetworkChaos",
+  "spec": {
+    "action": "partition",
+    "direction": "to",
+    "duration": "60s",
+    "mode": "all",
+    "selector": {
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      },
+      "namespaces": [
+        "chaos-demo"
+      ]
+    },
+    "target": {
+      "mode": "all",
+      "selector": {
+        "labelSelectors": {
+          "app": "postgres",
+          "app.kubernetes.io/part-of": "chaos-lab"
+        },
+        "namespaces": [
+          "chaos-demo"
+        ]
+      }
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
+      },
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      }
+    ],
+    "experiment": {
+      "containerRecords": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:39:34Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-778d7d4d78-8dcsd",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        },
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:39:34Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-778d7d4d78-knct7",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        },
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-19T19:39:34Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/postgres-7f8555b8c4-ptvvz",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": ".Target"
+        }
+      ],
+      "desiredPhase": "Run"
+    },
+    "instances": {
+      "chaos-demo/api-778d7d4d78-8dcsd": 3,
+      "chaos-demo/api-778d7d4d78-knct7": 3,
+      "chaos-demo/postgres-7f8555b8c4-ptvvz": 2
+    }
+  },
+  "metadata": {
+    "name": "03-database-partition",
+    "namespace": "chaos-demo",
+    "uid": "af7004a2-f71b-43c3-9b14-6c1b718eb8fb",
+    "creationTimestamp": "2026-10-19T19:39:34Z"
+  }
+}

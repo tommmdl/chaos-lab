@@ -1,0 +1,30 @@
+groups:
+  - name: chaos-notes
+    rules:
+      - alert: ChaosApiUnavailable
+        expr: max(probe_success{job="chaos-http"}) == 0 and count(probe_success{job="chaos-http"}) == 2
+        for: 9s
+        labels: {severity: critical, service: chaos-notes}
+        annotations:
+          summary: 'API indisponível / API unavailable'
+          runbook_url: https://github.com/tommmdl/chaos-lab/blob/main/docs/runbook.md
+      - alert: ChaosDatabaseUnavailable
+        expr: probe_success{job="chaos-http",endpoint="readyz"} == 0 and on(job) probe_success{job="chaos-http",endpoint="healthz"} == 1
+        for: 9s
+        labels: {severity: warning, service: chaos-notes}
+        annotations:
+          summary: 'API viva, dependência indisponível / API alive, dependency unavailable'
+          runbook_url: https://github.com/tommmdl/chaos-lab/blob/main/docs/runbook.md
+      - alert: ChaosApiSlow
+        expr: probe_duration_seconds{job="chaos-http",endpoint="readyz"} > 0.4 and on(job,endpoint,instance) probe_success{job="chaos-http",endpoint="readyz"} == 1
+        for: 9s
+        labels: {severity: warning, service: chaos-notes}
+        annotations:
+          summary: 'Requisições ao banco ficaram lentas / Database requests became slow'
+          runbook_url: https://github.com/tommmdl/chaos-lab/blob/main/docs/runbook.md
+      - alert: ChaosProbeMissing
+        expr: absent(probe_success{job="chaos-http",endpoint="healthz"}) or absent(probe_success{job="chaos-http",endpoint="readyz"})
+        for: 15s
+        labels: {severity: warning, service: chaos-notes}
+        annotations:
+          summary: 'Sonda ausente / Missing probe result'

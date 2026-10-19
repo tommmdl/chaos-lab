@@ -1,0 +1,19 @@
+{
+  "helm": {
+    "version": "3.22.1",
+    "sha256": "896cf63684a42a723d61c980369d6e588330927deb13676ca0d85006dd6da0ea"
+  },
+  "chart": {
+    "version": "2.8.4",
+    "sha256": "ae4abd385649771300e4d33a44627c0df3618be0780c385bf30cc2fdf2ad93fa"
+  },
+  "kind": {
+    "version": "0.33.0",
+    "sha256": "aee6151561422756b764a4ae28e7f44cda5af5a9eead3cc9985112b1de8d8e0d"
+  },
+  "kubectl": {
+    "version": "1.37.1",
+    "sha256": "65691ff77eb6fa44c908b77a1082c9f092c3b9733b5cefabec0d1104890e21a8"
+  },
+  "node_image": "kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5"
+}
