@@ -157,6 +157,32 @@ def available(name, count):
     )
 
 
+def ready_pods(name, count):
+    current = pods(name)
+    return len(current) == count and all(
+        not pod["metadata"].get("deletionTimestamp")
+        and pod.get("status", {}).get("phase") == "Running"
+        and any(
+            c["type"] == "Ready" and c["status"] == "True"
+            for c in pod.get("status", {}).get("conditions", [])
+        )
+        and all(
+            c.get("ready") and "running" in c.get("state", {})
+            for c in pod.get("status", {}).get("containerStatuses", [])
+        )
+        for pod in current
+    )
+
+
+def fresh_healthy(after):
+    timestamps = query('timestamp(probe_success{job="chaos-http"})')
+    return (
+        len(timestamps) == 2
+        and all(float(row["value"][1]) > after for row in timestamps)
+        and healthy()
+    )
+
+
 def rows():
     return json.loads(
         lab.sql(
@@ -325,7 +351,7 @@ def verify():
         status, _ = request(API, "/healthz")
         samples.append(status)
         time.sleep(0.3)
-    lab.wait(lambda: available("api", 2) and uids("api") != before, 100)
+    lab.wait(lambda: ready_pods("api", 2) and uids("api") != before, 100)
     lab.wait(healthy)
     check(
         "Chaos Mesh removes an API Pod and Kubernetes replaces it",
@@ -450,8 +476,11 @@ def verify():
     name = "05-database-pod-kill"
     before = uids("postgres")
     kind = start(name)
-    lab.wait(lambda: available("postgres", 1) and uids("postgres") != before, 100)
-    lab.wait(healthy, 120)
+    lab.wait(lambda: ready_pods("postgres", 1) and uids("postgres") != before, 100)
+    lab.wait(lambda: lab.sql("SELECT 1;").strip() == "1", 100)
+    lab.wait(lambda: ready_pods("api", 2), 100)
+    recovered_at = time.time()
+    lab.wait(lambda: fresh_healthy(recovered_at), 120)
     check(
         "Chaos Mesh kills PostgreSQL and Kubernetes creates a new Pod",
         uids("postgres") != before,
@@ -502,8 +531,10 @@ def verify():
     )
     final_rows = rows()
     REPORT["final"] = {
-        "api_replicas": 2,
-        "postgres_replicas": 1,
+        "api_replicas": len(pods("api")),
+        "postgres_replicas": len(pods("postgres")),
+        "all_api_pods_ready": ready_pods("api", 2),
+        "postgres_pod_ready": ready_pods("postgres", 1),
         "rows": len(final_rows),
         "pvc_uid": pvc_uid,
         "row_sha256": hashlib.sha256(
