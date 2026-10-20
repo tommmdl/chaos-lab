@@ -88,7 +88,7 @@ The follow-up passed 70 checks locally and 70 in CI. Graceful removal went from 
 
 ## The remaining CI timeout
 
-The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. The old timeout did not recur; six direct CI errors during abrupt removals remain recorded by phase. The report distinguishes reproduced behavior from the still-unconfirmed historical cause; earlier reports remain available.
+The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. Local packet capture confirmed resets while reading headers and resets after SYN during abrupt controls, with no capture drops. CI now retains header-only PCAPs, hashes and results even if a check fails. This still does not establish the historical timeout’s cause; incomplete instrumentation attempts are published too.
 
 ## Results and limits
 

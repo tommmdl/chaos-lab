@@ -20,7 +20,11 @@ jobs:
           persist-credentials: false
       - name: Prepara um cluster descartável com suporte a netem
         run: |
-          rm -f evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends tcpdump
+          tcpdump --version
+          rm -rf .local/packets evidence/connection-packets
+          rm -f evidence/packet-archive.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           python3 scripts/prepare-ci.py
       - name: Instala Chaos Mesh, aplicação e alertas isolados
         run: python3 scripts/lab.py up
@@ -33,7 +37,10 @@ jobs:
       - name: Mede o orçamento de conexão com descarte real de SYN
         run: python3 tests/syn_budget.py
       - name: Investiga fases TCP nas remoções e compara os dois acessos
-        run: python3 tests/connection_window.py --rounds 8
+        run: python3 tests/connection_window.py --rounds 8 --capture-packets
+      - name: Preserva PCAPs sem payload e confere seus hashes
+        if: always()
+        run: python3 scripts/archive_packets.py
       - name: Guarda diagnóstico sem Secrets
         if: always()
         run: |
@@ -57,6 +64,10 @@ jobs:
             evidence/access-policy.json
             evidence/connection-window.json
             evidence/syn-budget.json
+            evidence/packet-archive.json
+            evidence/connection-packets/*.pcap.gz
+            .local/packets/*.pcap
+            .local/packets/*.log
             .local/status-*.txt
             .local/controller.log
             .local/daemon.log

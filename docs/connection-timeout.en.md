@@ -28,7 +28,7 @@ Locally, access allowing three seconds to connect exhausted about **3,951 ms wit
 
 ## Compare under real removals
 
-`tests/connection_window.py --rounds 8` performs eight graceful removals interleaved with four abrupt controls. Each trial runs three concurrent paths: direct NodePort, instrumented access allowing three seconds to connect, and instrumented access allowing 500 ms. Each path has two clients with a minimum 50 ms interval. Both access paths share measurement code and read timeouts; the three-second path represents the earlier connection budget, not a byte-for-byte replay of the old implementation.
+`tests/connection_window.py --rounds 8 --capture-packets` performs eight graceful removals interleaved with four abrupt controls. Each trial runs three concurrent paths: direct NodePort, instrumented access allowing three seconds to connect, and instrumented access allowing 500 ms. Each path has two clients with a minimum 50 ms interval. Both access paths share measurement code and read timeouts; the three-second path represents the earlier connection budget, not a byte-for-byte replay of the old implementation.
 
 The direct client records start, phase, latency and source port when available. Watches follow Pods, EndpointSlices and Gunicorn signals. A node conntrack observer collects only connection metadata for NodePort 30434; the report retains records matching failed direct requests' source ports. It does not capture payload or credentials. A `SYN_SENT` record alone does not prove a connection never progressed: collection can lose events. Read it alongside socket phase evidence.
 
@@ -84,6 +84,16 @@ The 16-removal regression on the same runner also retained its failures:
 
 SYN dropping again produced about 3,951 ms of connection waiting in two attempts versus 1,502 ms in three, without recovering the blocked destination. Complete reports remain separate: [new comparison](../evidence/connection-timeout-ci-connection-window.json), [summary](../evidence/connection-timeout-ci-summary.json), [regression matrix](../evidence/connection-timeout-ci-resilience.json), [SYN](../evidence/connection-timeout-ci-syn-budget.json), [HTTP protocol](../evidence/connection-timeout-ci-access-policy.json) and [alerts/recovery](../evidence/connection-timeout-ci-verification.json).
 
+## Packet capture in CI and local results
+
+The next stage now starts `tcpdump` **before** each real fault and stops it after recovery. It captures inside the kind nodes' network namespaces, filtered to TCP on NodePort `30434`, the direct path measured by the test. `snaplen=60` and `LINUX_SLL2` retain enough headers to identify SYN, SYN-ACK, ACK, RST and direction without capturing HTTP content. The report correlates source ports with socket phase and outcome. Each PCAP records SHA-256, tcpdump version, packet counts and drops; validation rejects invalid files, reported loss or captured payload. In the local cluster, measured traffic appeared on the control plane; the worker capture was empty but exited normally. This is recorded as an observation point, not capture loss.
+
+The corrected local run passed **17 checks across six real removals**, preserving both API replicas and the PVC. Across four graceful removals, 2,831 direct requests had no failures. One of the two abrupt controls had four direct failures in 589 samples: two connections completed the handshake and received RST while reading headers; two others received RST immediately after SYN and failed during connect. The other abrupt round had no direct failures. Associated captures reported zero kernel drops. Retrying access recovered the internal failures without a final failure in this sample. This shows abrupt cuts can interrupt connections at different TCP phases; **it does not identify the historical six-second timeout**, which happened during graceful removal and was not captured at the time. [Full report, samples and correlation](../evidence/connection-window-packet-local.json) · [PCAP hash index](../evidence/connection-window-packet-local-archive.json).
+
+The first instrumentation attempts are preserved too: one failed while recording the tcpdump version and left an incomplete trial; another detected capture drops (2,012–2,899 per node) while also collecting Pod-port traffic; a third showed that the measured flow does not traverse every node. I fixed cleanup so it always removes the experiment and observers, narrowed the filter to the NodePort, and changed the assertion to require at least one traffic-bearing capture point while rejecting drops at all points. The three records are available as [initial failure](../evidence/connection-window-packet-initial-failure.json), [capture drops](../evidence/connection-window-packet-capture-drops.json) and [node selection](../evidence/connection-window-packet-node-selection.json). They were not counted as passing tests.
+
+GitHub Actions installs `tcpdump`, runs the comparison with capture enabled and, even after a failed step, attempts to archive the PCAPs and upload diagnostics as a 30-day artifact. Compressed captures and hashes in the report preserve useful evidence in the repository. The workflow will run after this change; runner results will be added here when it finishes.
+
 ## What was adopted and what remains open
 
 **90 checks passed locally and 90 in CI**: 43 chaos/alert checks, 23 earlier-matrix checks, four protocol checks, three SYN-drop checks and 17 new comparison checks. [Local alert regression](../evidence/connection-timeout-verification.json) took 198.03 s and ended with two ready API Pods, ready PostgreSQL, ten notes, the same PVC and no active alerts. Tests added three notes; all seven existing notes remained unchanged.
@@ -97,12 +107,13 @@ The [validation summary](../evidence/connection-timeout-validation.json) lists t
 ```bash
 python3 tests/access_policy.py
 python3 tests/syn_budget.py
-python3 tests/connection_window.py --rounds 8
+python3 tests/connection_window.py --rounds 8 --capture-packets
+python3 scripts/archive_packets.py
 python3 tests/resilience.py --rounds 4
 python3 tests/verify.py
 ```
 
-The SYN test uses Docker and the kind node's `iptables`. The observer uses that node's `conntrack` and explicitly stops its process before closing the Docker client. The initial collection was interrupted after detecting observers outliving their clients. Two completed trials remain in the [partial report](../evidence/connection-window-initial-capture.json), marked incomplete and not passed. Initial observers were stopped and the full comparison restarted with corrected cleanup.
+Local packet capture requires `tcpdump` and permission to enter the nodes' network namespaces (`PACKET_PRIVILEGE=wsl` in this WSL; Actions uses `sudo`). The SYN test uses Docker and the kind node's `iptables`. The observer uses that node's `conntrack` and explicitly stops its process before closing the Docker client. The initial collection was interrupted after detecting observers outliving their clients. Two completed trials remain in the [partial report](../evidence/connection-window-initial-capture.json), marked incomplete and not passed. Initial observers were stopped and the full comparison restarted with corrected cleanup.
 
 Restart `python3 scripts/access.py` to activate the browser change. To return only to the earlier connection limit, set `get_connect_timeout_seconds` to 3 and restart that process; no image or data change is required. Set `get_max_attempts: 1` to disable GET retries. Reports and direct access remain available in either case.
 

@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "complete": false,
+  "grace_seconds": 30,
+  "trial": 1,
+  "cause": "The test asserted every node must see packets. In the real route, control-plane captured 15,985 packets and worker captured zero; both tcpdump processes exited normally, and neither reported drops. The per-node assertion was stricter than the routing topology requires.",
+  "application_result": "Not recorded: the harness stopped at the capture-integrity assertion before appending the trial result.",
+  "packet_captures": [
+    {
+      "node": "devops-notes-control-plane",
+      "sha256": "0b81018b027dee7df697bbdc711decaf1285b6b6479658aaeb4c8ccc76cd3769",
+      "path": "evidence/connection-packets/node-selection-removal-30-1-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "7e4116767f4b856ae823c426b553a7f241382ac29b96374e0351887ca339b9d2",
+      "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n15985 packets captured\n30109 packets received by filter\n0 packets dropped by kernel\n",
+      "snaplen": 60,
+      "datalink": "LINUX_SLL2",
+      "packets": 15985,
+      "decoded_tcp_packets": 15985,
+      "unparsed_fragments_or_short_headers": 0,
+      "captured_http_payload_bytes": 0
+    },
+    {
+      "node": "devops-notes-worker",
+      "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "path": "evidence/connection-packets/node-selection-removal-30-1-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n0 packets captured\n0 packets received by filter\n0 packets dropped by kernel\n",
+      "snaplen": 60,
+      "datalink": "LINUX_SLL2",
+      "packets": 0,
+      "decoded_tcp_packets": 0,
+      "unparsed_fragments_or_short_headers": 0,
+      "captured_http_payload_bytes": 0
+    }
+  ]
+}

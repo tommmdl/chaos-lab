@@ -86,7 +86,7 @@ A investigação agora compara remoção abrupta e remoção com prazo, espera d
 
 ## O timeout que restou no CI
 
-A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. O timeout antigo não se repetiu, e os seis erros diretos nos cortes abruptos do CI ficaram registrados por fase. O relato distingue o que foi reproduzido do que continua sem causa confirmada; os relatórios anteriores permanecem disponíveis.
+A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. A captura local confirmou RST durante leitura de cabeçalhos e RST após SYN em controles abruptos, sem drops na captura. O CI agora guarda PCAPs limitados a cabeçalhos, hashes e resultados mesmo se uma verificação falhar. Isso ainda não fecha a causa do timeout histórico; os ensaios incompletos também estão publicados.
 
 ## Resultados e limites
 

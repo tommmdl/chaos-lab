@@ -1,0 +1,134 @@
+{
+  "started_utc": "2026-10-20T10:20:02.075389+00:00",
+  "passed": false,
+  "complete": false,
+  "outcome": "Two graceful removal trials completed with zero request failures. The first abrupt-removal control was rejected because tcpdump dropped packets on both nodes. Its request totals were not recorded before the capture-integrity assertion, so no application result is claimed for that control.",
+  "failed_control": {
+    "grace_seconds": 0,
+    "trial": 1,
+    "capture_integrity_check_passed": false,
+    "packet_captures": [
+      {
+        "node": "devops-notes-control-plane",
+        "source_sha256": "b5e229a2288923ab6109dc0bd02a87b9e987c2d7a86d6533413a2398490b0252",
+        "path": "evidence/connection-packets/capture-drop-removal-0-1-devops-notes-control-plane.pcap.gz",
+        "sha256_gzip": "7b58caebd2efc957a24b2b9a9f2f47acdd7a78622292fbafd625e560301fc3ef",
+        "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n17663 packets captured\n61291 packets received by filter\n2899 packets dropped by kernel\n",
+        "filter": "ip and tcp and (port 30434 or (port 8000 and host <API pod IPs>))",
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "packets": 17663,
+        "decoded_tcp_packets": 17663,
+        "unparsed_fragments_or_short_headers": 0,
+        "captured_http_payload_bytes": 0
+      },
+      {
+        "node": "devops-notes-worker",
+        "source_sha256": "803acc9881d859cc212985b2abfbac5ab0094862e5acd4f19543e8fe009bc63c",
+        "path": "evidence/connection-packets/capture-drop-removal-0-1-devops-notes-worker.pcap.gz",
+        "sha256_gzip": "f9feb4c0987095b1c3cf2847e9fba5275e8dd1bc4eb286590450bede632213b7",
+        "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n17605 packets captured\n59048 packets received by filter\n2012 packets dropped by kernel\n",
+        "filter": "ip and tcp and (port 30434 or (port 8000 and host <API pod IPs>))",
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "packets": 17605,
+        "decoded_tcp_packets": 17605,
+        "unparsed_fragments_or_short_headers": 0,
+        "captured_http_payload_bytes": 0
+      }
+    ],
+    "classification": "capture_loss; packet trace is incomplete and cannot support a timeout diagnosis"
+  },
+  "checks": [
+    {
+      "name": "No existing podchaos",
+      "passed": true
+    },
+    {
+      "name": "No existing networkchaos",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=0, trial=1",
+      "passed": false
+    }
+  ],
+  "completed_graceful_trials": [
+    {
+      "grace_seconds": 30,
+      "trial": 1,
+      "totals": {
+        "direct": {
+          "requests": 786,
+          "failures": 0,
+          "attempts": 786,
+          "transport_failures": 0,
+          "p95_ms": 42.132,
+          "max_ms": 209.093
+        },
+        "previous": {
+          "requests": 783,
+          "failures": 0,
+          "attempts": 783,
+          "transport_failures": 0,
+          "p95_ms": 46.742,
+          "max_ms": 211.014
+        },
+        "short_connect": {
+          "requests": 782,
+          "failures": 0,
+          "attempts": 782,
+          "transport_failures": 0,
+          "p95_ms": 47.842,
+          "max_ms": 197.293
+        }
+      }
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 2,
+      "totals": {
+        "direct": {
+          "requests": 708,
+          "failures": 0,
+          "attempts": 708,
+          "transport_failures": 0,
+          "p95_ms": 41.175,
+          "max_ms": 145.73
+        },
+        "previous": {
+          "requests": 709,
+          "failures": 0,
+          "attempts": 709,
+          "transport_failures": 0,
+          "p95_ms": 45.978,
+          "max_ms": 125.947
+        },
+        "short_connect": {
+          "requests": 706,
+          "failures": 0,
+          "attempts": 706,
+          "transport_failures": 0,
+          "p95_ms": 45.466,
+          "max_ms": 161.264
+        }
+      }
+    }
+  ]
+}

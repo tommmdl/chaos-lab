@@ -7,7 +7,7 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, access, experiment
+import lab, access, experiment, packets
 import verify as original
 import resilience
 
@@ -41,9 +41,11 @@ def raw_request(host, port):
     # Retain the socket before connect so even a SYN timeout has a source port.
     c.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     c.sock.settimeout(6)
+    c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     try:
         c.sock.connect((host, port))
         connected = time.monotonic()
+        source = c.sock.getsockname()
         phase = "send"
         c.request("GET", "/healthz", headers={"Connection": "close"})
         phase = "headers"
@@ -125,11 +127,17 @@ def trial(grace, number, servers):
         stderr=subprocess.STDOUT,
         text=True,
     )
+    capture = (
+        packets.Capture(f"removal-{grace}-{number}")
+        if REPORT.get("capture_packets")
+        else None
+    )
     stop = threading.Event()
     samples = []
     threads = []
     active = False
     injected = None
+    recovered = None
     resource = {}
 
     def worker(lane, port):
@@ -144,6 +152,8 @@ def trial(grace, number, servers):
             stop.wait(max(0, 0.05 - (time.monotonic() - started)))
 
     try:
+        if capture:
+            capture.start()
         for lane, port in [
             ("direct", 30434),
             *[(name, s.server_port) for name, s in servers.items()],
@@ -160,37 +170,94 @@ def trial(grace, number, servers):
             lambda: original.ready_pods("api", 2) and original.uids("api") != before,
             120,
         )
+        recovered = time.time()
         time.sleep(2)
         resource = lab.obj(lab.APP, kind, name)
     finally:
+        cleanup_errors = []
         stop.set()
         for t in threads:
             t.join(timeout=8)
-        watches.close()
-        lab.run(
-            [
-                "docker",
-                "exec",
-                "devops-notes-control-plane",
-                "sh",
-                "-c",
-                f'if [ -f {pidfile} ]; then kill -INT "$(cat {pidfile})"; rm -f {pidfile}; fi',
-            ],
-            ok=False,
-        )
-        ct.terminate()
         try:
+            if capture:
+                capture.stop()
+        except Exception as error:
+            cleanup_errors.append("packet capture: " + str(error))
+        try:
+            watches.close()
+        except Exception as error:
+            cleanup_errors.append("watch processes: " + str(error))
+        try:
+            lab.run(
+                [
+                    "docker",
+                    "exec",
+                    "devops-notes-control-plane",
+                    "sh",
+                    "-c",
+                    f'if [ -f {pidfile} ]; then kill -INT "$(cat {pidfile})"; rm -f {pidfile}; fi',
+                ],
+                ok=False,
+            )
+        except Exception as error:
+            cleanup_errors.append("conntrack observer: " + str(error))
+        try:
+            ct.terminate()
             ct.wait(timeout=4)
         except subprocess.TimeoutExpired:
             ct.kill()
             ct.wait()
-        ctfile.close()
+        finally:
+            ctfile.close()
         if active:
-            experiment.remove(name)
+            try:
+                experiment.remove(name)
+            except Exception as error:
+                cleanup_errors.append("Chaos Mesh experiment: " + str(error))
+        if cleanup_errors:
+            REPORT.setdefault("cleanup_errors", []).extend(cleanup_errors)
+            raise RuntimeError("Trial cleanup failed: " + "; ".join(cleanup_errors))
     failed = [s for s in samples if s["status"] != 200]
     ports = {str(s["source"][1]) for s in failed if s.get("source")}
     lines = ctpath.read_text().splitlines()
     related = [line for line in lines if any("sport=" + p + " " in line for p in ports)]
+    packet_report = None
+    if capture:
+        index, stats = capture.index()
+        selected = [
+            s
+            for s in samples
+            if s["lane"] == "direct" and (s["status"] != 200 or s["latency_ms"] >= 500)
+        ]
+        healthy = next(
+            (
+                s
+                for s in samples
+                if s["lane"] == "direct"
+                and s["status"] == 200
+                and injected <= s["started_at"] <= recovered
+            ),
+            None,
+        )
+        if healthy:
+            selected.append(healthy)
+        packet_report = {
+            "captures": stats,
+            "event_window": {"injected_at": injected, "recovered_at": recovered},
+            "flows": [
+                {"sample": s, "tcp": packets.correlate(s, access.HOST, 30434, index)}
+                for s in selected
+            ],
+        }
+        check(
+            f"Packet capture is readable, header-only and has no reported capture drops: grace={grace}, trial={number}",
+            bool(stats)
+            and any(r["packets"] > 0 for r in stats)
+            and all(
+                r["dropped_by_capture_kernel"] == 0 and r["exit_code"] == 0
+                for r in stats
+            ),
+        )
     totals = {}
     for lane in ["direct", *servers]:
         rows = [s for s in samples if s["lane"] == lane]
@@ -217,6 +284,7 @@ def trial(grace, number, servers):
                 "first_line": lines[0] if lines else "",
                 "note": "NodePort metadata only; retained tuples match failed direct source ports; no payload",
             },
+            "packet_capture": packet_report,
             "experiment_uid": resource.get("metadata", {}).get("uid"),
         }
     )
@@ -230,7 +298,9 @@ def trial(grace, number, servers):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--rounds", type=int, default=8)
+    p.add_argument("--capture-packets", action="store_true")
     args = p.parse_args()
+    REPORT["capture_packets"] = args.capture_packets
     if not 4 <= args.rounds <= 12:
         raise SystemExit("Use 4–12 graceful rounds; half as many abrupt controls")
     start = time.monotonic()
@@ -326,6 +396,7 @@ def main():
                 json.dumps(REPORT, indent=2) + "\n"
             )
             if not REPORT["final_ready"]:
+                REPORT["passed"] = False
                 raise RuntimeError("API recovery needs attention")
 
 

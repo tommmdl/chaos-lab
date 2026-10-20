@@ -1,0 +1,43 @@
+{
+  "started_utc": "2026-10-20T07:17:00Z",
+  "finished_utc": "2026-10-20T07:19:00Z",
+  "passed": false,
+  "complete": false,
+  "grace_seconds": 30,
+  "trial": 1,
+  "fault": "06-api-graceful-removal",
+  "actual_outcome": "Capture interrupted the test report before the trial result was appended; no latency or failure count is claimed.",
+  "collector_error": "NameError: local variable tcpdump_version referenced an undefined version variable in Capture.stop().",
+  "cleanup": "Manually stopped the exact tcpdump processes, removed the named PodChaos object, stopped its conntrack observer; API returned to 2 ready replicas.",
+  "packet_captures": [
+    {
+      "node": "devops-notes-control-plane",
+      "source_sha256": "ac5a816775993ea6eafbd0cc5a4ac3f239929797b3b6391f5558517cf67c0208",
+      "pcap_gzip": "evidence/connection-packets/initial-interrupted-removal-30-1-devops-notes-control-plane.pcap.gz",
+      "pcap_gzip_sha256": "9269232921e2280688726223835a90a5b715f32b2e0cde841aef3c246a5261c5",
+      "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n17495 packets captured\n54014 packets received by filter\n0 packets dropped by kernel\n",
+      "filter": null,
+      "snaplen": 60,
+      "datalink": "LINUX_SLL2",
+      "packets": 17495,
+      "decoded_tcp_packets": 17495,
+      "unparsed_fragments_or_short_headers": 0,
+      "captured_http_payload_bytes": 0
+    },
+    {
+      "node": "devops-notes-worker",
+      "source_sha256": "ec1b7853f7ccff011e79685bf3e6cb946fe73a0c9df5e6dacaa89fa9010e42d9",
+      "pcap_gzip": "evidence/connection-packets/initial-interrupted-removal-30-1-devops-notes-worker.pcap.gz",
+      "pcap_gzip_sha256": "264b09b3d776f3d324cdc07b65db529eb0aac891871bf51ce480f4240616c2d8",
+      "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n51671 packets captured\n51671 packets received by filter\n0 packets dropped by kernel\n",
+      "filter": null,
+      "snaplen": 60,
+      "datalink": "LINUX_SLL2",
+      "packets": 51671,
+      "decoded_tcp_packets": 51671,
+      "unparsed_fragments_or_short_headers": 0,
+      "captured_http_payload_bytes": 0
+    }
+  ],
+  "limitations": "Captured only Linux SLL2, 60-byte packet headers. No HTTP payload bytes. This is an incomplete capture-tool run, not evidence about the historic six-second timeout."
+}
