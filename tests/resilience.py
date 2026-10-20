@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, experiment, access, pod_replacement
+import lab, experiment, access, pod_replacement, packets, resilience_packets
 import verify as original
 
 REPORT = {
@@ -75,8 +75,37 @@ def profile(drain):
 
 def connection(host, port, method="GET", path="/healthz", body=None):
     started = time.monotonic()
+    started_at = time.time()
+    phase = "connect"
+    connected = None
+    source = None
     c = http.client.HTTPConnection(host, port, timeout=6)
+
+    def dial(address, timeout, source_address=None):
+        nonlocal source
+        # Lab endpoints are numeric IPv4 addresses. Preserve the default unbound
+        # connect and let HTTPConnection set TCP_NODELAY, as in its normal path.
+        socket.inet_aton(address[0])
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(timeout)
+        try:
+            if source_address:
+                sock.bind(source_address)
+            sock.connect(address)
+            return sock
+        except BaseException:
+            source = sock.getsockname()
+            sock.close()
+            raise
+        finally:
+            if sock.fileno() >= 0:
+                source = sock.getsockname()
+
+    c._create_connection = dial
     try:
+        c.connect()
+        connected = time.monotonic()
+        phase = "send"
         raw = None if body is None else json.dumps(body).encode()
         c.request(
             method,
@@ -84,9 +113,13 @@ def connection(host, port, method="GET", path="/healthz", body=None):
             body=raw,
             headers={"Content-Type": "application/json", "Connection": "close"},
         )
+        phase = "headers"
         r = c.getresponse()
+        phase = "body"
         data = r.read()
         return {
+            "started_at": started_at, "source": source, "phase": "complete",
+            "connect_ms": round((connected - started) * 1000, 3),
             "time": time.time(),
             "status": r.status,
             "latency_ms": round((time.monotonic() - started) * 1000, 3),
@@ -95,6 +128,8 @@ def connection(host, port, method="GET", path="/healthz", body=None):
         }, data
     except (OSError, http.client.HTTPException) as e:
         return {
+            "started_at": started_at, "source": source, "phase": phase,
+            "connect_ms": round((connected - started) * 1000, 3) if connected else None,
             "time": time.time(),
             "status": 0,
             "latency_ms": round((time.monotonic() - started) * 1000, 3),
@@ -211,6 +246,10 @@ class Watches:
 def trial(drain, grace, number, proxy):
     name = "01-api-pod-kill" if grace == 0 else "06-api-graceful-removal"
     replacement = pod_replacement.Replacement()
+    initial_pods = original.pods("api")
+    capture = packets.Capture(f"matrix-trial-{int(drain)}-{grace}-{number}",
+                              scope="nodes-and-host", backend_ips=[p["status"]["podIP"] for p in initial_pods],
+                              backend_tcp=True) if REPORT.get("capture_packets") else None
     w = Watches()
     w.start(
         [
@@ -260,13 +299,19 @@ def trial(drain, grace, number, proxy):
     ]:
         for _ in range(2):
             t = threading.Thread(target=traffic, args=(lane, host, port))
-            t.start()
             workers.append(t)
     active = False
     record = {"drain": drain, "chaos_grace_seconds": grace, "trial": number,
-              "replacement": replacement.report, "samples": samples}
+              "replacement": replacement.report, "samples": samples,
+              "initial_pods": [{"name": p["metadata"]["name"], "uid": p["metadata"]["uid"],
+                                "ip": p["status"]["podIP"], "node": p["spec"]["nodeName"]}
+                               for p in initial_pods]}
     REPORT["trials"].append(record)
     try:
+        if capture:
+            capture.start()
+        for t in workers:
+            t.start()
         time.sleep(1.5)
         injected = time.time()
         kind = experiment.apply(name)
@@ -290,19 +335,31 @@ def trial(drain, grace, number, proxy):
     finally:
         stop.set()
         for t in workers:
-            t.join(timeout=8)
+            if t.ident is not None:
+                t.join(timeout=8)
         cleanup_errors = []
-        for label, cleanup in [("watch processes", w.close),
+        for label, cleanup in [("packet capture", lambda: capture.stop() if capture else None),
+                               ("watch processes", w.close),
                                ("Chaos Mesh experiment", lambda: experiment.remove(name) if active else None)]:
             try:
                 cleanup()
             except Exception as error:
                 cleanup_errors.append(label + ": " + str(error))
         record["timeline"] = sorted(w.events, key=lambda e: e["time"])
+        if capture:
+            record["packet_capture"] = {"captures": capture.records}
         if cleanup_errors:
             record["cleanup_errors"] = cleanup_errors
             if sys.exc_info()[0] is None:
                 raise RuntimeError("Trial cleanup failed: " + "; ".join(cleanup_errors))
+    if capture:
+        index, stats = capture.index()
+        record["packet_capture"]["captures"] = stats
+        record["packet_capture"]["flows"] = resilience_packets.flows(record, index, access.HOST)
+        check(f"Matrix capture is readable, header-only and has no drops: drain={drain}, grace={grace}, trial={number}",
+              bool(stats) and any(c["packets"] for c in stats) and all(
+                  c["exit_code"] == 0 and c["dropped_by_capture_kernel"] == 0
+                  and c["unparsed_fragments_or_short_headers"] == 0 for c in stats))
     for lane in ["raw", "get_retry"]:
         chosen = [s for s in samples if s["lane"] == lane]
         failed = [s for s in chosen if s["status"] != 200]
@@ -410,7 +467,10 @@ def policy_test():
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--rounds", type=int, default=4)
+    p.add_argument("--capture-packets", action="store_true")
     a = p.parse_args()
+    REPORT["capture_packets"] = a.capture_packets
+    REPORT["capture_host"] = access.HOST
     if not 2 <= a.rounds <= 8:
         raise SystemExit("Use 2–8 rounds per scenario")
     REPORT["rounds_per_scenario"] = a.rounds

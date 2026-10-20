@@ -1,0 +1,600 @@
+{
+  "started_utc": "2026-10-20T12:21:11.343382+00:00",
+  "checks": [
+    {
+      "name": "Control capture is header-only, readable and has no drops: headers",
+      "passed": true
+    },
+    {
+      "name": "Real server receives the request but the unchanged six-second probe times out in headers",
+      "passed": true
+    },
+    {
+      "name": "Packets distinguish the header stall from a connect timeout",
+      "passed": true
+    },
+    {
+      "name": "Control capture is header-only, readable and has no drops: connect",
+      "passed": true
+    },
+    {
+      "name": "Dropped SYNs produce the unchanged six-second connect timeout",
+      "passed": true
+    },
+    {
+      "name": "Capture preserves the failed connect tuple and SYNs without SYN-ACK",
+      "passed": true
+    },
+    {
+      "name": "The fixture DROP rule is absent after cleanup",
+      "passed": true
+    }
+  ],
+  "trials": [
+    {
+      "trial": "headers",
+      "packet_capture": {
+        "captures": [
+          {
+            "node": "runner",
+            "path": "evidence/matrix-timeouts/local-packets/matrix-control-headers-runner.pcap.gz",
+            "sha256": "64702975198a8d3020eee6f402dcb287bfde89927c4014cc36e2bf648115f055",
+            "filter": "ip and tcp and port 53973",
+            "snaplen": 60,
+            "datalink": "LINUX_SLL2",
+            "dropped_by_capture_kernel": 0,
+            "exit_code": 0,
+            "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n5 packets captured\n16 packets received by filter\n0 packets dropped by kernel\n",
+            "tcpdump_version": "tcpdump version 4.99.6",
+            "packets": 5,
+            "decoded_tcp_packets": 5,
+            "unparsed_fragments_or_short_headers": 0,
+            "captured_http_payload_bytes": 0
+          }
+        ],
+        "flows": [
+          {
+            "sample": {
+              "started_at": 1792498871.8375452,
+              "source": [
+                "127.0.0.1",
+                55482
+              ],
+              "phase": "headers",
+              "connect_ms": 0.159,
+              "time": 1792498877.8431256,
+              "status": 0,
+              "latency_ms": 6005.583,
+              "attempts": 1,
+              "transport_failures": 1,
+              "error_type": "TimeoutError",
+              "error": "timed out",
+              "lane": "raw"
+            },
+            "classification": "headers_timeout_after_handshake_without_response_data",
+            "tcp": {
+              "classification": "headers_timeout_after_handshake_without_response_data",
+              "syn_packets": 1,
+              "synack_packets": 1,
+              "reset_packets": 0,
+              "request_data_acked": true,
+              "response_data_packets": 0,
+              "packets": [
+                {
+                  "time": 1792498871.837635,
+                  "node": "matrix-control-headers-runner",
+                  "interface_index": 1,
+                  "packet_type": 0,
+                  "src": "127.0.0.1",
+                  "dst": "127.0.0.1",
+                  "sport": 55482,
+                  "dport": 53973,
+                  "seq": 1698497053,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498871.83765,
+                  "node": "matrix-control-headers-runner",
+                  "interface_index": 1,
+                  "packet_type": 0,
+                  "src": "127.0.0.1",
+                  "dst": "127.0.0.1",
+                  "sport": 53973,
+                  "dport": 55482,
+                  "seq": 688667950,
+                  "ack": 1698497054,
+                  "flags": 18,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498871.83766,
+                  "node": "matrix-control-headers-runner",
+                  "interface_index": 1,
+                  "packet_type": 0,
+                  "src": "127.0.0.1",
+                  "dst": "127.0.0.1",
+                  "sport": 55482,
+                  "dport": 53973,
+                  "seq": 1698497054,
+                  "ack": 688667951,
+                  "flags": 16,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 72
+                },
+                {
+                  "time": 1792498871.837805,
+                  "node": "matrix-control-headers-runner",
+                  "interface_index": 1,
+                  "packet_type": 0,
+                  "src": "127.0.0.1",
+                  "dst": "127.0.0.1",
+                  "sport": 55482,
+                  "dport": 53973,
+                  "seq": 1698497054,
+                  "ack": 688667951,
+                  "flags": 24,
+                  "tcp_payload_length": 126,
+                  "captured_bytes": 60,
+                  "wire_bytes": 198
+                },
+                {
+                  "time": 1792498871.837811,
+                  "node": "matrix-control-headers-runner",
+                  "interface_index": 1,
+                  "packet_type": 0,
+                  "src": "127.0.0.1",
+                  "dst": "127.0.0.1",
+                  "sport": 53973,
+                  "dport": 55482,
+                  "seq": 688667951,
+                  "ack": 1698497180,
+                  "flags": 16,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 72
+                }
+              ]
+            },
+            "server_rst_before_probe_return": [],
+            "backend_candidates": [],
+            "limits": "SYN sequence/time matches are NAT candidates. Only initial Pod IPs are captured on port 8000. Missing packets do not prove a component dropped them. ACKs do not prove application acceptance. Header-only capture cannot inspect HTTP content."
+          }
+        ]
+      },
+      "samples": [
+        {
+          "started_at": 1792498871.8375452,
+          "source": [
+            "127.0.0.1",
+            55482
+          ],
+          "phase": "headers",
+          "connect_ms": 0.159,
+          "time": 1792498877.8431256,
+          "status": 0,
+          "latency_ms": 6005.583,
+          "attempts": 1,
+          "transport_failures": 1,
+          "error_type": "TimeoutError",
+          "error": "timed out",
+          "lane": "raw"
+        }
+      ],
+      "initial_pods": [],
+      "capture_host": "127.0.0.1",
+      "capture_port": 53973,
+      "fixture_received_request": true,
+      "fixture_errors": []
+    },
+    {
+      "trial": "connect",
+      "packet_capture": {
+        "captures": [
+          {
+            "node": "devops-notes-control-plane",
+            "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-devops-notes-control-plane.pcap.gz",
+            "sha256": "47e4ef5807b74332259578f2a7257adb667d15f6081115c4598f72363e4ace39",
+            "filter": "ip and tcp and port 18471",
+            "snaplen": 60,
+            "datalink": "LINUX_SLL2",
+            "dropped_by_capture_kernel": 0,
+            "exit_code": 0,
+            "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n6 packets captured\n6 packets received by filter\n0 packets dropped by kernel\n",
+            "tcpdump_version": "tcpdump version 4.99.6",
+            "packets": 6,
+            "decoded_tcp_packets": 6,
+            "unparsed_fragments_or_short_headers": 0,
+            "captured_http_payload_bytes": 0
+          },
+          {
+            "node": "devops-notes-worker",
+            "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-devops-notes-worker.pcap.gz",
+            "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+            "filter": "ip and tcp and port 18471",
+            "snaplen": 60,
+            "datalink": "LINUX_SLL2",
+            "dropped_by_capture_kernel": 0,
+            "exit_code": 0,
+            "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n0 packets captured\n0 packets received by filter\n0 packets dropped by kernel\n",
+            "tcpdump_version": "tcpdump version 4.99.6",
+            "packets": 0,
+            "decoded_tcp_packets": 0,
+            "unparsed_fragments_or_short_headers": 0,
+            "captured_http_payload_bytes": 0
+          },
+          {
+            "node": "runner",
+            "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-runner.pcap.gz",
+            "sha256": "04d33fc8c664193b2c6c60330939dd78ebcd8e31f269020d9ace0041f1b71572",
+            "filter": "ip and tcp and port 18471",
+            "snaplen": 60,
+            "datalink": "LINUX_SLL2",
+            "dropped_by_capture_kernel": 0,
+            "exit_code": 0,
+            "capture_log": "tcpdump: WARNING: any: That device doesn't support promiscuous mode\n(Promiscuous mode not supported on the \"any\" device)\ntcpdump: data link type LINUX_SLL2\ntcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 60 bytes\n12 packets captured\n12 packets received by filter\n0 packets dropped by kernel\n",
+            "tcpdump_version": "tcpdump version 4.99.6",
+            "packets": 12,
+            "decoded_tcp_packets": 12,
+            "unparsed_fragments_or_short_headers": 0,
+            "captured_http_payload_bytes": 0
+          }
+        ],
+        "flows": [
+          {
+            "sample": {
+              "started_at": 1792498879.2145748,
+              "source": [
+                "172.22.0.1",
+                59254
+              ],
+              "phase": "connect",
+              "connect_ms": null,
+              "time": 1792498885.2172103,
+              "status": 0,
+              "latency_ms": 6002.638,
+              "attempts": 1,
+              "transport_failures": 1,
+              "error_type": "TimeoutError",
+              "error": "timed out",
+              "lane": "raw"
+            },
+            "classification": "connect_timeout_syn_without_synack_in_capture",
+            "tcp": {
+              "classification": "connect_timeout_syn_without_synack_in_capture",
+              "syn_packets": 18,
+              "synack_packets": 0,
+              "reset_packets": 0,
+              "request_data_acked": false,
+              "response_data_packets": 0,
+              "packets": [
+                {
+                  "time": 1792498879.214652,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498879.214658,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498879.214663,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498880.245115,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498880.245123,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498880.245166,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498881.269145,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498881.269154,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498881.269234,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498882.293199,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498882.293206,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498882.293253,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498883.317097,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498883.317103,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498883.31711,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498884.345113,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 71,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498884.345122,
+                  "node": "matrix-control-connect-runner",
+                  "interface_index": 72,
+                  "packet_type": 4,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                },
+                {
+                  "time": 1792498884.345164,
+                  "node": "matrix-control-connect-devops-notes-control-plane",
+                  "interface_index": 2,
+                  "packet_type": 0,
+                  "src": "172.22.0.1",
+                  "dst": "172.22.0.2",
+                  "sport": 59254,
+                  "dport": 18471,
+                  "seq": 1324393704,
+                  "ack": 0,
+                  "flags": 2,
+                  "tcp_payload_length": 0,
+                  "captured_bytes": 60,
+                  "wire_bytes": 80
+                }
+              ]
+            },
+            "server_rst_before_probe_return": [],
+            "backend_candidates": [],
+            "limits": "SYN sequence/time matches are NAT candidates. Only initial Pod IPs are captured on port 8000. Missing packets do not prove a component dropped them. ACKs do not prove application acceptance. Header-only capture cannot inspect HTTP content."
+          }
+        ]
+      },
+      "samples": [
+        {
+          "started_at": 1792498879.2145748,
+          "source": [
+            "172.22.0.1",
+            59254
+          ],
+          "phase": "connect",
+          "connect_ms": null,
+          "time": 1792498885.2172103,
+          "status": 0,
+          "latency_ms": 6002.638,
+          "attempts": 1,
+          "transport_failures": 1,
+          "error_type": "TimeoutError",
+          "error": "timed out",
+          "lane": "raw"
+        }
+      ],
+      "initial_pods": [],
+      "capture_host": "172.22.0.2",
+      "capture_port": 18471
+    }
+  ],
+  "passed": true,
+  "purpose": "Ground-truth TCP fixtures; these are not reproduced application timeouts.",
+  "duration_seconds": 14.67
+}

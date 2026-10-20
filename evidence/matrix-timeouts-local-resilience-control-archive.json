@@ -1,0 +1,83 @@
+{
+  "created_utc": 1792498906.576655,
+  "captures": [
+    {
+      "node": "runner",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "headers",
+      "source_sha256": "64702975198a8d3020eee6f402dcb287bfde89927c4014cc36e2bf648115f055",
+      "capture_stats": {
+        "packets": 5,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/matrix-timeouts/local-packets/matrix-control-headers-runner.pcap.gz",
+      "sha256_gzip": "43ce1848f74526e26de99f8cf7c1c5f44a4e49c0f03a7dc7eb6554c6f8743d4c",
+      "bytes_uncompressed": 404,
+      "bytes_compressed": 191
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "connect",
+      "source_sha256": "47e4ef5807b74332259578f2a7257adb667d15f6081115c4598f72363e4ace39",
+      "capture_stats": {
+        "packets": 6,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "1c262d742aad63594e38571abf5b1002a0e01d3e6aff88894dadb0b0550a9042",
+      "bytes_uncompressed": 480,
+      "bytes_compressed": 176
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "connect",
+      "source_sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "capture_stats": {
+        "packets": 0,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "bytes_uncompressed": 24,
+      "bytes_compressed": 36
+    },
+    {
+      "node": "runner",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "connect",
+      "source_sha256": "04d33fc8c664193b2c6c60330939dd78ebcd8e31f269020d9ace0041f1b71572",
+      "capture_stats": {
+        "packets": 12,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/matrix-timeouts/local-packets/matrix-control-connect-runner.pcap.gz",
+      "sha256_gzip": "aedd609758fd8f7e3347ff8978f91ae9f41edf5f88b0b160ee462b30acef9cf2",
+      "bytes_uncompressed": 936,
+      "bytes_compressed": 218
+    }
+  ],
+  "errors": [],
+  "complete": true
+}

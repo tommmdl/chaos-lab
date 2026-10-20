@@ -21,7 +21,7 @@ jobs:
       - name: Prepara um cluster descartável com suporte a netem
         run: |
           rm -rf .local/packets evidence/connection-packets
-          rm -f evidence/packet-archive.json evidence/reset-origins.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/pod-replacement.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
+          rm -f evidence/packet-archive.json evidence/reset-origins.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/pod-replacement.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json evidence/resilience-controls.json evidence/resilience-control-archive.json evidence/resilience-controls-analysis.json evidence/matrix-packet-archive.json evidence/resilience-timeouts.json
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends tcpdump
           tcpdump --version
@@ -42,13 +42,26 @@ jobs:
         run: python3 tests/pod_replacement.py
       - name: Investiga fases TCP nas remoções e compara os dois acessos
         run: python3 tests/connection_window.py --rounds 8 --attribute-resets
-      - name: Compara remoção abrupta, encerramento e GET com tentativas limitadas
-        run: python3 tests/resilience.py --rounds 4
+      - name: Confere a captura com timeouts reais de conexão e resposta
+        run: python3 tests/resilience_capture.py
+      - name: Captura os timeouts na própria matriz de resiliência
+        run: python3 tests/resilience.py --rounds 4 --capture-packets
       - name: Mede o orçamento de conexão com descarte real de SYN
         run: python3 tests/syn_budget.py
       - name: Preserva PCAPs sem payload e confere seus hashes
         if: always()
         run: python3 scripts/archive_packets.py
+      - name: Preserva as capturas da matriz e dos controles
+        if: always()
+        run: |
+          python3 scripts/archive_packets.py --report evidence/resilience.json --output evidence/matrix-packet-archive.json
+          python3 scripts/archive_packets.py --report evidence/resilience-controls.json --output evidence/resilience-control-archive.json
+      - name: Confere as fases TCP dos timeouts da matriz
+        if: always()
+        run: python3 scripts/analyze_resilience.py evidence/resilience.json --output evidence/resilience-timeouts.json
+      - name: Reanalisa os controles reais a partir dos PCAPs
+        if: always()
+        run: python3 scripts/analyze_resilience.py evidence/resilience-controls.json --output evidence/resilience-controls-analysis.json
       - name: Correlaciona todos os RST, incluindo leituras recuperadas
         if: always()
         run: python3 scripts/analyze_resets.py evidence/connection-window.json --output evidence/reset-origins.json
@@ -72,6 +85,11 @@ jobs:
             evidence/verification.json
             evidence/0*-*.json
             evidence/resilience.json
+            evidence/resilience-controls.json
+            evidence/resilience-control-archive.json
+            evidence/resilience-controls-analysis.json
+            evidence/matrix-packet-archive.json
+            evidence/resilience-timeouts.json
             evidence/pod-replacement.json
             evidence/access-policy.json
             evidence/connection-window.json

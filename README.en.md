@@ -98,6 +98,10 @@ The [kernel-backed investigation](docs/rst-origin.en.md) identified the API Pods
 
 The [replacement-check investigation](docs/pod-replacement.en.md) reproduces a race between two Kubernetes reads and fixes it by observing readiness and identity together. The control uses a real Chaos Mesh removal; results and the earlier failed CI remain available. The fix passed 116 local checks and 123 checks in each of two CI runs. Remaining HTTP failures and timeouts are documented.
 
+## Capturing the six-second waits in the matrix
+
+The [matrix-timeout investigation](docs/resilience-timeouts.en.md) captures the actual resilience trials, records TCP phases and source ports, and validates interpretation with separate real timeout controls. Earlier failures and uncorrelated observations remain visible.
+
 ## Results and limits
 
 All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.

@@ -2,6 +2,8 @@
 
 [Português](pod-replacement.md)
 
+Follow-up: [capturing timeouts in the resilience matrix](resilience-timeouts.en.md).
+
 [CI run 39413620240](https://github.com/tommmdl/chaos-lab/actions/runs/39413620240) collected and attributed the resets, then failed at `Pod replacement completes: drain=True, grace=30, trial=3`. The cluster ended with two ready replicas. That does not make the run successful: its original report still has `passed: false`.
 
 ## What we found

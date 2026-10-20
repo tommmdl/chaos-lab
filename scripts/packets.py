@@ -19,11 +19,12 @@ def privileged():
 
 
 class Capture:
-    def __init__(self, name, scope="nodes", port=None, backend_ips=()):
+    def __init__(self, name, scope="nodes", port=None, backend_ips=(), backend_tcp=False):
         self.name = name
         self.scope = scope
         self.port = port
         self.backend_ips = tuple(backend_ips)
+        self.backend_tcp = backend_tcp
         self.handles = []
         self.records = []
         self.version = None
@@ -62,6 +63,8 @@ class Capture:
                 )
                 for n in names
             ]
+        if self.scope == "nodes-and-host":
+            nodes.append(("runner", None))
         try:
             for node, pid in nodes:
                 stem = f"{self.name}-{node}"
@@ -83,9 +86,10 @@ class Capture:
                     # boundary; pod-side port 8000 includes unrelated probes and scrapes.
                     expression = "ip and tcp and port 30434"
                 if self.backend_ips:
-                    # Only resets from the initial API Pods, not their probe/HTTP traffic.
+                    # Scope backend traffic to initial API Pods; the default captures only resets.
                     addresses = " or ".join("host " + socket.inet_ntoa(socket.inet_aton(ip)) for ip in self.backend_ips)
-                    expression = f"({expression}) or (ip and tcp and port 8000 and (tcp[tcpflags] & tcp-rst != 0) and ({addresses}))"
+                    resets = "" if self.backend_tcp else " and (tcp[tcpflags] & tcp-rst != 0)"
+                    expression = f"({expression}) or (ip and tcp and port 8000{resets} and ({addresses}))"
                 command = (["nsenter", "-t", str(pid), "-n"] if pid else []) + [
                     "tcpdump",
                     "-i",
@@ -337,10 +341,12 @@ def correlate(sample, host, port, index):
     }
 
 
-def archive_report():
+def archive_report(report_path=None, archive_path=None):
     """Publish only captures referenced by this run; verify bytes and retain partials."""
-    report_path = lab.ROOT / "evidence/connection-window.json"
-    archive_path = lab.ROOT / "evidence/packet-archive.json"
+    report_path = Path(report_path) if report_path else lab.ROOT / "evidence/connection-window.json"
+    archive_path = Path(archive_path) if archive_path else lab.ROOT / "evidence/packet-archive.json"
+    raw_pattern = ("matrix-trial-*.pcap" if report_path.stem == "resilience" else
+                   "matrix-control-*.pcap" if report_path.stem == "resilience-controls" else "removal-*.pcap")
     ARCHIVE.mkdir(parents=True, exist_ok=True)
     result = {"created_utc": time.time(), "captures": [], "errors": []}
     seen = set()
@@ -363,7 +369,8 @@ def archive_report():
                 seen.add(DIRECTORY.resolve() / source.name.removesuffix(".gz") if archived else source)
                 row = {
                     "node": capture.get("node"),
-                    "grace_seconds": trial.get("grace_seconds"),
+                    "grace_seconds": trial.get("grace_seconds", trial.get("chaos_grace_seconds")),
+                    "drain": trial.get("drain"),
                     "trial": trial.get("trial"),
                     "source_sha256": capture.get("sha256"),
                     "capture_stats": {
@@ -406,7 +413,7 @@ def archive_report():
                 capture["path"] = row["path"]
                 result["captures"].append(row)
     # Include files left by an interrupted trial; never silently discard a partial capture.
-    for source in sorted(DIRECTORY.glob("removal-*.pcap")) if DIRECTORY.exists() else []:
+    for source in sorted(DIRECTORY.glob(raw_pattern)) if DIRECTORY.exists() else []:
         source = source.resolve()
         if source in seen:
             continue

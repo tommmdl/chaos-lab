@@ -2,6 +2,8 @@
 
 [English](pod-replacement.en.md)
 
+Continuação: [captura dos timeouts na própria matriz de resiliência](resilience-timeouts.md).
+
 O [CI 39413620240](https://github.com/tommmdl/chaos-lab/actions/runs/39413620240) conseguiu coletar e atribuir os RST, mas reprovou depois em `Pod replacement completes: drain=True, grace=30, trial=3`. O cluster terminou com duas réplicas prontas. Isso não torna aquela execução aprovada: o relatório original continua com `passed: false`.
 
 ## O que encontramos

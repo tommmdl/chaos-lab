@@ -96,6 +96,10 @@ A [investigação com o kernel](docs/rst-origin.md) identificou a origem dos RST
 
 A [investigação da checagem](docs/pod-replacement.md) reproduz uma corrida entre duas leituras do Kubernetes e mostra a correção com uma única observação de prontidão e identidade. O controle usa uma remoção real com Chaos Mesh; os resultados e o CI anterior que falhou continuam disponíveis. A correção passou em 116 verificações locais e 123 em cada um de dois runs do CI. As falhas HTTP e os timeouts restantes estão documentados.
 
+## Captura dos seis segundos na matriz
+
+A [investigação dos timeouts da matriz](docs/resilience-timeouts.md) captura as próprias rodadas de resiliência, registra fases TCP e portas de origem e confere a leitura com controles reais separados. As falhas anteriores e as observações sem correspondência continuam visíveis.
+
 ## Resultados e limites
 
 Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.

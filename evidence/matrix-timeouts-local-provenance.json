@@ -1,0 +1,20 @@
+{
+  "resilience": {
+    "original_sha256": "079073a72a4b710d7ace5ac83633b51741bffb6e4b2addbdaabcf18aefcf4f68"
+  },
+  "matrix-packet-archive": {
+    "original_sha256": "d759ea6f8680afff3c86f313f004de63683a023b9e2938015e0b3d84b724802a"
+  },
+  "resilience-timeouts": {
+    "original_sha256": "83ca3c85e368b9a1f4a42efd1ccd947b0179bda7fcf78efb3acd78e29b92eba1"
+  },
+  "resilience-controls": {
+    "original_sha256": "d8c5cfc6895cbf19cedc2141508d8c8c79feb747e98db68e9be4604abe14fc29"
+  },
+  "resilience-control-archive": {
+    "original_sha256": "cdd90db41be749adbb6066d1855a1104929f233f5b211c6de459934d4f5d650e"
+  },
+  "resilience-controls-analysis": {
+    "original_sha256": "f84412b46528bd9723ca964d5fb1725d2d49d09d3334b1573926c48745ab3d10"
+  }
+}
