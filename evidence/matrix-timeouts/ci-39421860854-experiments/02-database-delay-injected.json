@@ -1,0 +1,113 @@
+{
+  "apiVersion": "chaos-mesh.org/v1alpha1",
+  "kind": "NetworkChaos",
+  "spec": {
+    "action": "delay",
+    "delay": {
+      "correlation": "100",
+      "jitter": "0ms",
+      "latency": "100ms"
+    },
+    "direction": "to",
+    "duration": "120s",
+    "mode": "all",
+    "selector": {
+      "labelSelectors": {
+        "app": "api",
+        "app.kubernetes.io/part-of": "chaos-lab"
+      },
+      "namespaces": [
+        "chaos-demo"
+      ]
+    },
+    "target": {
+      "mode": "all",
+      "selector": {
+        "labelSelectors": {
+          "app": "postgres",
+          "app.kubernetes.io/part-of": "chaos-lab"
+        },
+        "namespaces": [
+          "chaos-demo"
+        ]
+      }
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      },
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
+      }
+    ],
+    "experiment": {
+      "containerRecords": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-20T12:25:20Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-5459756fdf-6xn9m",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        },
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-20T12:25:20Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-5459756fdf-ndqqj",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        },
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-20T12:25:20Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": ".Target"
+        }
+      ],
+      "desiredPhase": "Run"
+    },
+    "instances": {
+      "chaos-demo/api-5459756fdf-6xn9m": 1,
+      "chaos-demo/api-5459756fdf-ndqqj": 1
+    }
+  },
+  "metadata": {
+    "name": "02-database-delay",
+    "namespace": "chaos-demo",
+    "uid": "6699d9f5-e84c-4469-af30-18295c23c3f8",
+    "creationTimestamp": "2026-10-20T12:25:20Z"
+  }
+}

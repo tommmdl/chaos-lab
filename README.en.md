@@ -100,7 +100,7 @@ The [replacement-check investigation](docs/pod-replacement.en.md) reproduces a r
 
 ## Capturing the six-second waits in the matrix
 
-The [matrix-timeout investigation](docs/resilience-timeouts.en.md) captures the actual resilience trials, records TCP phases and source ports, and validates interpretation with separate real timeout controls. Earlier failures and uncorrelated observations remain visible.
+The [matrix-timeout investigation](docs/resilience-timeouts.en.md) captures the actual resilience trials, records TCP phases and source ports, and validates interpretation with separate real timeout controls. Earlier failures and uncorrelated observations remain visible. CI passed 146 checks while reproducing five TCP connect timeouts: four had packet matches to departing Pods; one backend remains unidentified.
 
 ## Results and limits
 

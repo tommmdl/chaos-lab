@@ -1,0 +1,3531 @@
+[
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 2,
+    "sample": {
+      "started_at": 1792499524.6252346,
+      "source": [
+        "172.18.0.1",
+        35140
+      ],
+      "phase": "connect",
+      "connect_ms": null,
+      "time": 1792499530.6290836,
+      "status": 0,
+      "latency_ms": 6003.85,
+      "attempts": 1,
+      "transport_failures": 1,
+      "error_type": "TimeoutError",
+      "error": "timed out",
+      "lane": "raw"
+    },
+    "classification": "connect_timeout_syn_without_synack_in_capture",
+    "syn_packets": 18,
+    "synack_packets": 0,
+    "request_data_acked": false,
+    "response_data_packets": 0,
+    "server_rst_before_return": 0,
+    "packet_observations_by_vantage": {
+      "matrix-trial-0-30-2-runner": 12,
+      "matrix-trial-0-30-2-devops-notes-control-plane": 6
+    },
+    "backend_candidates": [
+      {
+        "pod": {
+          "name": "api-778d7d4d78-crgb9",
+          "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+          "ip": "10.244.0.40",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "10.1.0.236",
+          54070,
+          "10.244.0.40",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499524.625341,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.625343,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.685736,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.685739,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709702,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709704,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.734678,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.734679,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757687,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757689,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.782681,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.782682,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      },
+      {
+        "pod": {
+          "name": "api-778d7d4d78-crgb9",
+          "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+          "ip": "10.244.0.40",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "172.18.0.2",
+          54070,
+          "10.244.0.40",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499524.625319,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.625321,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.625322,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.685708,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.685717,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.685719,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709683,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709686,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709687,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.734659,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.734668,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.734669,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757671,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757672,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757673,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.78266,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.782671,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.782672,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 54070,
+            "dport": 8000,
+            "seq": 1633765348,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      }
+    ],
+    "pod_events": [
+      {
+        "time": 1792499522.1585581,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499522.1593714,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-szj7v",
+        "uid": "6e5604df-1671-4ba8-bb8c-60327c54d628",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499524.2085645,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": true
+      },
+      {
+        "time": 1792499524.2260296,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.238379,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.2400773,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": true
+      },
+      {
+        "time": 1792499524.2835886,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.56652,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": false
+      },
+      {
+        "time": 1792499524.6846578,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.786245,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499525.2004352,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": false
+      },
+      {
+        "time": 1792499525.211013,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:05Z",
+        "ready": false
+      },
+      {
+        "time": 1792499525.2137172,
+        "event": "DELETED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:05Z",
+        "ready": false
+      },
+      {
+        "time": 1792499528.2254348,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499528.2393847,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      }
+    ],
+    "endpoint_events_near_request": [
+      {
+        "time": 1792499524.2168102,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3332",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.40"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": true,
+              "terminating": true
+            },
+            "pod_uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f"
+          }
+        ]
+      },
+      {
+        "time": 1792499524.5722973,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3349",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          }
+        ]
+      },
+      {
+        "time": 1792499524.7914038,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3359",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": false,
+              "terminating": false
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      },
+      {
+        "time": 1792499528.2305229,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3375",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      }
+    ],
+    "experiment_records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T12:32:04Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-778d7d4d78-crgb9",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ],
+    "limits": "Watch times are client receipt timestamps; SYN sequence/time links are candidates, not a trace of every kernel decision.",
+    "experiment_apply_call_at": 1792499523.916917,
+    "probe_start_relative_to_apply_call_seconds": 0.708318
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 2,
+    "sample": {
+      "started_at": 1792499524.6723573,
+      "source": [
+        "172.18.0.1",
+        35148
+      ],
+      "phase": "connect",
+      "connect_ms": null,
+      "time": 1792499530.6785781,
+      "status": 0,
+      "latency_ms": 6006.223,
+      "attempts": 1,
+      "transport_failures": 1,
+      "error_type": "TimeoutError",
+      "error": "timed out",
+      "lane": "raw"
+    },
+    "classification": "connect_timeout_syn_without_synack_in_capture",
+    "syn_packets": 18,
+    "synack_packets": 0,
+    "request_data_acked": false,
+    "response_data_packets": 0,
+    "server_rst_before_return": 0,
+    "packet_observations_by_vantage": {
+      "matrix-trial-0-30-2-runner": 12,
+      "matrix-trial-0-30-2-devops-notes-control-plane": 6
+    },
+    "backend_candidates": [
+      {
+        "pod": {
+          "name": "api-778d7d4d78-crgb9",
+          "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+          "ip": "10.244.0.40",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "10.1.0.236",
+          17791,
+          "10.244.0.40",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499524.672491,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.672493,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.686662,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.686663,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709699,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709701,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.733675,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.733677,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757707,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757708,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.781689,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.781691,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      },
+      {
+        "pod": {
+          "name": "api-778d7d4d78-crgb9",
+          "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+          "ip": "10.244.0.40",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "172.18.0.2",
+          17791,
+          "10.244.0.40",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499524.67247,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.672472,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499524.672474,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.68665,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.686652,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499525.686653,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.70968,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709681,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499526.709682,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.733656,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.733657,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499527.733658,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757669,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757693,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499528.757694,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.781671,
+            "node": "matrix-trial-0-30-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.781672,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499529.781673,
+            "node": "matrix-trial-0-30-2-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.40",
+            "sport": 17791,
+            "dport": 8000,
+            "seq": 245262827,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      }
+    ],
+    "pod_events": [
+      {
+        "time": 1792499522.1585581,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499522.1593714,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-szj7v",
+        "uid": "6e5604df-1671-4ba8-bb8c-60327c54d628",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499524.2085645,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": true
+      },
+      {
+        "time": 1792499524.2260296,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.238379,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.2400773,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": true
+      },
+      {
+        "time": 1792499524.2835886,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.56652,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": false
+      },
+      {
+        "time": 1792499524.6846578,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499524.786245,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499525.2004352,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:34Z",
+        "ready": false
+      },
+      {
+        "time": 1792499525.211013,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:05Z",
+        "ready": false
+      },
+      {
+        "time": 1792499525.2137172,
+        "event": "DELETED",
+        "name": "api-778d7d4d78-crgb9",
+        "uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:05Z",
+        "ready": false
+      },
+      {
+        "time": 1792499528.2254348,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499528.2393847,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      }
+    ],
+    "endpoint_events_near_request": [
+      {
+        "time": 1792499524.2168102,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3332",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.40"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": true,
+              "terminating": true
+            },
+            "pod_uid": "e844bbc2-5d33-48ef-919f-b42b99d8510f"
+          }
+        ]
+      },
+      {
+        "time": 1792499524.5722973,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3349",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          }
+        ]
+      },
+      {
+        "time": 1792499524.7914038,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3359",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": false,
+              "terminating": false
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      },
+      {
+        "time": 1792499528.2305229,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3375",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      }
+    ],
+    "experiment_records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T12:32:04Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-778d7d4d78-crgb9",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ],
+    "limits": "Watch times are client receipt timestamps; SYN sequence/time links are candidates, not a trace of every kernel decision.",
+    "experiment_apply_call_at": 1792499523.916917,
+    "probe_start_relative_to_apply_call_seconds": 0.75544
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 3,
+    "sample": {
+      "started_at": 1792499533.7488031,
+      "source": [
+        "172.18.0.1",
+        42264
+      ],
+      "phase": "connect",
+      "connect_ms": null,
+      "time": 1792499539.7532609,
+      "status": 0,
+      "latency_ms": 6004.459,
+      "attempts": 1,
+      "transport_failures": 1,
+      "error_type": "TimeoutError",
+      "error": "timed out",
+      "lane": "raw"
+    },
+    "classification": "connect_timeout_syn_without_synack_in_capture",
+    "syn_packets": 18,
+    "synack_packets": 0,
+    "request_data_acked": false,
+    "response_data_packets": 0,
+    "server_rst_before_return": 0,
+    "packet_observations_by_vantage": {
+      "matrix-trial-0-30-3-runner": 12,
+      "matrix-trial-0-30-3-devops-notes-control-plane": 6
+    },
+    "backend_candidates": [
+      {
+        "pod": {
+          "name": "api-778d7d4d78-pqs4l",
+          "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+          "ip": "10.244.0.41",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "10.1.0.236",
+          37490,
+          "10.244.0.41",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499533.74898,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.748983,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.773719,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.773721,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.79873,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.798733,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.821693,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.821695,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.845719,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.845722,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.869701,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.869703,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      },
+      {
+        "pod": {
+          "name": "api-778d7d4d78-pqs4l",
+          "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+          "ip": "10.244.0.41",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "172.18.0.2",
+          37490,
+          "10.244.0.41",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499533.748952,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.748954,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.748955,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.773693,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.773695,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.773697,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.798703,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.798705,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.798708,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.821668,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.821676,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.821677,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.845694,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.845696,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.845698,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.869681,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.869683,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.869685,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 37490,
+            "dport": 8000,
+            "seq": 4087487070,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      }
+    ],
+    "pod_events": [
+      {
+        "time": 1792499531.3296509,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499531.3307903,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-szj7v",
+        "uid": "6e5604df-1671-4ba8-bb8c-60327c54d628",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499533.370624,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": true
+      },
+      {
+        "time": 1792499533.394019,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.394173,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": true
+      },
+      {
+        "time": 1792499533.4391222,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.4392717,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.735387,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": false
+      },
+      {
+        "time": 1792499533.837301,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.9396799,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499534.2287557,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:14Z",
+        "ready": false
+      },
+      {
+        "time": 1792499534.2325988,
+        "event": "DELETED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:14Z",
+        "ready": false
+      },
+      {
+        "time": 1792499537.2579522,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499537.276321,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      }
+    ],
+    "endpoint_events_near_request": [
+      {
+        "time": 1792499533.3918507,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3408",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": true,
+              "terminating": true
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      },
+      {
+        "time": 1792499533.7455554,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3428",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          }
+        ]
+      },
+      {
+        "time": 1792499533.9470809,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3437",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.42"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": false,
+              "terminating": false
+            },
+            "pod_uid": "04b4a629-5f60-4ab1-a784-e71c20589dee"
+          }
+        ]
+      },
+      {
+        "time": 1792499537.2730243,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3454",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.42"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "04b4a629-5f60-4ab1-a784-e71c20589dee"
+          }
+        ]
+      }
+    ],
+    "experiment_records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T12:32:13Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-778d7d4d78-pqs4l",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ],
+    "limits": "Watch times are client receipt timestamps; SYN sequence/time links are candidates, not a trace of every kernel decision.",
+    "experiment_apply_call_at": 1792499533.0928292,
+    "probe_start_relative_to_apply_call_seconds": 0.655974
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 3,
+    "sample": {
+      "started_at": 1792499533.838213,
+      "source": [
+        "172.18.0.1",
+        42300
+      ],
+      "phase": "connect",
+      "connect_ms": null,
+      "time": 1792499539.8393276,
+      "status": 0,
+      "latency_ms": 6001.116,
+      "attempts": 1,
+      "transport_failures": 1,
+      "error_type": "TimeoutError",
+      "error": "timed out",
+      "lane": "raw"
+    },
+    "classification": "connect_timeout_syn_without_synack_in_capture",
+    "syn_packets": 18,
+    "synack_packets": 0,
+    "request_data_acked": false,
+    "response_data_packets": 0,
+    "server_rst_before_return": 0,
+    "packet_observations_by_vantage": {
+      "matrix-trial-0-30-3-runner": 12,
+      "matrix-trial-0-30-3-devops-notes-control-plane": 6
+    },
+    "backend_candidates": [
+      {
+        "pod": {
+          "name": "api-778d7d4d78-pqs4l",
+          "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+          "ip": "10.244.0.41",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "10.1.0.236",
+          24019,
+          "10.244.0.41",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499533.838367,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.83837,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.90169,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.901692,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.925687,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.925689,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.949697,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.949699,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.973668,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.97367,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.997709,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.997711,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 3,
+            "packet_type": 4,
+            "src": "10.1.0.236",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      },
+      {
+        "pod": {
+          "name": "api-778d7d4d78-pqs4l",
+          "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+          "ip": "10.244.0.41",
+          "node": "devops-notes-control-plane"
+        },
+        "tuple": [
+          "172.18.0.2",
+          24019,
+          "10.244.0.41",
+          8000
+        ],
+        "packets": [
+          {
+            "time": 1792499533.838342,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.838343,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499533.838345,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.901667,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.901669,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499534.90167,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.925667,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.925669,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499535.92567,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.949677,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.949679,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499536.94968,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.97365,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.973652,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499537.973653,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.997686,
+            "node": "matrix-trial-0-30-3-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.997688,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 6,
+            "packet_type": 3,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          },
+          {
+            "time": 1792499538.99769,
+            "node": "matrix-trial-0-30-3-runner",
+            "interface_index": 5,
+            "packet_type": 0,
+            "src": "172.18.0.2",
+            "dst": "10.244.0.41",
+            "sport": 24019,
+            "dport": 8000,
+            "seq": 567726901,
+            "ack": 0,
+            "flags": 2,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 80
+          }
+        ]
+      }
+    ],
+    "pod_events": [
+      {
+        "time": 1792499531.3296509,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499531.3307903,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-szj7v",
+        "uid": "6e5604df-1671-4ba8-bb8c-60327c54d628",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499533.370624,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": true
+      },
+      {
+        "time": 1792499533.394019,
+        "event": "ADDED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.394173,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": true
+      },
+      {
+        "time": 1792499533.4391222,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.4392717,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.735387,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:43Z",
+        "ready": false
+      },
+      {
+        "time": 1792499533.837301,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499533.9396799,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499534.2287557,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:14Z",
+        "ready": false
+      },
+      {
+        "time": 1792499534.2325988,
+        "event": "DELETED",
+        "name": "api-778d7d4d78-pqs4l",
+        "uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7",
+        "phase": "Succeeded",
+        "deletion_timestamp": "2026-10-20T12:32:14Z",
+        "ready": false
+      },
+      {
+        "time": 1792499537.2579522,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499537.276321,
+        "event": "MODIFIED",
+        "name": "api-778d7d4d78-g6g2z",
+        "uid": "04b4a629-5f60-4ab1-a784-e71c20589dee",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      }
+    ],
+    "endpoint_events_near_request": [
+      {
+        "time": 1792499533.3918507,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3408",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.41"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": true,
+              "terminating": true
+            },
+            "pod_uid": "5a46fb26-408e-45be-b1b6-4aa7caa52da7"
+          }
+        ]
+      },
+      {
+        "time": 1792499533.7455554,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3428",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          }
+        ]
+      },
+      {
+        "time": 1792499533.9470809,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3437",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.42"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": false,
+              "terminating": false
+            },
+            "pod_uid": "04b4a629-5f60-4ab1-a784-e71c20589dee"
+          }
+        ]
+      },
+      {
+        "time": 1792499537.2730243,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3454",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.39"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "6e5604df-1671-4ba8-bb8c-60327c54d628"
+          },
+          {
+            "addresses": [
+              "10.244.0.42"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "04b4a629-5f60-4ab1-a784-e71c20589dee"
+          }
+        ]
+      }
+    ],
+    "experiment_records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T12:32:13Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-778d7d4d78-pqs4l",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ],
+    "limits": "Watch times are client receipt timestamps; SYN sequence/time links are candidates, not a trace of every kernel decision.",
+    "experiment_apply_call_at": 1792499533.0928292,
+    "probe_start_relative_to_apply_call_seconds": 0.745384
+  },
+  {
+    "drain": true,
+    "grace_seconds": 0,
+    "trial": 3,
+    "sample": {
+      "started_at": 1792499580.1037512,
+      "source": [
+        "172.18.0.1",
+        35158
+      ],
+      "phase": "connect",
+      "connect_ms": null,
+      "time": 1792499586.1068242,
+      "status": 0,
+      "latency_ms": 6003.074,
+      "attempts": 1,
+      "transport_failures": 1,
+      "error_type": "TimeoutError",
+      "error": "timed out",
+      "lane": "raw"
+    },
+    "classification": "connect_timeout_syn_without_synack_in_capture",
+    "syn_packets": 18,
+    "synack_packets": 0,
+    "request_data_acked": false,
+    "response_data_packets": 0,
+    "server_rst_before_return": 0,
+    "packet_observations_by_vantage": {
+      "matrix-trial-1-0-3-runner": 12,
+      "matrix-trial-1-0-3-devops-notes-control-plane": 6
+    },
+    "backend_candidates": [],
+    "pod_events": [
+      {
+        "time": 1792499578.9857812,
+        "event": "ADDED",
+        "name": "api-5459756fdf-mj7lw",
+        "uid": "7702237d-7f41-431c-a489-66a8e68d6788",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499578.98625,
+        "event": "ADDED",
+        "name": "api-5459756fdf-zzg8t",
+        "uid": "37a943cc-41c1-4362-992d-3f2c4afe3825",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      },
+      {
+        "time": 1792499581.0212128,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-mj7lw",
+        "uid": "7702237d-7f41-431c-a489-66a8e68d6788",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:33:01Z",
+        "ready": true
+      },
+      {
+        "time": 1792499581.0283716,
+        "event": "DELETED",
+        "name": "api-5459756fdf-mj7lw",
+        "uid": "7702237d-7f41-431c-a489-66a8e68d6788",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T12:33:01Z",
+        "ready": true
+      },
+      {
+        "time": 1792499581.0430539,
+        "event": "ADDED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499581.0567017,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499581.0907214,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499581.5103648,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Pending",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499581.6183145,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": false
+      },
+      {
+        "time": 1792499585.3970966,
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-rttvs",
+        "uid": "23438e60-2ba5-4012-b28f-0cec77eab70b",
+        "phase": "Running",
+        "deletion_timestamp": null,
+        "ready": true
+      }
+    ],
+    "endpoint_events_near_request": [
+      {
+        "time": 1792499581.0380309,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3827",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.44"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "37a943cc-41c1-4362-992d-3f2c4afe3825"
+          },
+          {
+            "addresses": [
+              "10.244.0.47"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": true,
+              "terminating": true
+            },
+            "pod_uid": "7702237d-7f41-431c-a489-66a8e68d6788"
+          }
+        ]
+      },
+      {
+        "time": 1792499581.055011,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3833",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.44"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "37a943cc-41c1-4362-992d-3f2c4afe3825"
+          }
+        ]
+      },
+      {
+        "time": 1792499581.6225243,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3854",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.44"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "37a943cc-41c1-4362-992d-3f2c4afe3825"
+          },
+          {
+            "addresses": [
+              "10.244.0.48"
+            ],
+            "conditions": {
+              "ready": false,
+              "serving": false,
+              "terminating": false
+            },
+            "pod_uid": "23438e60-2ba5-4012-b28f-0cec77eab70b"
+          }
+        ]
+      },
+      {
+        "time": 1792499585.4028888,
+        "kind": "endpoints",
+        "event": "MODIFIED",
+        "name": "api-8jh82",
+        "uid": "fd9a3934-9f15-4596-9ead-8ca38301094e",
+        "resource_version": "3866",
+        "endpoints": [
+          {
+            "addresses": [
+              "10.244.0.44"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "37a943cc-41c1-4362-992d-3f2c4afe3825"
+          },
+          {
+            "addresses": [
+              "10.244.0.48"
+            ],
+            "conditions": {
+              "ready": true,
+              "serving": true,
+              "terminating": false
+            },
+            "pod_uid": "23438e60-2ba5-4012-b28f-0cec77eab70b"
+          }
+        ]
+      }
+    ],
+    "experiment_records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T12:33:01Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-5459756fdf-mj7lw",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ],
+    "limits": "Watch times are client receipt timestamps; SYN sequence/time links are candidates, not a trace of every kernel decision.",
+    "experiment_apply_call_at": 1792499580.7566814,
+    "probe_start_relative_to_apply_call_seconds": -0.65293
+  }
+]

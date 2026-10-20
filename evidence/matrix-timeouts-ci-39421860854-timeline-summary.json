@@ -1,0 +1,141 @@
+[
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 2,
+    "source": [
+      "172.18.0.1",
+      35140
+    ],
+    "phase": "connect",
+    "elapsed_ms": 6003.85,
+    "connect_ms": null,
+    "backend_pod_candidates": [
+      "api-778d7d4d78-crgb9"
+    ],
+    "backend_ips": [
+      "10.244.0.40"
+    ],
+    "backend_node_syn_offsets_seconds": [
+      0.0,
+      1.06,
+      2.084,
+      3.109,
+      4.132,
+      5.157
+    ],
+    "selected_pod_deletion_watch_offset_seconds": -0.417,
+    "direct_sample_has_synack": false,
+    "server_rst_before_return": 0,
+    "probe_start_relative_to_apply_call_seconds": 0.708318
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 2,
+    "source": [
+      "172.18.0.1",
+      35148
+    ],
+    "phase": "connect",
+    "elapsed_ms": 6006.223,
+    "connect_ms": null,
+    "backend_pod_candidates": [
+      "api-778d7d4d78-crgb9"
+    ],
+    "backend_ips": [
+      "10.244.0.40"
+    ],
+    "backend_node_syn_offsets_seconds": [
+      0.0,
+      1.014,
+      2.037,
+      3.061,
+      4.085,
+      5.109
+    ],
+    "selected_pod_deletion_watch_offset_seconds": -0.464,
+    "direct_sample_has_synack": false,
+    "server_rst_before_return": 0,
+    "probe_start_relative_to_apply_call_seconds": 0.75544
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 3,
+    "source": [
+      "172.18.0.1",
+      42264
+    ],
+    "phase": "connect",
+    "elapsed_ms": 6004.459,
+    "connect_ms": null,
+    "backend_pod_candidates": [
+      "api-778d7d4d78-pqs4l"
+    ],
+    "backend_ips": [
+      "10.244.0.41"
+    ],
+    "backend_node_syn_offsets_seconds": [
+      0.0,
+      1.025,
+      2.05,
+      3.073,
+      4.097,
+      5.121
+    ],
+    "selected_pod_deletion_watch_offset_seconds": -0.378,
+    "direct_sample_has_synack": false,
+    "server_rst_before_return": 0,
+    "probe_start_relative_to_apply_call_seconds": 0.655974
+  },
+  {
+    "drain": false,
+    "grace_seconds": 30,
+    "trial": 3,
+    "source": [
+      "172.18.0.1",
+      42300
+    ],
+    "phase": "connect",
+    "elapsed_ms": 6001.116,
+    "connect_ms": null,
+    "backend_pod_candidates": [
+      "api-778d7d4d78-pqs4l"
+    ],
+    "backend_ips": [
+      "10.244.0.41"
+    ],
+    "backend_node_syn_offsets_seconds": [
+      0.0,
+      1.063,
+      2.087,
+      3.111,
+      4.135,
+      5.159
+    ],
+    "selected_pod_deletion_watch_offset_seconds": -0.468,
+    "direct_sample_has_synack": false,
+    "server_rst_before_return": 0,
+    "probe_start_relative_to_apply_call_seconds": 0.745384
+  },
+  {
+    "drain": true,
+    "grace_seconds": 0,
+    "trial": 3,
+    "source": [
+      "172.18.0.1",
+      35158
+    ],
+    "phase": "connect",
+    "elapsed_ms": 6003.074,
+    "connect_ms": null,
+    "backend_pod_candidates": [],
+    "backend_ips": [],
+    "backend_node_syn_offsets_seconds": [],
+    "selected_pod_deletion_watch_offset_seconds": 0.917,
+    "direct_sample_has_synack": false,
+    "server_rst_before_return": 0,
+    "probe_start_relative_to_apply_call_seconds": -0.65293
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "verification": {
+    "original_sha256": "f8f37af848a71b84dfd32f56bfba212e0ddede255944d80ca20db1ef62557181"
+  },
+  "access-policy": {
+    "original_sha256": "33c4ce849dddbb5f125305ef0d8e457181d948bfa0b20e1925af610799567c28"
+  },
+  "pod-replacement": {
+    "original_sha256": "c1b5768b1164d489e26114f8888f5b4a9359ea8031ba0577ef922f82d0f38949"
+  },
+  "connection-window": {
+    "original_sha256": "547b74edcbb6b3080940144edccaf5dc5ed2a7c14cce2993989f4dc020f43ac3"
+  },
+  "resilience-controls": {
+    "original_sha256": "4c970585ae829419ed09bf111a68c3e686c976edd685578e349e28353482b5d9"
+  },
+  "resilience-control-archive": {
+    "original_sha256": "67931f06a8568afac17c6b48de71cd5319d5cd8cbfcb7adf15bfaf4a610e8b5f"
+  },
+  "resilience-controls-analysis": {
+    "original_sha256": "3411c30b5862c2dd4cadef44817b5fe8ce22d9a726e2bd51b0b6263a7a2f6326"
+  },
+  "resilience": {
+    "original_sha256": "ca1ab51ae9d6033abc1080ee0538572a62d8bb9a489474895833082289c5d764"
+  },
+  "matrix-packet-archive": {
+    "original_sha256": "1dd66ef59fc84bbc6e0c656bb140e24b90cdf3c8cfd2baef9ab6294f8949f6a7"
+  },
+  "resilience-timeouts": {
+    "original_sha256": "24e39b89a08919adce48930a34529e8dcafc341b55e91807b03a6f2e8263c613"
+  },
+  "syn-budget": {
+    "original_sha256": "63e360c83dfd0640d78d26498b71eb8f78466a9a4afb924140783c9c6009bcc7"
+  },
+  "packet-archive": {
+    "original_sha256": "819a1c18a890648e5853d7fbc5f4edc4301bb49b14c96cb458df4256612f892e"
+  },
+  "reset-origins": {
+    "original_sha256": "a62b8afff6b0c60d32e7877773e0f1d1fea8018e2f5d63da350faccfc7c77d96"
+  }
+}

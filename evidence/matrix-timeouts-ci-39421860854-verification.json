@@ -1,0 +1,1001 @@
+{
+  "started_utc": "2026-10-20T12:25:03.197769+00:00",
+  "checks": [
+    {
+      "name": "Kernel has the netem module required for latency injection",
+      "passed": true
+    },
+    {
+      "name": "No pre-existing podchaos experiment is replaced",
+      "passed": true
+    },
+    {
+      "name": "No pre-existing networkchaos experiment is replaced",
+      "passed": true
+    },
+    {
+      "name": "Two API replicas, PostgreSQL and both probes are healthy",
+      "passed": true
+    },
+    {
+      "name": "prometheus is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "blackbox is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "alertmanager is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "receiver is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "Mounted Prometheus rules and Alertmanager configuration validate",
+      "passed": true
+    },
+    {
+      "name": "Controller may delete target Pods but not Pods in notes-lab",
+      "passed": true
+    },
+    {
+      "name": "Namespace filtering is enabled in the actual controller",
+      "passed": true
+    },
+    {
+      "name": "Runner rejects a selector outside the lab before applying it",
+      "passed": true
+    },
+    {
+      "name": "Database DNS resolves through a headless service for Pod-targeted faults",
+      "passed": true
+    },
+    {
+      "name": "A real API write is acknowledged before faults",
+      "passed": true
+    },
+    {
+      "name": "Readiness latency starts below the alert threshold",
+      "passed": true
+    },
+    {
+      "name": "API service serves successful requests during the replica experiment",
+      "passed": true,
+      "detail": {
+        "sample_statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ],
+        "failed_samples": 0
+      }
+    },
+    {
+      "name": "Replica loss does not produce a sustained API outage alert",
+      "passed": true
+    },
+    {
+      "name": "Chaos Mesh removes an API Pod and Kubernetes replaces it",
+      "passed": true
+    },
+    {
+      "name": "API Pod replacement preserves all database rows",
+      "passed": true
+    },
+    {
+      "name": "Injected delay makes readiness slow while both probes still succeed",
+      "passed": true,
+      "detail": {
+        "readyz_seconds": 0.820812156
+      }
+    },
+    {
+      "name": "ChaosApiSlow: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiSlow: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiSlow: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Deleting the delay experiment restores latency and preserves rows",
+      "passed": true
+    },
+    {
+      "name": "Partition leaves liveness healthy and breaks database readiness",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "Duration expiry recovers the link without deleting the experiment",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Automatic network recovery preserves every row",
+      "passed": true
+    },
+    {
+      "name": "Pod failure makes both real HTTP probes fail",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Recovery restores the original pinned API image in every Pod",
+      "passed": true
+    },
+    {
+      "name": "Complete API outage preserves all rows and timestamps",
+      "passed": true
+    },
+    {
+      "name": "Database returns on the same PVC without losing committed data",
+      "passed": true
+    },
+    {
+      "name": "Chaos Mesh kills PostgreSQL and Kubernetes creates a new Pod",
+      "passed": true
+    },
+    {
+      "name": "Recovered database accepts a new API write with a fresh ID",
+      "passed": true
+    },
+    {
+      "name": "Original marker remains visible through the recovered API",
+      "passed": true
+    },
+    {
+      "name": "Firing and resolved webhooks survive a receiver Pod replacement",
+      "passed": true
+    },
+    {
+      "name": "No active alerts remain after recovery",
+      "passed": true
+    },
+    {
+      "name": "Existing labs keep their workload specs, images and PVC identities",
+      "passed": true
+    }
+  ],
+  "experiments": [
+    {
+      "name": "01-api-pod-kill",
+      "sample_statuses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "data_equal": true
+    },
+    {
+      "name": "02-database-delay",
+      "readyz_seconds": 0.820812156,
+      "recovery": "delete through normal finalizers",
+      "data_equal": true
+    },
+    {
+      "name": "03-database-partition",
+      "duration": "60s",
+      "seconds_until_recovery_checked": 65.48,
+      "recovery": "automatic duration expiry; object still present",
+      "data_equal": true
+    },
+    {
+      "name": "04-api-failure",
+      "recovery": "delete through normal finalizers",
+      "data_equal": true
+    },
+    {
+      "name": "05-database-pod-kill",
+      "pvc_uid": "c55d4830-509b-4df2-b3c7-3687dd2ebf6f",
+      "data_equal": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "received_at": "2026-10-20T12:25:38Z",
+      "status": "firing",
+      "name": "ChaosApiSlow",
+      "fingerprint": "a05606dfd165c416",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiSlow",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 2,
+      "received_at": "2026-10-20T12:25:44Z",
+      "status": "resolved",
+      "name": "ChaosApiSlow",
+      "fingerprint": "a05606dfd165c416",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiSlow",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 3,
+      "received_at": "2026-10-20T12:26:02Z",
+      "status": "firing",
+      "name": "ChaosDatabaseUnavailable",
+      "fingerprint": "0e10ff22f8b6ca8a",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosDatabaseUnavailable",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 4,
+      "received_at": "2026-10-20T12:26:50Z",
+      "status": "resolved",
+      "name": "ChaosDatabaseUnavailable",
+      "fingerprint": "0e10ff22f8b6ca8a",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosDatabaseUnavailable",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 5,
+      "received_at": "2026-10-20T12:27:14Z",
+      "status": "firing",
+      "name": "ChaosApiUnavailable",
+      "fingerprint": "97f2e38f48c04258",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiUnavailable",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "critical"
+      }
+    },
+    {
+      "id": 6,
+      "received_at": "2026-10-20T12:27:29Z",
+      "status": "resolved",
+      "name": "ChaosApiUnavailable",
+      "fingerprint": "97f2e38f48c04258",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiUnavailable",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "critical"
+      }
+    }
+  ],
+  "images": {
+    "api": {
+      "image": "ghcr.io/tommmdl/docker-lab@sha256:ae2e93fdbab7bc912897e6524b3e17b982e97cfb29bcb4fc36d9c014d615eb91"
+    },
+    "postgres": {
+      "image": "ghcr.io/tommmdl/docker-lab@sha256:8b6813ec76804698c33e4dac8f501ca8f641affcbd27cbc3b7dd6fdb02874fc3"
+    },
+    "prometheus": {
+      "image": "prom/prometheus@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e"
+    },
+    "blackbox": {
+      "image": "prom/blackbox-exporter@sha256:9613f2884689b6fad9f1939f6a3b0388c93a022cfaededb19545b329b5c83dea"
+    },
+    "alertmanager": {
+      "image": "prom/alertmanager@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a"
+    },
+    "receiver": {
+      "image": "python:3.13.16-alpine3.24@sha256:2d9aefe2fef018a7eb2c13064c89c71929800fd2e5dccdbf52ea5da5bb8d929a"
+    },
+    "controller": {
+      "version": "2.8.4",
+      "image": "ghcr.io/chaos-mesh/chaos-mesh:v2.8.4@sha256:e21637dc1abce1490e8dc74659a0392670f82e87c05a6a75b588e73706748eaf"
+    },
+    "daemon": {
+      "version": "2.8.4",
+      "image": "ghcr.io/chaos-mesh/chaos-daemon:v2.8.4@sha256:272721c0b0d5da596f2a3163c51e53cb76dfb3e1feb69faa95e86ce5aec110f8"
+    },
+    "pause": {
+      "image": "registry.k8s.io/pause:3.10.1@sha256:e5b941ef8f71de54dc3a13398226c269ba217d06650a21bd3afcf9d890cf1f41"
+    }
+  },
+  "replacement_checks": [
+    {
+      "app": "api",
+      "expected_count": 2,
+      "before": {
+        "time": 1792499112.5147674,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-7rjr9",
+            "uid": "9e942ce1-b793-41a9-9175-4ee0435973eb",
+            "resource_version": "1015",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-ndqqj",
+            "uid": "818ccc0d-1da0-4fec-99df-53a3cef43c3a",
+            "resource_version": "1011",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ]
+      },
+      "observations": [
+        {
+          "time": 1792499117.66888,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "api-5459756fdf-6xn9m",
+              "uid": "dfc086a4-1955-4571-9c07-94c65c242bd2",
+              "resource_version": "1135",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": true,
+              "containers_running_ready": true
+            },
+            {
+              "name": "api-5459756fdf-ndqqj",
+              "uid": "818ccc0d-1da0-4fec-99df-53a3cef43c3a",
+              "resource_version": "1011",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": true,
+              "containers_running_ready": true
+            }
+          ],
+          "experiment_uid": "fe329122-c21b-4ba1-9d64-ee034a355c0d",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:25:12Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/api-5459756fdf-7rjr9",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "9e942ce1-b793-41a9-9175-4ee0435973eb"
+          ],
+          "replacement_complete": true
+        }
+      ],
+      "completed": true,
+      "after_cleanup": {
+        "time": 1792499119.9682837,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-6xn9m",
+            "uid": "dfc086a4-1955-4571-9c07-94c65c242bd2",
+            "resource_version": "1135",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-ndqqj",
+            "uid": "818ccc0d-1da0-4fec-99df-53a3cef43c3a",
+            "resource_version": "1011",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "replacement_complete": true
+      }
+    },
+    {
+      "app": "postgres",
+      "expected_count": 1,
+      "before": {
+        "time": 1792499250.4584725,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "postgres-7f8555b8c4-7s725",
+            "uid": "e8921086-d39f-44d2-bb55-ba2f9b320951",
+            "resource_version": "775",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ]
+      },
+      "observations": [
+        {
+          "time": 1792499250.863279,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1628",
+              "deletion_timestamp": null,
+              "phase": "Pending",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499251.467579,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499252.0596337,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499252.6513662,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499253.2461226,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499253.8510568,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499254.4483016,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499255.042806,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499255.6350474,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499256.2285733,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499256.8247316,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499257.4315882,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1634",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": false,
+              "containers_running_ready": false
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": false
+        },
+        {
+          "time": 1792499258.0258098,
+          "resource_version": "",
+          "pods": [
+            {
+              "name": "postgres-7f8555b8c4-ljfms",
+              "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+              "resource_version": "1663",
+              "deletion_timestamp": null,
+              "phase": "Running",
+              "ready": true,
+              "containers_running_ready": true
+            }
+          ],
+          "experiment_uid": "a6b7e0b5-af3b-4d31-a90a-fdf50b2f4e3f",
+          "records": [
+            {
+              "events": [
+                {
+                  "operation": "Apply",
+                  "timestamp": "2026-10-20T12:27:30Z",
+                  "type": "Succeeded"
+                }
+              ],
+              "id": "chaos-demo/postgres-7f8555b8c4-7s725",
+              "injectedCount": 1,
+              "phase": "Injected",
+              "recoveredCount": 0,
+              "selectorKey": "."
+            }
+          ],
+          "target_uids": [
+            "e8921086-d39f-44d2-bb55-ba2f9b320951"
+          ],
+          "replacement_complete": true
+        }
+      ],
+      "completed": true,
+      "after_cleanup": {
+        "time": 1792499266.7252605,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "postgres-7f8555b8c4-ljfms",
+            "uid": "04616584-6bb9-4ab7-90ea-b088afc5fc37",
+            "resource_version": "1663",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "replacement_complete": true
+      }
+    }
+  ],
+  "final": {
+    "api_replicas": 2,
+    "postgres_replicas": 1,
+    "all_api_pods_ready": true,
+    "postgres_pod_ready": true,
+    "rows": 2,
+    "pvc_uid": "c55d4830-509b-4df2-b3c7-3687dd2ebf6f",
+    "row_sha256": "1baad92e1e3d859aa835470d39fdfc07e5717a59d68e7e31aa62b22d6a1a75d4",
+    "healthz_probe": 1.0,
+    "readyz_probe": 1.0,
+    "active_alerts": 0
+  },
+  "passed": true,
+  "cleanup_errors": [],
+  "duration_seconds": 194.8
+}

@@ -1,0 +1,64 @@
+{
+  "created_utc": 1792499652.8787591,
+  "captures": [
+    {
+      "node": "runner",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "headers",
+      "source_sha256": "02004770cdffc8913fd7bafa59b2b8442b4206c541b90b11f4d56f94c50bc399",
+      "capture_stats": {
+        "packets": 5,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.4"
+      },
+      "path": "evidence/matrix-timeouts/ci-39421860854-packets/matrix-control-headers-runner.pcap.gz",
+      "sha256_gzip": "14f38904daef087ee72ac362af25b70d05ca892b76d2a62db085bad7c5e74e69",
+      "bytes_uncompressed": 404,
+      "bytes_compressed": 192
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "connect",
+      "source_sha256": "5f82b3126504f86d7bb06814f54d21696053dc1537d7c428a941a5dee843cf25",
+      "capture_stats": {
+        "packets": 6,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.4"
+      },
+      "path": "evidence/matrix-timeouts/ci-39421860854-packets/matrix-control-connect-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "9c50629e9b582dc2f487aa5a3b05157171b9f9a972e3ca6c165c6dcb8d22c785",
+      "bytes_uncompressed": 480,
+      "bytes_compressed": 175
+    },
+    {
+      "node": "runner",
+      "grace_seconds": null,
+      "drain": null,
+      "trial": "connect",
+      "source_sha256": "8f2da1a085ae80fc2bbc807ee41588d1801b8cc74da47b386f795df23326ae77",
+      "capture_stats": {
+        "packets": 12,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.4"
+      },
+      "path": "evidence/matrix-timeouts/ci-39421860854-packets/matrix-control-connect-runner.pcap.gz",
+      "sha256_gzip": "5d650d6d988ad4f8c5bbeb71147386ae8483a0e16df954adadd7a7ec84b191d7",
+      "bytes_uncompressed": 936,
+      "bytes_compressed": 217
+    }
+  ],
+  "errors": [],
+  "complete": true
+}

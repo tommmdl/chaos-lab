@@ -1,0 +1,115 @@
+{
+  "started_utc": "2026-10-20T12:33:59.898836+00:00",
+  "checks": [
+    {
+      "name": "Dropped SYNs are classified as connect failures for both policies",
+      "passed": true,
+      "detail": {
+        "previous": {
+          "status": 502,
+          "attempts": 2,
+          "failures": [
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 3002.048
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 949.201
+            }
+          ],
+          "attempt_elapsed_ms": 3951.249
+        },
+        "short_connect": {
+          "status": 502,
+          "attempts": 3,
+          "failures": [
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.707
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.739
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.741
+            }
+          ],
+          "attempt_elapsed_ms": 1502.187
+        }
+      }
+    },
+    {
+      "name": "Short connect leaves time for all three bounded attempts",
+      "passed": true,
+      "detail": {
+        "previous": {
+          "status": 502,
+          "attempts": 2,
+          "failures": [
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 3002.048
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 949.201
+            }
+          ],
+          "attempt_elapsed_ms": 3951.249
+        },
+        "short_connect": {
+          "status": 502,
+          "attempts": 3,
+          "failures": [
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.707
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.739
+            },
+            {
+              "type": "TimeoutError",
+              "message": "timed out",
+              "phase": "connect",
+              "elapsed_ms": 500.741
+            }
+          ],
+          "attempt_elapsed_ms": 1502.187
+        }
+      }
+    },
+    {
+      "name": "Scoped SYN-drop rule removed",
+      "passed": true,
+      "detail": {
+        "port": 18471,
+        "comment": "chaos-lab-connect-1a6c818c12"
+      }
+    }
+  ],
+  "passed": true,
+  "rule_removed": true
+}

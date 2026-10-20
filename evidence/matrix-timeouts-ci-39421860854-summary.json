@@ -1,0 +1,252 @@
+{
+  "run": 39421860854,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39421860854",
+  "commit": "2171884c5254b3978a15308034015ebedf6fd659",
+  "conclusion": "success",
+  "created_at": "2026-10-20T12:23:19Z",
+  "updated_at": "2026-10-20T12:34:27Z",
+  "reports": {
+    "verification": {
+      "passed": true,
+      "checks": 43,
+      "failed_checks": []
+    },
+    "access-policy": {
+      "passed": true,
+      "checks": 4,
+      "failed_checks": []
+    },
+    "pod-replacement": {
+      "passed": true,
+      "checks": 8,
+      "failed_checks": []
+    },
+    "connection-window": {
+      "passed": true,
+      "checks": 42,
+      "failed_checks": []
+    },
+    "resilience-controls": {
+      "passed": true,
+      "checks": 7,
+      "failed_checks": []
+    },
+    "resilience": {
+      "passed": true,
+      "checks": 39,
+      "failed_checks": []
+    },
+    "syn-budget": {
+      "passed": true,
+      "checks": 3,
+      "failed_checks": []
+    }
+  },
+  "checks_recorded": 146,
+  "checks_failed": [],
+  "matrix_passed": true,
+  "matrix_duration_seconds": 181.96,
+  "matrix_trials": 16,
+  "matrix_summary": [
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1330,
+      "failures": 2,
+      "failure_rate": 0.0015037593984962407,
+      "attempts": 1330,
+      "transport_failures": 2
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1327,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1329,
+      "transport_failures": 2
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 759,
+      "failures": 21,
+      "failure_rate": 0.02766798418972332,
+      "attempts": 759,
+      "transport_failures": 21
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1083,
+      "failures": 5,
+      "failure_rate": 0.0046168051708217915,
+      "attempts": 1102,
+      "transport_failures": 24
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1070,
+      "failures": 2,
+      "failure_rate": 0.001869158878504673,
+      "attempts": 1070,
+      "transport_failures": 2
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1178,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1181,
+      "transport_failures": 3
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1505,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1505,
+      "transport_failures": 0
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1505,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1505,
+      "transport_failures": 0
+    }
+  ],
+  "direct_timeouts": 5,
+  "timeout_classifications": {
+    "connect_timeout_syn_without_synack_in_capture": 5
+  },
+  "unresolved_source_tuples": 0,
+  "analysis_integrity_passed": true,
+  "matrix_captures": 32,
+  "matrix_frames": 432610,
+  "matrix_capture_drops": 0,
+  "controls_analysis": {
+    "collection_passed": true,
+    "limits": "Only raw/direct requests have NodePort source tuples. Proxy-internal retry attempts cannot be assigned from the loopback client tuple. Every HTTP sample remains in the source report.",
+    "direct_timeouts": 2,
+    "timeout_classifications": {
+      "headers_timeout_after_handshake_without_response_data": 1,
+      "connect_timeout_syn_without_synack_in_capture": 1
+    },
+    "flow_classifications": {
+      "headers_timeout_after_handshake_without_response_data": 1,
+      "connect_timeout_syn_without_synack_in_capture": 1
+    },
+    "unresolved_source_tuples": 0,
+    "analysis_integrity_passed": true
+  },
+  "job_steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success"
+    },
+    {
+      "name": "Prepara um cluster descart\u00e1vel com suporte a netem",
+      "conclusion": "success"
+    },
+    {
+      "name": "Instala Chaos Mesh, aplica\u00e7\u00e3o e alertas isolados",
+      "conclusion": "success"
+    },
+    {
+      "name": "Executa os experimentos reais e confere a recupera\u00e7\u00e3o",
+      "conclusion": "success"
+    },
+    {
+      "name": "Confere os limites das tentativas com falhas reais de HTTP",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reproduz a corrida entre leituras e confere a substitui\u00e7\u00e3o real",
+      "conclusion": "success"
+    },
+    {
+      "name": "Investiga fases TCP nas remo\u00e7\u00f5es e compara os dois acessos",
+      "conclusion": "success"
+    },
+    {
+      "name": "Confere a captura com timeouts reais de conex\u00e3o e resposta",
+      "conclusion": "success"
+    },
+    {
+      "name": "Captura os timeouts na pr\u00f3pria matriz de resili\u00eancia",
+      "conclusion": "success"
+    },
+    {
+      "name": "Mede o or\u00e7amento de conex\u00e3o com descarte real de SYN",
+      "conclusion": "success"
+    },
+    {
+      "name": "Preserva PCAPs sem payload e confere seus hashes",
+      "conclusion": "success"
+    },
+    {
+      "name": "Preserva as capturas da matriz e dos controles",
+      "conclusion": "success"
+    },
+    {
+      "name": "Confere as fases TCP dos timeouts da matriz",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reanalisa os controles reais a partir dos PCAPs",
+      "conclusion": "success"
+    },
+    {
+      "name": "Correlaciona todos os RST, incluindo leituras recuperadas",
+      "conclusion": "success"
+    },
+    {
+      "name": "Guarda diagn\u00f3stico sem Secrets",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+      "conclusion": "success"
+    },
+    {
+      "name": "Remove apenas o cluster criado no runner",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "final_runner_state": {
+    "chaos-demo": "NAME                            READY   STATUS    RESTARTS   AGE\npod/api-5459756fdf-mpth4        1/1     Running   0          29s\npod/api-5459756fdf-r9ss7        1/1     Running   0          40s\npod/postgres-7f8555b8c4-ljfms   1/1     Running   0          6m48s\n\nNAME                                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE\npersistentvolumeclaim/postgres-data   Bound    pvc-c55d4830-509b-4df2-b3c7-3687dd2ebf6f   1Gi        RWO            standard       <unset>                 9m42s\n\nNAME                       READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/api        2/2     2            2           9m27s\ndeployment.apps/postgres   1/1     1            1           9m42s\n",
+    "chaos-observe": "NAME                                READY   STATUS    RESTARTS   AGE\npod/alertmanager-7847c6d854-rxtzx   1/1     Running   0          9m26s\npod/blackbox-d4fb75554-gf565        1/1     Running   0          9m26s\npod/prometheus-7796d549c4-48tfg     1/1     Running   0          9m26s\npod/receiver-d9c449889-xjq2t        1/1     Running   0          6m32s\n\nNAME                                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE\npersistentvolumeclaim/alertmanager-data   Bound    pvc-b009f1df-345d-4f26-b2ec-22373728af34   256Mi      RWO            standard       <unset>                 9m27s\npersistentvolumeclaim/prometheus-data     Bound    pvc-2c2f5e4b-ee50-4084-b297-650181f0eade   1Gi        RWO            standard       <unset>                 9m27s\npersistentvolumeclaim/receiver-data       Bound    pvc-c151d0b1-e872-4a63-8685-73986a4d7e1d   128Mi      RWO            standard       <unset>                 9m26s\n\nNAME                           READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/alertmanager   1/1     1            1           9m26s\ndeployment.apps/blackbox       1/1     1            1           9m26s\ndeployment.apps/prometheus     1/1     1            1           9m26s\ndeployment.apps/receiver       1/1     1            1           9m26s\n",
+    "chaos-system": "NAME                                            READY   STATUS    RESTARTS   AGE\npod/chaos-controller-manager-54949c4fcf-dmr7t   1/1     Running   0          9m52s\npod/chaos-daemon-mlzvp                          1/1     Running   0          9m52s\n\nNAME                                       READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/chaos-controller-manager   1/1     1            1           9m52s\n\nNAME                          DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE\ndaemonset.apps/chaos-daemon   1         1         1       1            1           <none>          9m53s\n"
+  },
+  "interpretation": "Recovery checks and capture integrity do not imply error-free HTTP. The two fixture timeouts are separate from reproduced API matrix timeouts.",
+  "offline_replays_match_runner": true,
+  "timeout_initial_backend_candidates_identified": 4,
+  "timeout_initial_backend_candidates_unidentified": 1,
+  "timeouts_started_before_current_apply_call": 1
+}

@@ -98,7 +98,7 @@ A [investigação da checagem](docs/pod-replacement.md) reproduz uma corrida ent
 
 ## Captura dos seis segundos na matriz
 
-A [investigação dos timeouts da matriz](docs/resilience-timeouts.md) captura as próprias rodadas de resiliência, registra fases TCP e portas de origem e confere a leitura com controles reais separados. As falhas anteriores e as observações sem correspondência continuam visíveis.
+A [investigação dos timeouts da matriz](docs/resilience-timeouts.md) captura as próprias rodadas de resiliência, registra fases TCP e portas de origem e confere a leitura com controles reais separados. As falhas anteriores e as observações sem correspondência continuam visíveis. O CI passou em 146 verificações e reproduziu cinco timeouts na conexão TCP: quatro tiveram pacotes associados a Pods em encerramento; um backend continua sem identificação.
 
 ## Resultados e limites
 
