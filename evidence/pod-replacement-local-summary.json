@@ -1,0 +1,31 @@
+{
+  "reports": {
+    "regression": {
+      "passed": true,
+      "checks": 8,
+      "duration_seconds": 12.83
+    },
+    "resilience": {
+      "passed": true,
+      "checks": 23,
+      "duration_seconds": 270.96
+    },
+    "connection-window": {
+      "passed": true,
+      "checks": 42,
+      "duration_seconds": 306.57
+    },
+    "verification": {
+      "passed": true,
+      "checks": 43,
+      "duration_seconds": 202.37
+    }
+  },
+  "checks_recorded": 116,
+  "all_passed": true,
+  "source_commits": {
+    "regression_resilience_tcp": "4bd2eb759738cd021e3914e694e965cc9514108c",
+    "initial_suite": "a4bad03f5a3d4fdecd283c58c20bfb64c95e6efd"
+  },
+  "scope": "The later commit parameterizes the same predicate for the initial API and PostgreSQL replacement checks; API defaults remain unchanged. The original API two-read predicate is deliberately exercised only by the regression control."
+}

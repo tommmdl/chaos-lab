@@ -1,0 +1,439 @@
+{
+  "created_utc": 1792496947.743663,
+  "captures": [
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 1,
+      "source_sha256": "a6d289c0215a76e895eafdbe51bb3736190e5954e4fbb9875f16d0719075149b",
+      "capture_stats": {
+        "packets": 17011,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-1-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "4b0d8a8f40fb3a1cb8b385213109e85da523ce4acf05a03d2d22c94625d87bb3",
+      "bytes_uncompressed": 1292860,
+      "bytes_compressed": 278779
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 1,
+      "source_sha256": "0252c2d9168239f7d419fe8efd0a5e3b3cd9abd905f56470cac21611add066e5",
+      "capture_stats": {
+        "packets": 1,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-1-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "4943b38c895034870f15c359d32c41db06a67d02c6f0d61e5e205ef66e0b3439",
+      "bytes_uncompressed": 100,
+      "bytes_compressed": 101
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 2,
+      "source_sha256": "cb2eb33791d0ead99d11db0c2177b9a4f8b20da3abcbb03889bebd4164675eaf",
+      "capture_stats": {
+        "packets": 15678,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-2-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "6595d4b5ac6766f799863307257712d8ed7472edd8fdca6cbba459d77ce855c8",
+      "bytes_uncompressed": 1191552,
+      "bytes_compressed": 257795
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 2,
+      "source_sha256": "ab3386c52251d7a8d26900f0d4a1eab301dd3cc5a771279541897d68474cb619",
+      "capture_stats": {
+        "packets": 29,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-2-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "cd0c9e43efe49f3ba072594725790ad47fba14f1f4a2d2fce3be35f0056f769c",
+      "bytes_uncompressed": 2228,
+      "bytes_compressed": 634
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 0,
+      "trial": 1,
+      "source_sha256": "893f323c86a54cd761e5ce3e42e3d955d2517af55dd4a13c99175c69e0b581ac",
+      "capture_stats": {
+        "packets": 11182,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-1-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "f2cd3e404561e43444ba6952876189e9b7089b1ab838ad2712f7bf0606a9be5f",
+      "bytes_uncompressed": 849856,
+      "bytes_compressed": 184667
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 0,
+      "trial": 1,
+      "source_sha256": "757993a5ba344d7608bae8937d32e92f25d2e3855183ba23327dacb901ff3712",
+      "capture_stats": {
+        "packets": 18,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-1-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "2d4b2c1509851af90ebbfb03092ed682328411ed06aa81439ee6854074eea831",
+      "bytes_uncompressed": 1392,
+      "bytes_compressed": 455
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 3,
+      "source_sha256": "d3be877cb7f45220a68b3a1b783099936abdb58140ce79f8bc21fa95fa94b763",
+      "capture_stats": {
+        "packets": 15652,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-3-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "4e9898fd304a573c5137c08f86e30ce87ee6756d0d4353f364b6848c60aad3dc",
+      "bytes_uncompressed": 1189576,
+      "bytes_compressed": 259872
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 3,
+      "source_sha256": "c92b545d677befced5c68628b791dbf579b0a82404accba3b7fbb79e917b60ac",
+      "capture_stats": {
+        "packets": 11,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-3-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "237a4bbb6796e55830488b449f918d509d39939c9c5185e0bffc34144d40f201",
+      "bytes_uncompressed": 860,
+      "bytes_compressed": 292
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 4,
+      "source_sha256": "c274eb8f96a133971769884aa80e820f1a7182e74834f6af0305e0dcbee15628",
+      "capture_stats": {
+        "packets": 14794,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-4-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "4deadc0a3d71a4b9f1be21c78023211094b8a80ff440f88d24096c7380d0bc3f",
+      "bytes_uncompressed": 1124368,
+      "bytes_compressed": 245141
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 4,
+      "source_sha256": "799c61aaf7856af1388172ccd8fd516c8a23f58f41f5269c543702ec5d3f5aea",
+      "capture_stats": {
+        "packets": 2,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-4-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "dc5b8eb6ad355b293efc22500c811b9899f2c78bad6e2f4e0ec496bba8ada0b9",
+      "bytes_uncompressed": 176,
+      "bytes_compressed": 131
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 0,
+      "trial": 2,
+      "source_sha256": "79b85eaed09aeba99084112653558e9e2dd00839d5951009ef08d9a6705f0405",
+      "capture_stats": {
+        "packets": 14307,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-2-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "55825c1fc1d8b9b42110c85607b40b8b716fa3ffbd050c6e7dce3092df0bf81d",
+      "bytes_uncompressed": 1087356,
+      "bytes_compressed": 237442
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 0,
+      "trial": 2,
+      "source_sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "capture_stats": {
+        "packets": 0,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-2-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "bytes_uncompressed": 24,
+      "bytes_compressed": 36
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 5,
+      "source_sha256": "cd48bc6f202eaac98015025df9e07512f4a60c6b4a3d8124e1e3bc20a0f5dfc4",
+      "capture_stats": {
+        "packets": 14972,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-5-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "b295c15b763bbdf972bb9cec85d99b60c828da1e07666fc01acc5eed392d8cf2",
+      "bytes_uncompressed": 1137896,
+      "bytes_compressed": 249040
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 5,
+      "source_sha256": "f0379d5d9a4224718e67abcc24a3ad937f15d35f89648d3e71731a78b4b5dc29",
+      "capture_stats": {
+        "packets": 1,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-5-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "fd3abf10790ff4dd7a9177ee18fe5d4a6e9dfea7c1d41fb3e9dfc12dbee9bc14",
+      "bytes_uncompressed": 100,
+      "bytes_compressed": 101
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 6,
+      "source_sha256": "dc268ea6ab9cfba002e7a7e61ea10001489cde591bbe97c9579997cae91fc9b8",
+      "capture_stats": {
+        "packets": 12178,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-6-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "9f04274ef2439742fddae0dd6e3ab211787fe0ede1883fcc0475b66fa0d71283",
+      "bytes_uncompressed": 925552,
+      "bytes_compressed": 202597
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 6,
+      "source_sha256": "b8dd60a2ccb96d4b708b44778ecf6d4a4dd2f5630f0c1a387aed517d9442c71d",
+      "capture_stats": {
+        "packets": 1,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-6-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "4ecf6b161bf4f40db6fd4e736e1a003a2f92134e444a0f5e8f3215b9ca4c681c",
+      "bytes_uncompressed": 100,
+      "bytes_compressed": 101
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 0,
+      "trial": 3,
+      "source_sha256": "433c2988e0de0c4dec19fa9d89aafd22fc10da4ccf0feca661d4bc3a1dfe2c75",
+      "capture_stats": {
+        "packets": 11915,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-3-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "6b4195aafe2b6c6f4c24500215fd4544afd9fb46e05d80bef01e110c875d0ef1",
+      "bytes_uncompressed": 905564,
+      "bytes_compressed": 198403
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 0,
+      "trial": 3,
+      "source_sha256": "fa6e0a3982537a0462cca596134a07a45d8d583324244decfb677d35d48be8f7",
+      "capture_stats": {
+        "packets": 2,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-3-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "2406339737aaad03d786d8242b762cc374f4012586539530f7732e397e55b369",
+      "bytes_uncompressed": 176,
+      "bytes_compressed": 132
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 7,
+      "source_sha256": "71762563351ebd9f51f6d1d9fb22ae11667a86d8648ddc5382f62c8f6fda76dc",
+      "capture_stats": {
+        "packets": 11266,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-7-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "09c1e35eedcfd9b987c80744d0470be5b8eaadf31e82dbcd1ae38b75f468afba",
+      "bytes_uncompressed": 856240,
+      "bytes_compressed": 186773
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 7,
+      "source_sha256": "c8a0cd0595f6eb57f8e581d9d0d32f1bb3b3ba39433d21145b9aa681b7941e11",
+      "capture_stats": {
+        "packets": 5,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-7-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "6c74ca75e3f4c3155d6e42ec774a51e1db9646d06b5b184392651213cb70e73f",
+      "bytes_uncompressed": 404,
+      "bytes_compressed": 225
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 30,
+      "trial": 8,
+      "source_sha256": "d17848ee906bd17168de71d60432278503ce4cacd447aa6f985d5b6e25722c3c",
+      "capture_stats": {
+        "packets": 16082,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-8-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "88289d33caea156e09ead5584f80cf3a0d9dd5f31714e81ce1c6bf664da56f45",
+      "bytes_uncompressed": 1222256,
+      "bytes_compressed": 267052
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 30,
+      "trial": 8,
+      "source_sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "capture_stats": {
+        "packets": 0,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-30-8-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "bytes_uncompressed": 24,
+      "bytes_compressed": 36
+    },
+    {
+      "node": "devops-notes-control-plane",
+      "grace_seconds": 0,
+      "trial": 4,
+      "source_sha256": "92aab5ee0fb61f5f99ff2fe57327db1bf70755a7e12648d9e1f7a8faabf27fed",
+      "capture_stats": {
+        "packets": 13780,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-4-devops-notes-control-plane.pcap.gz",
+      "sha256_gzip": "89562285aa8d399c8995c0bd3246ca83a3231747d42dc16aea5bd02c6f18fcb7",
+      "bytes_uncompressed": 1047304,
+      "bytes_compressed": 228232
+    },
+    {
+      "node": "devops-notes-worker",
+      "grace_seconds": 0,
+      "trial": 4,
+      "source_sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "capture_stats": {
+        "packets": 0,
+        "dropped_by_capture_kernel": 0,
+        "exit_code": 0,
+        "snaplen": 60,
+        "datalink": "LINUX_SLL2",
+        "tcpdump_version": "tcpdump version 4.99.6"
+      },
+      "path": "evidence/pod-replacement/local-packets/removal-0-4-devops-notes-worker.pcap.gz",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "bytes_uncompressed": 24,
+      "bytes_compressed": 36
+    }
+  ],
+  "errors": [],
+  "complete": true
+}

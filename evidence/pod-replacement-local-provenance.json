@@ -1,0 +1,14 @@
+{
+  "connection-window": {
+    "original_sha256": "bc31b53e9346c6e96c6ef2b773eec2eff657741d07f056b9e6a0bce126ff7acf"
+  },
+  "packet-archive": {
+    "original_sha256": "fc993ac4bfd8cf583be6212c31123ef2abad4e4ddec2617e22de67c8e993b6ab"
+  },
+  "reset-origins": {
+    "original_sha256": "6644757d8fec50f77ff899809a10464c03d6dee63035fb7f876afa3dfa809f65"
+  },
+  "verification": {
+    "original_sha256": "9910aa2d97ff8fe7cbdfa2704000f8700adc683016431ce74dbd4bf470e2499a"
+  }
+}

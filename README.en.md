@@ -96,7 +96,7 @@ The [kernel-backed investigation](docs/rst-origin.en.md) identified the API Pods
 
 ## The Pod replacement check
 
-The [replacement-check investigation](docs/pod-replacement.en.md) reproduces a race between two Kubernetes reads and fixes it by observing readiness and identity together. The control uses a real Chaos Mesh removal; results and the earlier failed CI remain available.
+The [replacement-check investigation](docs/pod-replacement.en.md) reproduces a race between two Kubernetes reads and fixes it by observing readiness and identity together. The control uses a real Chaos Mesh removal; results and the earlier failed CI remain available. The fix passed 116 local checks and 123 checks in each of two CI runs. Remaining HTTP failures and timeouts are documented.
 
 ## Results and limits
 

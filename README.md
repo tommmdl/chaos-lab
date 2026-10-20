@@ -94,7 +94,7 @@ A [investigação com o kernel](docs/rst-origin.md) identificou a origem dos RST
 
 ## A checagem de substituição de Pod
 
-A [investigação da checagem](docs/pod-replacement.md) reproduz uma corrida entre duas leituras do Kubernetes e mostra a correção com uma única observação de prontidão e identidade. O controle usa uma remoção real com Chaos Mesh; os resultados e o CI anterior que falhou continuam disponíveis.
+A [investigação da checagem](docs/pod-replacement.md) reproduz uma corrida entre duas leituras do Kubernetes e mostra a correção com uma única observação de prontidão e identidade. O controle usa uma remoção real com Chaos Mesh; os resultados e o CI anterior que falhou continuam disponíveis. A correção passou em 116 verificações locais e 123 em cada um de dois runs do CI. As falhas HTTP e os timeouts restantes estão documentados.
 
 ## Resultados e limites
 

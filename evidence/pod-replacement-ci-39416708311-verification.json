@@ -1,0 +1,392 @@
+{
+  "started_utc": "2026-10-20T11:42:41.271570+00:00",
+  "checks": [
+    {
+      "name": "Kernel has the netem module required for latency injection",
+      "passed": true
+    },
+    {
+      "name": "No pre-existing podchaos experiment is replaced",
+      "passed": true
+    },
+    {
+      "name": "No pre-existing networkchaos experiment is replaced",
+      "passed": true
+    },
+    {
+      "name": "Two API replicas, PostgreSQL and both probes are healthy",
+      "passed": true
+    },
+    {
+      "name": "prometheus is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "blackbox is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "alertmanager is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "receiver is available in the observation namespace",
+      "passed": true
+    },
+    {
+      "name": "Mounted Prometheus rules and Alertmanager configuration validate",
+      "passed": true
+    },
+    {
+      "name": "Controller may delete target Pods but not Pods in notes-lab",
+      "passed": true
+    },
+    {
+      "name": "Namespace filtering is enabled in the actual controller",
+      "passed": true
+    },
+    {
+      "name": "Runner rejects a selector outside the lab before applying it",
+      "passed": true
+    },
+    {
+      "name": "Database DNS resolves through a headless service for Pod-targeted faults",
+      "passed": true
+    },
+    {
+      "name": "A real API write is acknowledged before faults",
+      "passed": true
+    },
+    {
+      "name": "Readiness latency starts below the alert threshold",
+      "passed": true
+    },
+    {
+      "name": "Chaos Mesh removes an API Pod and Kubernetes replaces it",
+      "passed": true
+    },
+    {
+      "name": "API service serves successful requests during the replica experiment",
+      "passed": true,
+      "detail": {
+        "sample_statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ],
+        "failed_samples": 0
+      }
+    },
+    {
+      "name": "Replica loss does not produce a sustained API outage alert",
+      "passed": true
+    },
+    {
+      "name": "API Pod replacement preserves all database rows",
+      "passed": true
+    },
+    {
+      "name": "Injected delay makes readiness slow while both probes still succeed",
+      "passed": true,
+      "detail": {
+        "readyz_seconds": 0.826050598
+      }
+    },
+    {
+      "name": "ChaosApiSlow: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiSlow: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiSlow: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Deleting the delay experiment restores latency and preserves rows",
+      "passed": true
+    },
+    {
+      "name": "Partition leaves liveness healthy and breaks database readiness",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "Duration expiry recovers the link without deleting the experiment",
+      "passed": true
+    },
+    {
+      "name": "ChaosDatabaseUnavailable: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Automatic network recovery preserves every row",
+      "passed": true
+    },
+    {
+      "name": "Pod failure makes both real HTTP probes fail",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: Prometheus fires from actual probe metrics",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: Alertmanager delivers a firing webhook",
+      "passed": true
+    },
+    {
+      "name": "ChaosApiUnavailable: resolved webhook matches the firing fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Recovery restores the original pinned API image in every Pod",
+      "passed": true
+    },
+    {
+      "name": "Complete API outage preserves all rows and timestamps",
+      "passed": true
+    },
+    {
+      "name": "Chaos Mesh kills PostgreSQL and Kubernetes creates a new Pod",
+      "passed": true
+    },
+    {
+      "name": "Database returns on the same PVC without losing committed data",
+      "passed": true
+    },
+    {
+      "name": "Recovered database accepts a new API write with a fresh ID",
+      "passed": true
+    },
+    {
+      "name": "Original marker remains visible through the recovered API",
+      "passed": true
+    },
+    {
+      "name": "Firing and resolved webhooks survive a receiver Pod replacement",
+      "passed": true
+    },
+    {
+      "name": "No active alerts remain after recovery",
+      "passed": true
+    },
+    {
+      "name": "Existing labs keep their workload specs, images and PVC identities",
+      "passed": true
+    }
+  ],
+  "experiments": [
+    {
+      "name": "01-api-pod-kill",
+      "sample_statuses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "data_equal": true
+    },
+    {
+      "name": "02-database-delay",
+      "readyz_seconds": 0.826050598,
+      "recovery": "delete through normal finalizers",
+      "data_equal": true
+    },
+    {
+      "name": "03-database-partition",
+      "duration": "60s",
+      "seconds_until_recovery_checked": 65.79,
+      "recovery": "automatic duration expiry; object still present",
+      "data_equal": true
+    },
+    {
+      "name": "04-api-failure",
+      "recovery": "delete through normal finalizers",
+      "data_equal": true
+    },
+    {
+      "name": "05-database-pod-kill",
+      "pvc_uid": "1dff97da-3c7a-4c96-bb44-76364bf569dd",
+      "data_equal": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "received_at": "2026-10-20T11:43:14Z",
+      "status": "firing",
+      "name": "ChaosApiSlow",
+      "fingerprint": "a05606dfd165c416",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiSlow",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 2,
+      "received_at": "2026-10-20T11:43:20Z",
+      "status": "resolved",
+      "name": "ChaosApiSlow",
+      "fingerprint": "a05606dfd165c416",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiSlow",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 3,
+      "received_at": "2026-10-20T11:43:41Z",
+      "status": "firing",
+      "name": "ChaosDatabaseUnavailable",
+      "fingerprint": "0e10ff22f8b6ca8a",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosDatabaseUnavailable",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 4,
+      "received_at": "2026-10-20T11:44:26Z",
+      "status": "resolved",
+      "name": "ChaosDatabaseUnavailable",
+      "fingerprint": "0e10ff22f8b6ca8a",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosDatabaseUnavailable",
+        "endpoint": "readyz",
+        "instance": "http://api-probes.chaos-demo.svc.cluster.local:8000/readyz",
+        "job": "chaos-http",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "warning"
+      }
+    },
+    {
+      "id": 5,
+      "received_at": "2026-10-20T11:44:50Z",
+      "status": "firing",
+      "name": "ChaosApiUnavailable",
+      "fingerprint": "97f2e38f48c04258",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiUnavailable",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "critical"
+      }
+    },
+    {
+      "id": 6,
+      "received_at": "2026-10-20T11:45:05Z",
+      "status": "resolved",
+      "name": "ChaosApiUnavailable",
+      "fingerprint": "97f2e38f48c04258",
+      "receiver": "chaos-local",
+      "labels": {
+        "alertname": "ChaosApiUnavailable",
+        "lab": "chaos-lab",
+        "service": "chaos-notes",
+        "severity": "critical"
+      }
+    }
+  ],
+  "images": {
+    "api": {
+      "image": "ghcr.io/tommmdl/docker-lab@sha256:ae2e93fdbab7bc912897e6524b3e17b982e97cfb29bcb4fc36d9c014d615eb91"
+    },
+    "postgres": {
+      "image": "ghcr.io/tommmdl/docker-lab@sha256:8b6813ec76804698c33e4dac8f501ca8f641affcbd27cbc3b7dd6fdb02874fc3"
+    },
+    "prometheus": {
+      "image": "prom/prometheus@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e"
+    },
+    "blackbox": {
+      "image": "prom/blackbox-exporter@sha256:9613f2884689b6fad9f1939f6a3b0388c93a022cfaededb19545b329b5c83dea"
+    },
+    "alertmanager": {
+      "image": "prom/alertmanager@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a"
+    },
+    "receiver": {
+      "image": "python:3.13.16-alpine3.24@sha256:2d9aefe2fef018a7eb2c13064c89c71929800fd2e5dccdbf52ea5da5bb8d929a"
+    },
+    "controller": {
+      "version": "2.8.4",
+      "image": "ghcr.io/chaos-mesh/chaos-mesh:v2.8.4@sha256:e21637dc1abce1490e8dc74659a0392670f82e87c05a6a75b588e73706748eaf"
+    },
+    "daemon": {
+      "version": "2.8.4",
+      "image": "ghcr.io/chaos-mesh/chaos-daemon:v2.8.4@sha256:272721c0b0d5da596f2a3163c51e53cb76dfb3e1feb69faa95e86ce5aec110f8"
+    },
+    "pause": {
+      "image": "registry.k8s.io/pause:3.10.1@sha256:e5b941ef8f71de54dc3a13398226c269ba217d06650a21bd3afcf9d890cf1f41"
+    }
+  },
+  "final": {
+    "api_replicas": 2,
+    "postgres_replicas": 1,
+    "all_api_pods_ready": true,
+    "postgres_pod_ready": true,
+    "rows": 2,
+    "pvc_uid": "1dff97da-3c7a-4c96-bb44-76364bf569dd",
+    "row_sha256": "e8b045b02e3594068e2b4642e45cd718a71bf1bb87e681d65e67073892702abf",
+    "healthz_probe": 1.0,
+    "readyz_probe": 1.0,
+    "active_alerts": 0
+  },
+  "passed": true,
+  "cleanup_errors": [],
+  "duration_seconds": 193.81
+}

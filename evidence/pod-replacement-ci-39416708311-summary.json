@@ -1,0 +1,370 @@
+{
+  "run": 39416708311,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39416708311",
+  "commit": "4bd2eb759738cd021e3914e694e965cc9514108c",
+  "conclusion": "success",
+  "started_at": "2026-10-20T11:41:08Z",
+  "completed_at": "2026-10-20T11:51:46Z",
+  "reports": {
+    "verification": {
+      "passed": true,
+      "checks": 43,
+      "failed_checks": [],
+      "duration_seconds": 193.81
+    },
+    "access-policy": {
+      "passed": true,
+      "checks": 4,
+      "failed_checks": [],
+      "duration_seconds": null
+    },
+    "pod-replacement": {
+      "passed": true,
+      "checks": 8,
+      "failed_checks": [],
+      "duration_seconds": 7.88
+    },
+    "connection-window": {
+      "passed": true,
+      "checks": 42,
+      "failed_checks": [],
+      "duration_seconds": 139.71
+    },
+    "resilience": {
+      "passed": true,
+      "checks": 23,
+      "failed_checks": [],
+      "duration_seconds": 181.26
+    },
+    "syn-budget": {
+      "passed": true,
+      "checks": 3,
+      "failed_checks": [],
+      "duration_seconds": null
+    }
+  },
+  "checks_recorded": 123,
+  "checks_failed": [],
+  "resilience_trials": 16,
+  "resilience_replacements_confirmed": 16,
+  "tcp_trials": 12,
+  "tcp_replacements_confirmed": 12,
+  "regression": {
+    "first_read_ready": true,
+    "second_read_uids": [
+      "39a88cac-052f-430c-8a96-cdf83bc05e37",
+      "5b3d833b-08b4-4f9b-8a5d-d9d0916d1964",
+      "c1836d80-b074-4c19-a30b-32c6a4e8e100"
+    ],
+    "old_predicate_result": true,
+    "coherent_observation": {
+      "time": 1792496760.8298092,
+      "resource_version": "",
+      "pods": [
+        {
+          "name": "api-5459756fdf-9xfkp",
+          "uid": "39a88cac-052f-430c-8a96-cdf83bc05e37",
+          "resource_version": "1808",
+          "deletion_timestamp": "2026-10-20T11:46:30Z",
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        },
+        {
+          "name": "api-5459756fdf-fqstb",
+          "uid": "c1836d80-b074-4c19-a30b-32c6a4e8e100",
+          "resource_version": "1668",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        },
+        {
+          "name": "api-5459756fdf-v2687",
+          "uid": "5b3d833b-08b4-4f9b-8a5d-d9d0916d1964",
+          "resource_version": "1813",
+          "deletion_timestamp": null,
+          "phase": "Pending",
+          "ready": false,
+          "containers_running_ready": false
+        }
+      ],
+      "experiment_uid": "6a86ccc1-5d34-4b35-b671-40bc1f0fb7d6",
+      "records": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-20T11:46:00Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-5459756fdf-9xfkp",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        }
+      ],
+      "target_uids": [
+        "39a88cac-052f-430c-8a96-cdf83bc05e37"
+      ],
+      "replacement_complete": false
+    },
+    "new_predicate_result": false
+  },
+  "resilience_summary": [
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1222,
+      "failures": 5,
+      "failure_rate": 0.004091653027823241,
+      "attempts": 1222,
+      "transport_failures": 5
+    },
+    {
+      "drain": false,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1213,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1218,
+      "transport_failures": 5
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 839,
+      "failures": 29,
+      "failure_rate": 0.03456495828367104,
+      "attempts": 839,
+      "transport_failures": 29
+    },
+    {
+      "drain": false,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1157,
+      "failures": 4,
+      "failure_rate": 0.003457216940363008,
+      "attempts": 1180,
+      "transport_failures": 27
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "raw",
+      "requests": 1280,
+      "failures": 2,
+      "failure_rate": 0.0015625,
+      "attempts": 1280,
+      "transport_failures": 2
+    },
+    {
+      "drain": true,
+      "grace_seconds": 0,
+      "lane": "get_retry",
+      "requests": 1279,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1281,
+      "transport_failures": 2
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "raw",
+      "requests": 1505,
+      "failures": 1,
+      "failure_rate": 0.000664451827242525,
+      "attempts": 1505,
+      "transport_failures": 1
+    },
+    {
+      "drain": true,
+      "grace_seconds": 30,
+      "lane": "get_retry",
+      "requests": 1519,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "attempts": 1520,
+      "transport_failures": 1
+    }
+  ],
+  "tcp_summary": [
+    {
+      "grace_seconds": 30,
+      "lane": "direct",
+      "requests": 3288,
+      "failures": 0,
+      "attempts": 3288,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "previous",
+      "requests": 3287,
+      "failures": 0,
+      "attempts": 3287,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "short_connect",
+      "requests": 3283,
+      "failures": 0,
+      "attempts": 3283,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "direct",
+      "requests": 1430,
+      "failures": 0,
+      "attempts": 1430,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "previous",
+      "requests": 1429,
+      "failures": 0,
+      "attempts": 1429,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "short_connect",
+      "requests": 1427,
+      "failures": 0,
+      "attempts": 1427,
+      "transport_failures": 0
+    }
+  ],
+  "captures": 12,
+  "capture_frames": 164210,
+  "capture_drops": 0,
+  "archive_complete": true,
+  "rst_analysis": {
+    "analysis_integrity_passed": true,
+    "nodeport_rst_observations": 0,
+    "classifications": {},
+    "unresolved_observations": 0,
+    "all_observed_resets_attributed": null
+  },
+  "final_runner_state": {
+    "chaos-demo": "NAME                            READY   STATUS    RESTARTS   AGE\npod/api-5459756fdf-gfhx2        1/1     Running   0          21s\npod/api-5459756fdf-hm9mh        1/1     Running   0          31s\npod/postgres-7f8555b8c4-mwgtz   1/1     Running   0          6m33s\n\nNAME                                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE\npersistentvolumeclaim/postgres-data   Bound    pvc-1dff97da-3c7a-4c96-bb44-76364bf569dd   1Gi        RWO            standard       <unset>                 9m25s\n\nNAME                       READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/api        2/2     2            2           9m10s\ndeployment.apps/postgres   1/1     1            1           9m25s\n",
+    "chaos-observe": "NAME                                READY   STATUS    RESTARTS   AGE\npod/alertmanager-7847c6d854-56fx8   1/1     Running   0          9m8s\npod/blackbox-d4fb75554-j8958        1/1     Running   0          9m9s\npod/prometheus-7796d549c4-j524l     1/1     Running   0          9m9s\npod/receiver-d9c449889-v24qg        1/1     Running   0          6m16s\n\nNAME                                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE\npersistentvolumeclaim/alertmanager-data   Bound    pvc-695e0aa4-3abd-43cc-9894-b0c9919471e3   256Mi      RWO            standard       <unset>                 9m9s\npersistentvolumeclaim/prometheus-data     Bound    pvc-45dc8000-aae8-4e80-a79e-867125efde0b   1Gi        RWO            standard       <unset>                 9m10s\npersistentvolumeclaim/receiver-data       Bound    pvc-5e725829-b9f6-49ac-8f3a-6061b9adcc29   128Mi      RWO            standard       <unset>                 9m9s\n\nNAME                           READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/alertmanager   1/1     1            1           9m8s\ndeployment.apps/blackbox       1/1     1            1           9m9s\ndeployment.apps/prometheus     1/1     1            1           9m9s\ndeployment.apps/receiver       1/1     1            1           9m8s\n",
+    "chaos-system": "NAME                                            READY   STATUS    RESTARTS   AGE\npod/chaos-controller-manager-6fdf76fb4d-7rb98   1/1     Running   0          9m31s\npod/chaos-daemon-mvgkm                          1/1     Running   0          9m31s\n\nNAME                                       READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/chaos-controller-manager   1/1     1            1           9m31s\n\nNAME                          DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE\ndaemonset.apps/chaos-daemon   1         1         1       1            1           <none>          9m31s\n"
+  },
+  "job_steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Prepara um cluster descart\u00e1vel com suporte a netem",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Instala Chaos Mesh, aplica\u00e7\u00e3o e alertas isolados",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Executa os experimentos reais e confere a recupera\u00e7\u00e3o",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Confere os limites das tentativas com falhas reais de HTTP",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Reproduz a corrida entre leituras e confere a substitui\u00e7\u00e3o real",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Investiga fases TCP nas remo\u00e7\u00f5es e compara os dois acessos",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Compara remo\u00e7\u00e3o abrupta, encerramento e GET com tentativas limitadas",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Mede o or\u00e7amento de conex\u00e3o com descarte real de SYN",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Preserva PCAPs sem payload e confere seus hashes",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Correlaciona todos os RST, incluindo leituras recuperadas",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Guarda diagn\u00f3stico sem Secrets",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Remove apenas o cluster criado no runner",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success",
+      "started_at": null,
+      "completed_at": null
+    }
+  ],
+  "interpretation": "A passing replacement assertion requires a coherent ready PodList and disappearance of the actual Chaos Mesh target. Passing recovery checks does not mean every HTTP request succeeded; all samples and recovered transport failures are retained.",
+  "offline_reproduction_matches_runner": true
+}
