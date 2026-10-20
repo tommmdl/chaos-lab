@@ -90,7 +90,7 @@ A [continuação da investigação](docs/connection-timeout.md) separa estabelec
 
 ## De onde vêm os RST
 
-A [investigação com o kernel](docs/rst-origin.md) identificou a origem de três RST reproduzidos no CI: a pilha TCP do Pod da API. Um ocorreu quando um processo Gunicorn fechou o listener com uma conexão pendente de aceitação; dois vieram de SYNs sem socket válido após esse fechamento. Cruzei os pacotes antes/depois da NAT com o veth do Pod, o tuple e o stack do kernel. A suíte passou em 115 verificações; as falhas recuperadas e a regressão com erros permanecem no relatório. A causa do timeout histórico de seis segundos continua aberta.
+A [investigação com o kernel](docs/rst-origin.md) identificou a origem dos RST reproduzidos: a pilha TCP dos Pods da API. A análise automática final atribuiu 15 pacotes: três no fechamento do listener em contexto Gunicorn e 12 por `NO_SOCKET`, com correspondência antes/depois da NAT, no veth e no stack do kernel. A coleta passou em 42 verificações, mas o workflow final falhou numa checagem posterior de substituição de Pod. Essa falha, o primeiro run com 115 verificações aprovadas e as falhas recuperadas continuam publicados. O timeout histórico de seis segundos permanece sem causa confirmada.
 
 ## Resultados e limites
 

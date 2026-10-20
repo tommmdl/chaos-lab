@@ -80,6 +80,23 @@ Também ficaram preservados os relatórios de [resiliência](../evidence/rst-ori
 
 O [run 39413310742](https://github.com/tommmdl/chaos-lab/actions/runs/39413310742) parou antes de criar o cluster: a checagem do arquivo do tracepoint não usava `sudo` e interpretou falta de acesso como ausência do tracefs. A tentativa de montagem retornou “already mounted” e código 32. Corrigi a checagem para usar o mesmo privilégio do coletor e evitar remontar um mountpoint existente. Também movi a limpeza dos relatórios para antes dos pré-requisitos: o artefato dessa execução continha arquivos históricos do checkout, que não foram contados como testes desta rodada. [Registro da falha e correção](../evidence/rst-origin-ci-setup-failure.json). A coleta anterior e seus três RST permanecem intactos.
 
+## Resultado final com a análise automática no workflow
+
+O [run 39413620240](https://github.com/tommmdl/chaos-lab/actions/runs/39413620240) validou a correção de acesso ao tracefs. A coleta passou nas **42 verificações em 134,03 s**, e as etapas de arquivamento e análise automática também passaram. Os 12 PCAPs contêm 163.957 frames, zero drops de captura e nenhum payload HTTP. Nenhuma instância do tracefs usada pelo coletor ficou aberta. Reexecutar a análise dos arquivos baixados produziu o mesmo JSON do runner.
+
+| Remoção no comparador final | Falhas / direto | Falhas / TCP 3 s | Falhas / TCP 500 ms | Falhas internas recuperadas, 3 s / 500 ms |
+| --- | --- | --- | --- | --- |
+| 30 s, oito rodadas | 0 / 3.274 | 0 / 3.272 | 0 / 3.270 | 0 / 0 |
+| Zero, quatro controles | 5 / 1.307 | 0 / 1.306 | 0 / 1.307 | 6 / 4 |
+
+A análise atribuiu **15 RST da NodePort** à pilha TCP dos Pods da API: **três** no fechamento do listener em contexto Gunicorn, pelo mesmo caminho `inet_csk_listen_stop → inet_child_forget → tcp_disconnect → tcp_send_active_reset`, com motivo `TCP_STATE`; **12** por `NO_SOCKET`, em `tcp_v4_send_reset`. Todos tiveram correspondência no veth, nos campos do pacote e no evento do kernel; nenhuma observação ficou sem atribuição. Entre as cinco falhas diretas, uma correspondeu ao fechamento do listener e quatro a `NO_SOCKET`. As demais observações estão preservadas junto das falhas internas recuperadas, sem inventar um vínculo por ID de requisição do proxy.
+
+**O workflow completo terminou com falha.** A matriz de resiliência executada depois da coleta parou na asserção `Pod replacement completes: drain=True, grace=30, trial=3`. Foram registradas 106 verificações, 105 aprovadas e uma reprovada; o teste de descarte de SYN posterior foi pulado. A coleta e a análise dos RST não foram reclassificadas como falha, nem o workflow inteiro como aprovado. O relatório dessa matriz não guarda os dois snapshots de UIDs usados pela asserção no instante da falha, então não fechei a causa dessa reprovação. O snapshot final mostra duas APIs prontas, PostgreSQL pronto e PVC Bound. O rastreamento já havia terminado; não atribuí essa reprovação a um RST capturado em outro intervalo.
+
+[Resumo do run final, etapas e falha](../evidence/rst-origin-final-ci-summary.json) · [coleta completa](../evidence/rst-origin-final-ci.json) · [análise automática dos 15 RST](../evidence/rst-origin-final-ci-flows.json) · [matriz interrompida](../evidence/rst-origin-final-ci-resilience.json) · [índice das capturas](../evidence/rst-origin-final-ci-archive.json) · [PCAPs finais](../evidence/rst-origin/ci-39413620240-packets)
+
+As duas coletas de kernel e seus resultados diferentes continuam disponíveis: a primeira atribuiu três RST, a segunda atribuiu 15. A origem demonstrada é a mesma, sem uma medição de redução de falhas. A suíte de 115 verificações aprovada no primeiro run, a falha de preparo e o workflow final reprovado permanecem registrados separadamente.
+
 ## Reproduzir e conferir
 
 O runner usa Linux, Docker, `tcpdump` e tracefs com `tcp:tcp_send_reset` e stacks habilitados no kernel. A instalação do CI confere esse suporte antes de criar o cluster. Localmente, o cluster deve estar pronto e sem experimentos ativos:

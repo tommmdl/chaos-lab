@@ -92,7 +92,7 @@ The [follow-up investigation](docs/connection-timeout.en.md) separates TCP estab
 
 ## Where the RSTs originate
 
-The [kernel-backed investigation](docs/rst-origin.en.md) attributed three reproduced CI resets to the API Pod's TCP stack. One occurred when Gunicorn closed its listener with a connection still awaiting acceptance; two answered SYNs without a valid socket after listener closure. Packets before/after NAT were matched to the Pod veth, backend tuple and kernel stack. The suite passed 115 checks; recovered failures and regression errors remain in the report. The historical six-second timeout remains unexplained.
+The [kernel-backed investigation](docs/rst-origin.en.md) identified the API Pods' TCP stacks as the origin of reproduced resets. Final automated analysis attributed 15 packets: three during listener shutdown in Gunicorn context and 12 with `NO_SOCKET`, matched across NAT, the Pod veth and kernel stack. Collection passed 42 checks, but the final workflow failed a later Pod-replacement assertion. That failure, the earlier 115-check success and recovered errors remain published. The historical six-second timeout remains unexplained.
 
 ## Results and limits
 

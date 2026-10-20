@@ -80,6 +80,23 @@ Reports for [resilience](../evidence/rst-origin-ci-resilience.json), [alerts/rec
 
 [Run 39413310742](https://github.com/tommmdl/chaos-lab/actions/runs/39413310742) stopped before cluster creation: its tracepoint-file check lacked `sudo` and interpreted denied access as missing tracefs. Mount returned “already mounted” with exit code 32. I changed the check to use collector privileges and avoid mounting an existing mountpoint. Runtime-report cleanup now happens before prerequisites: that failed run's artifact contained historical checkout reports, which were not counted as tests from that execution. [Failure/correction record](../evidence/rst-origin-ci-setup-failure.json). The earlier collection and its three resets remain unchanged.
 
+## Final run with automated analysis inside the workflow
+
+[Run 39413620240](https://github.com/tommmdl/chaos-lab/actions/runs/39413620240) validated the tracefs access correction. Collection passed **42 checks in 134.03 seconds**, and archive/automated-analysis steps passed too. The 12 PCAPs contain 163,957 frames, zero capture drops and no HTTP payload. The collector left no tracefs instance open. Reanalyzing downloaded captures reproduced the runner's JSON exactly.
+
+| Final comparison removal | Failures / direct | Failures / TCP 3 s | Failures / TCP 500 ms | Recovered internal failures, 3 s / 500 ms |
+| --- | --- | --- | --- | --- |
+| 30 s, eight trials | 0 / 3,274 | 0 / 3,272 | 0 / 3,270 | 0 / 0 |
+| Zero, four controls | 5 / 1,307 | 0 / 1,306 | 0 / 1,307 | 6 / 4 |
+
+Analysis attributed **15 NodePort RSTs** to the API Pods' TCP stacks: **three** during listener shutdown in Gunicorn context, through the same `inet_csk_listen_stop → inet_child_forget → tcp_disconnect → tcp_send_active_reset` path with `TCP_STATE`; **12** through `tcp_v4_send_reset` with `NO_SOCKET`. Every observation matched the Pod veth, packet fields and kernel event; none remained unattributed. Of the five direct failures, one matched listener shutdown and four matched `NO_SOCKET`. Other observations are preserved alongside internally recovered errors without inventing proxy request-ID associations.
+
+**The overall workflow failed.** A later resilience matrix stopped at `Pod replacement completes: drain=True, grace=30, trial=3`. It recorded 106 checks, 105 passed and one failed; the subsequent SYN-drop test was skipped. Collection/attribution was not reclassified as a failure, and the entire workflow was not reported as passing. That matrix report does not retain both UID snapshots used by the assertion at its failure instant, so I did not close that assertion's cause. The final snapshot shows two ready API Pods, ready PostgreSQL and a Bound PVC. Tracing had already ended; I did not attribute that failure to a reset captured in another interval.
+
+[Final run summary, steps and failure](../evidence/rst-origin-final-ci-summary.json) · [Full collection](../evidence/rst-origin-final-ci.json) · [Automated 15-RST analysis](../evidence/rst-origin-final-ci-flows.json) · [Interrupted matrix](../evidence/rst-origin-final-ci-resilience.json) · [Capture index](../evidence/rst-origin-final-ci-archive.json) · [Final PCAPs](../evidence/rst-origin/ci-39413620240-packets)
+
+Both kernel collections and their different outcomes remain available: the first attributed three RSTs, the second 15. They demonstrate the same origins without measuring a failure-rate reduction. The first run's 115-check success, the setup failure and the final failed workflow are retained separately.
+
 ## Reproduce and inspect
 
 The runner needs Linux, Docker, `tcpdump`, tracefs, and a kernel exposing `tcp:tcp_send_reset` and stack traces. CI checks support before creating the cluster. Locally, the cluster must be ready with no active experiments:
