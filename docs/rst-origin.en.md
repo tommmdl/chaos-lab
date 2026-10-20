@@ -75,6 +75,11 @@ The later resilience matrix passed 23 recovery/policy checks while retaining req
 
 Reports for [resilience](../evidence/rst-origin-ci-resilience.json), [alerts/recovery](../evidence/rst-origin-ci-verification.json), [HTTP policy](../evidence/rst-origin-ci-access-policy.json) and [real SYN dropping](../evidence/rst-origin-ci-syn-budget.json) are preserved too. Green CI means assertions passed, not that every connection survived injected faults.
 
+
+### Final validation exposed a setup failure
+
+[Run 39413310742](https://github.com/tommmdl/chaos-lab/actions/runs/39413310742) stopped before cluster creation: its tracepoint-file check lacked `sudo` and interpreted denied access as missing tracefs. Mount returned “already mounted” with exit code 32. I changed the check to use collector privileges and avoid mounting an existing mountpoint. Runtime-report cleanup now happens before prerequisites: that failed run's artifact contained historical checkout reports, which were not counted as tests from that execution. [Failure/correction record](../evidence/rst-origin-ci-setup-failure.json). The earlier collection and its three resets remain unchanged.
+
 ## Reproduce and inspect
 
 The runner needs Linux, Docker, `tcpdump`, tracefs, and a kernel exposing `tcp:tcp_send_reset` and stack traces. CI checks support before creating the cluster. Locally, the cluster must be ready with no active experiments:

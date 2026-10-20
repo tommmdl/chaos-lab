@@ -20,15 +20,17 @@ jobs:
           persist-credentials: false
       - name: Prepara um cluster descartável com suporte a netem
         run: |
+          rm -rf .local/packets evidence/connection-packets
+          rm -f evidence/packet-archive.json evidence/reset-origins.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends tcpdump
           tcpdump --version
-          if [ ! -f /sys/kernel/tracing/events/tcp/tcp_send_reset/format ]; then
-            sudo mount -t tracefs tracefs /sys/kernel/tracing
+          if ! sudo test -f /sys/kernel/tracing/events/tcp/tcp_send_reset/format; then
+            if ! sudo mountpoint -q /sys/kernel/tracing; then
+              sudo mount -t tracefs tracefs /sys/kernel/tracing
+            fi
           fi
           sudo test -r /sys/kernel/tracing/events/tcp/tcp_send_reset/format
-          rm -rf .local/packets evidence/connection-packets
-          rm -f evidence/packet-archive.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           python3 scripts/prepare-ci.py
       - name: Instala Chaos Mesh, aplicação e alertas isolados
         run: python3 scripts/lab.py up

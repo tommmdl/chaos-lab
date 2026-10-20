@@ -1,0 +1,82 @@
+{
+  "run": 39413310742,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39413310742",
+  "commit": "84cea48745f118dbbceb9dca69facdac1b3a77db",
+  "conclusion": "failure",
+  "started_at": "2026-10-20T11:12:33Z",
+  "completed_at": "2026-10-20T11:12:56Z",
+  "failed_stage": "Prepare disposable CI cluster",
+  "reason": "The unprivileged file-existence check could not traverse tracefs on this runner. It attempted a mount although tracefs was already mounted; mount exited 32.",
+  "failure_excerpt": "mount: /sys/kernel/tracing: tracefs already mounted on /sys/kernel/tracing.",
+  "application_tests": "not started",
+  "packet_capture": "not started; zero PCAPs from this run",
+  "original_failed_log_sha256": "9618aedb6f726e1f29709d4a02decab448234bf80a6d4600c5dd19dc8ef2429b",
+  "artifact_warning": "Cleanup was after the prerequisite check, so tracked historical verification/resilience/connection-window JSON files were included in the always-uploaded artifact. They are inherited checkout data, not execution results, and are not counted. packet-archive complete=false; reset analysis rejected the old report because it lacked --attribute-resets.",
+  "correction": "Check tracepoint access with sudo; mount only when root cannot find the event and tracefs is not already a mountpoint. Remove canonical runtime outputs before prerequisites, including reset-origins.json.",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success"
+    },
+    {
+      "name": "Prepara um cluster descart\u00e1vel com suporte a netem",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Instala Chaos Mesh, aplica\u00e7\u00e3o e alertas isolados",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Executa os experimentos reais e confere a recupera\u00e7\u00e3o",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Confere os limites das tentativas com falhas reais de HTTP",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Investiga fases TCP nas remo\u00e7\u00f5es e compara os dois acessos",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Compara remo\u00e7\u00e3o abrupta, encerramento e GET com tentativas limitadas",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Mede o or\u00e7amento de conex\u00e3o com descarte real de SYN",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Preserva PCAPs sem payload e confere seus hashes",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Correlaciona todos os RST, incluindo leituras recuperadas",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Guarda diagn\u00f3stico sem Secrets",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+      "conclusion": "success"
+    },
+    {
+      "name": "Remove apenas o cluster criado no runner",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ]
+}

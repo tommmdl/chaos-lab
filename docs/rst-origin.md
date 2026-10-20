@@ -75,6 +75,11 @@ A matriz de resiliência posterior passou em 23 verificações de recuperação 
 
 Também ficaram preservados os relatórios de [resiliência](../evidence/rst-origin-ci-resilience.json), [alertas e recuperação](../evidence/rst-origin-ci-verification.json), [política HTTP](../evidence/rst-origin-ci-access-policy.json) e [descarte real de SYN](../evidence/rst-origin-ci-syn-budget.json). CI verde significa que as asserções passaram, não que toda conexão resistiu às falhas injetadas.
 
+
+### A validação final encontrou uma falha no preparo
+
+O [run 39413310742](https://github.com/tommmdl/chaos-lab/actions/runs/39413310742) parou antes de criar o cluster: a checagem do arquivo do tracepoint não usava `sudo` e interpretou falta de acesso como ausência do tracefs. A tentativa de montagem retornou “already mounted” e código 32. Corrigi a checagem para usar o mesmo privilégio do coletor e evitar remontar um mountpoint existente. Também movi a limpeza dos relatórios para antes dos pré-requisitos: o artefato dessa execução continha arquivos históricos do checkout, que não foram contados como testes desta rodada. [Registro da falha e correção](../evidence/rst-origin-ci-setup-failure.json). A coleta anterior e seus três RST permanecem intactos.
+
 ## Reproduzir e conferir
 
 O runner usa Linux, Docker, `tcpdump` e tracefs com `tcp:tcp_send_reset` e stacks habilitados no kernel. A instalação do CI confere esse suporte antes de criar o cluster. Localmente, o cluster deve estar pronto e sem experimentos ativos:
