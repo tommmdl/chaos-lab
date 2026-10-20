@@ -86,6 +86,10 @@ The investigation now compares abrupt and graceful removal, a draining wait and 
 
 The follow-up passed 70 checks locally and 70 in CI. Graceful removal went from 7/1,592 to 0/1,645 direct failures locally and from 10/1,172 to 1/1,425 in CI: draining did not eliminate every failure.
 
+## The remaining CI timeout
+
+The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. The old timeout did not recur; six direct CI errors during abrupt removals remain recorded by phase. The report distinguishes reproduced behavior from the still-unconfirmed historical cause; earlier reports remain available.
+
 ## Results and limits
 
 All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.

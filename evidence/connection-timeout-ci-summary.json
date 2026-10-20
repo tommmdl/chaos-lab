@@ -1,0 +1,58 @@
+{
+  "started_utc": "2026-10-20T09:57:34.725747+00:00",
+  "passed": true,
+  "final_ready": true,
+  "duration_seconds": 121.13,
+  "summary": [
+    {
+      "grace_seconds": 30,
+      "lane": "direct",
+      "requests": 3346,
+      "failures": 0,
+      "attempts": 3346,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "previous",
+      "requests": 3346,
+      "failures": 0,
+      "attempts": 3346,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "short_connect",
+      "requests": 3343,
+      "failures": 0,
+      "attempts": 3343,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "direct",
+      "requests": 1273,
+      "failures": 6,
+      "attempts": 1273,
+      "transport_failures": 6
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "previous",
+      "requests": 1270,
+      "failures": 0,
+      "attempts": 1274,
+      "transport_failures": 4
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "short_connect",
+      "requests": 1269,
+      "failures": 0,
+      "attempts": 1273,
+      "transport_failures": 4
+    }
+  ],
+  "checks": 17,
+  "removals": 12
+}

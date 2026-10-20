@@ -1,0 +1,37 @@
+{
+  "checked_utc": "2026-10-20T10:02:23.502882+00:00",
+  "applications": [
+    {
+      "port": 8021,
+      "status": 200,
+      "notes": 8
+    },
+    {
+      "port": 8022,
+      "status": 200,
+      "notes": 7
+    },
+    {
+      "port": 8023,
+      "status": 200,
+      "notes": 14
+    },
+    {
+      "port": 8024,
+      "status": 200,
+      "notes": 10
+    }
+  ],
+  "get_connect_timeout_seconds": 0.5,
+  "gateway": {
+    "status": 200,
+    "attempts": "1",
+    "transport_failures": "0"
+  },
+  "remaining_experiments": {
+    "podchaos": 0,
+    "networkchaos": 0
+  },
+  "pvc_uid": "d545431c-ed04-4f89-a7a0-24969aea58e9",
+  "active_conntrack_observers": []
+}

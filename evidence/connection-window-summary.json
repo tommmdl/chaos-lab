@@ -1,0 +1,58 @@
+{
+  "started_utc": "2026-10-20T09:49:13.357378+00:00",
+  "passed": true,
+  "final_ready": true,
+  "duration_seconds": 237.05,
+  "summary": [
+    {
+      "grace_seconds": 30,
+      "lane": "direct",
+      "requests": 5413,
+      "failures": 0,
+      "attempts": 5413,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "previous",
+      "requests": 5369,
+      "failures": 0,
+      "attempts": 5369,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "short_connect",
+      "requests": 5358,
+      "failures": 0,
+      "attempts": 5358,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "direct",
+      "requests": 2505,
+      "failures": 0,
+      "attempts": 2505,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "previous",
+      "requests": 2497,
+      "failures": 0,
+      "attempts": 2497,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "short_connect",
+      "requests": 2492,
+      "failures": 0,
+      "attempts": 2492,
+      "transport_failures": 0
+    }
+  ],
+  "checks": 17,
+  "removals": 12
+}

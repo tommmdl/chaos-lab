@@ -57,3 +57,5 @@ Os NodePorts 30434–30437 servem o acesso na rede local do Docker; o processo d
 ## Conferir as conexões durante a remoção
 
 `python3 tests/resilience.py --rounds 4` compara os dois tipos de remoção, com e sem espera, sob tráfego direto e pelo acesso local. O processo de acesso precisa ser reiniciado após atualizar o código. Em localhost:8024, confira `X-Lab-Upstream-Attempts` e `X-Lab-Transport-Failures`; uma leitura recuperada pode esconder uma falha se você olhar apenas o status final. Os relatórios guardam ambos. POST e DELETE nunca são repetidos automaticamente: confira o banco antes de reenviar uma escrita com resultado incerto. [Diagnóstico, números e limites](connections.md).
+
+O acesso agora distingue abertura TCP e leitura da resposta. Para GET, `get_connect_timeout_seconds` controla a abertura; o limite adotado é 0,5 s. Confira `phase` e `elapsed_ms` no log de falhas internas antes de mudar esse valor. [Análise do timeout no CI e como voltar ao limite anterior](connection-timeout.md).

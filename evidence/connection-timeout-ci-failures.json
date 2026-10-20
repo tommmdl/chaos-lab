@@ -1,0 +1,544 @@
+[
+  {
+    "grace_seconds": 0,
+    "trial": 1,
+    "failed_requests": [
+      {
+        "status": 0,
+        "error_type": "ConnectionResetError",
+        "error": "[Errno 104] Connection reset by peer",
+        "phase": "headers",
+        "started_at": 1792490280.535545,
+        "time": 1792490280.558689,
+        "latency_ms": 23.143,
+        "connect_ms": 0.132,
+        "source": null,
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      }
+    ],
+    "conntrack": [],
+    "termination_observations": [
+      {
+        "time": 1792490279.514705,
+        "kind": "pods",
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-7fqfk",
+        "uid": "1f26ca53-4085-48b2-977e-4cecda9d0fba",
+        "resource_version": "3344",
+        "ip": "10.244.0.39",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:57:59Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:57:09Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490279.5219047,
+        "kind": "pods",
+        "event": "DELETED",
+        "name": "api-5459756fdf-7fqfk",
+        "uid": "1f26ca53-4085-48b2-977e-4cecda9d0fba",
+        "resource_version": "3345",
+        "ip": "10.244.0.39",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:57:59Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:57:09Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:57:09Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490280.5248792,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:00 +0000] [1] [INFO] Handling signal: term"
+      },
+      {
+        "time": 1792490280.5267215,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:00 +0000] [16] [INFO] Worker exiting (pid: 16)"
+      },
+      {
+        "time": 1792490280.527413,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:00 +0000] [15] [INFO] Worker exiting (pid: 15)"
+      },
+      {
+        "time": 1792490280.7268083,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:00 +0000] [1] [INFO] Shutting down: Master"
+      }
+    ]
+  },
+  {
+    "grace_seconds": 0,
+    "trial": 3,
+    "failed_requests": [
+      {
+        "status": 0,
+        "error_type": "ConnectionResetError",
+        "error": "[Errno 104] Connection reset by peer",
+        "phase": "headers",
+        "started_at": 1792490338.4953752,
+        "time": 1792490338.535119,
+        "latency_ms": 39.743,
+        "connect_ms": 0.304,
+        "source": null,
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      },
+      {
+        "status": 0,
+        "error_type": "ConnectionResetError",
+        "error": "[Errno 104] Connection reset by peer",
+        "phase": "headers",
+        "started_at": 1792490338.495434,
+        "time": 1792490338.535307,
+        "latency_ms": 39.873,
+        "connect_ms": 0.327,
+        "source": null,
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      },
+      {
+        "status": 0,
+        "error_type": "ConnectionRefusedError",
+        "error": "[Errno 111] Connection refused",
+        "phase": "connect",
+        "started_at": 1792490338.5454912,
+        "time": 1792490338.5458095,
+        "latency_ms": 0.318,
+        "connect_ms": null,
+        "source": [
+          "172.18.0.1",
+          52144
+        ],
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      },
+      {
+        "status": 0,
+        "error_type": "ConnectionRefusedError",
+        "error": "[Errno 111] Connection refused",
+        "phase": "connect",
+        "started_at": 1792490338.545539,
+        "time": 1792490338.5459683,
+        "latency_ms": 0.429,
+        "connect_ms": null,
+        "source": [
+          "172.18.0.1",
+          52158
+        ],
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      }
+    ],
+    "conntrack": [
+      "[1792490338.545722]\t    [NEW] ipv4     2 tcp      6 120 SYN_SENT src=172.18.0.1 dst=172.18.0.2 sport=52144 dport=30434 [UNREPLIED] src=10.244.0.46 dst=10.244.0.1 sport=8000 dport=52760",
+      "[1792490338.545813]\t    [NEW] ipv4     2 tcp      6 120 SYN_SENT src=172.18.0.1 dst=172.18.0.2 sport=52158 dport=30434 [UNREPLIED] src=10.244.0.46 dst=10.244.0.1 sport=8000 dport=63147",
+      "[1792490338.545830]\t[DESTROY] ipv4     2 tcp      6 120 CLOSE src=172.18.0.1 dst=172.18.0.2 sport=52144 dport=30434 [UNREPLIED] src=10.244.0.46 dst=10.244.0.1 sport=8000 dport=52760",
+      "[1792490338.545846]\t[DESTROY] ipv4     2 tcp      6 120 CLOSE src=172.18.0.1 dst=172.18.0.2 sport=52158 dport=30434 [UNREPLIED] src=10.244.0.46 dst=10.244.0.1 sport=8000 dport=63147"
+    ],
+    "termination_observations": [
+      {
+        "time": 1792490337.4763522,
+        "kind": "pods",
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-9p7r2",
+        "uid": "9869046d-9e49-4c0a-abe0-99efef4b50b0",
+        "resource_version": "3798",
+        "ip": "10.244.0.46",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:58:57Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:58:28Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490337.4903886,
+        "kind": "pods",
+        "event": "DELETED",
+        "name": "api-5459756fdf-9p7r2",
+        "uid": "9869046d-9e49-4c0a-abe0-99efef4b50b0",
+        "resource_version": "3800",
+        "ip": "10.244.0.46",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:58:57Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:58:28Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:58:28Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490338.4797044,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:58 +0000] [1] [INFO] Handling signal: term"
+      },
+      {
+        "time": 1792490338.482968,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:58 +0000] [16] [INFO] Worker exiting (pid: 16)"
+      },
+      {
+        "time": 1792490338.4829822,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:58 +0000] [15] [INFO] Worker exiting (pid: 15)"
+      },
+      {
+        "time": 1792490338.7815166,
+        "kind": "logs",
+        "line": "[2026-10-20 09:58:58 +0000] [1] [INFO] Shutting down: Master"
+      }
+    ]
+  },
+  {
+    "grace_seconds": 0,
+    "trial": 4,
+    "failed_requests": [
+      {
+        "status": 0,
+        "error_type": "ConnectionRefusedError",
+        "error": "[Errno 111] Connection refused",
+        "phase": "connect",
+        "started_at": 1792490369.704717,
+        "time": 1792490369.7049649,
+        "latency_ms": 0.248,
+        "connect_ms": null,
+        "source": [
+          "172.18.0.1",
+          34152
+        ],
+        "attempts": 1,
+        "transport_failures": 1,
+        "lane": "direct"
+      }
+    ],
+    "conntrack": [
+      "[1792490369.705156]\t    [NEW] ipv4     2 tcp      6 120 SYN_SENT src=172.18.0.1 dst=172.18.0.2 sport=34152 dport=30434 [UNREPLIED] src=10.244.0.51 dst=10.244.0.1 sport=8000 dport=63660",
+      "[1792490369.705184]\t[DESTROY] ipv4     2 tcp      6 120 CLOSE src=172.18.0.1 dst=172.18.0.2 sport=34152 dport=30434 [UNREPLIED] src=10.244.0.51 dst=10.244.0.1 sport=8000 dport=63660"
+    ],
+    "termination_observations": [
+      {
+        "time": 1792490368.6497695,
+        "kind": "pods",
+        "event": "MODIFIED",
+        "name": "api-5459756fdf-65zn9",
+        "uid": "1e2ae8d7-c91b-4884-8199-432a727e0383",
+        "resource_version": "4032",
+        "ip": "10.244.0.51",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:59:28Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:59:16Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490368.6553965,
+        "kind": "pods",
+        "event": "DELETED",
+        "name": "api-5459756fdf-65zn9",
+        "uid": "1e2ae8d7-c91b-4884-8199-432a727e0383",
+        "resource_version": "4034",
+        "ip": "10.244.0.51",
+        "phase": "Running",
+        "deletion_timestamp": "2026-10-20T09:59:28Z",
+        "deletion_grace_seconds": 0,
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-20T09:59:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-20T09:59:16Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "time": 1792490369.6594305,
+        "kind": "logs",
+        "line": "[2026-10-20 09:59:29 +0000] [1] [INFO] Handling signal: term"
+      },
+      {
+        "time": 1792490369.6596475,
+        "kind": "logs",
+        "line": "[2026-10-20 09:59:29 +0000] [16] [INFO] Worker exiting (pid: 16)"
+      },
+      {
+        "time": 1792490369.6637583,
+        "kind": "logs",
+        "line": "[2026-10-20 09:59:29 +0000] [15] [INFO] Worker exiting (pid: 15)"
+      },
+      {
+        "time": 1792490369.8763697,
+        "kind": "logs",
+        "line": "[2026-10-20 09:59:29 +0000] [1] [INFO] Shutting down: Master"
+      }
+    ]
+  }
+]

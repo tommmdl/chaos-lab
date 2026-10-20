@@ -1,0 +1,64 @@
+{
+  "local": {
+    "checks": 90,
+    "reports": [
+      {
+        "report": "connection-timeout-verification.json",
+        "checks": 43,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-resilience.json",
+        "checks": 23,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-access-policy.json",
+        "checks": 4,
+        "passed": true
+      },
+      {
+        "report": "syn-budget.json",
+        "checks": 3,
+        "passed": true
+      },
+      {
+        "report": "connection-window.json",
+        "checks": 17,
+        "passed": true
+      }
+    ]
+  },
+  "ci": {
+    "checks": 90,
+    "reports": [
+      {
+        "report": "connection-timeout-ci-verification.json",
+        "checks": 43,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-ci-resilience.json",
+        "checks": 23,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-ci-access-policy.json",
+        "checks": 4,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-ci-syn-budget.json",
+        "checks": 3,
+        "passed": true
+      },
+      {
+        "report": "connection-timeout-ci-connection-window.json",
+        "checks": 17,
+        "passed": true
+      }
+    ]
+  },
+  "ci_run": "https://github.com/tommmdl/chaos-lab/actions/runs/39403569026",
+  "interpretation": "Assertions cover recovery, data and policy; passing does not imply all HTTP samples succeeded. Historical timeout cause remains unconfirmed."
+}

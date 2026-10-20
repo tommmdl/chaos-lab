@@ -84,6 +84,10 @@ O teste espera o alerta aparecer no Prometheus, encontra a mensagem firing na ca
 
 A investigação agora compara remoção abrupta e remoção com prazo, espera de drenagem e novas tentativas apenas para GET. O [relato em português](docs/connections.md) mostra a comparação sob tráfego, os erros que continuaram acontecendo e o teste de POST com resposta perdida. Foram 70 verificações locais e 70 no CI. A remoção com prazo caiu de 7/1.592 para 0/1.645 falhas diretas localmente, e de 10/1.172 para 1/1.425 no CI: ainda houve falha com drenagem. O experimento original com prazo zero e os resultados anteriores continuam disponíveis.
 
+## O timeout que restou no CI
+
+A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. O timeout antigo não se repetiu, e os seis erros diretos nos cortes abruptos do CI ficaram registrados por fase. O relato distingue o que foi reproduzido do que continua sem causa confirmada; os relatórios anteriores permanecem disponíveis.
+
 ## Resultados e limites
 
 Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.

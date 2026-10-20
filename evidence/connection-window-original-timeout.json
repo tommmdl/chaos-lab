@@ -1,0 +1,24 @@
+{
+  "source_run": 39331748715,
+  "source_commit": "7ad5ba5c59763a6ebe835fd2a0bef2eece83c08c",
+  "trial": 4,
+  "failure": {
+    "time": 1792447648.0083766,
+    "status": 0,
+    "latency_ms": 6002.085,
+    "attempts": 1,
+    "transport_failures": 1,
+    "error_type": "TimeoutError",
+    "error": "timed out",
+    "lane": "raw"
+  },
+  "estimated_request_started_at": 1792447642.0062916,
+  "seconds_after_injection_started": 0.704,
+  "term_log_received_at": 1792447646.5941641,
+  "endpoint_not_ready_received_at": 1792447641.630169,
+  "limits": [
+    "Original record has no socket phase or client source port.",
+    "Request start estimated from total latency; event times are receipt times.",
+    "Timeout began before observed Gunicorn TERM; this does not identify the destination backend or prove a kernel/network cause."
+  ]
+}

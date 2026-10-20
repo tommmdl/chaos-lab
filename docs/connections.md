@@ -93,3 +93,7 @@ Para conferir o acesso no navegador, reinicie `python3 scripts/access.py` depois
 Cinco segundos de espera e 20 segundos de encerramento são escolhas deste ambiente. Conexões longas, ingress, balanceadores externos, outra carga e perda de nó precisam de novos testes. Nenhuma dessas medidas garante entrega de uma escrita durante uma interrupção abrupta.
 
 Referências: [término de Pods e endpoints](https://kubernetes.io/docs/tutorials/services/pods-and-endpoint-termination-flow/), [hooks de ciclo de vida](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) e [sinais do Gunicorn](https://gunicorn.org/signals/).
+
+## Continuação do timeout restante
+
+A [investigação da falha no CI](connection-timeout.md) examina o início estimado da requisição, acrescenta fases de conexão e compara um prazo TCP mais curto com descarte real de SYN. Este relatório anterior e suas amostras continuam preservados.

@@ -93,3 +93,7 @@ Restart `python3 scripts/access.py` after updating code to use the new browser a
 The five-second wait and 20-second shutdown window are choices for this environment. Long connections, ingress, external load balancers, different load and node loss require further testing. These measures do not guarantee delivery of a write during abrupt failure.
 
 References: [Pod/endpoint termination](https://kubernetes.io/docs/tutorials/services/pods-and-endpoint-termination-flow/), [container lifecycle hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) and [Gunicorn signals](https://gunicorn.org/signals/).
+
+## Following the remaining timeout
+
+The [CI failure investigation](connection-timeout.en.md) inspects estimated request start, adds connection phases and compares a shorter TCP timeout with actual SYN drops. This earlier report and its samples are retained.

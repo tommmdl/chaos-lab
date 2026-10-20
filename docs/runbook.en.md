@@ -57,3 +57,5 @@ NodePorts 30434–30437 provide access within the local Docker network; the brow
 ## Inspect connections during removal
 
 Original `01-api-pod-kill` uses zero grace and skips the draining hook. Use `06-api-graceful-removal` for a removal with a grace period. `python3 tests/resilience.py --rounds 4` compares both removals, with and without waiting, under direct and local gateway traffic. Restart the access process after updating its code. At localhost:8024, inspect `X-Lab-Upstream-Attempts` and `X-Lab-Transport-Failures`; a recovered read can conceal a failure if you only inspect the final status. Reports retain both. POST and DELETE are never retried automatically: reconcile an uncertain write against the database before resending it. [Diagnosis, measurements and limits](connections.en.md).
+
+Access now distinguishes TCP establishment from response reading. For GET, `get_connect_timeout_seconds` controls establishment; the adopted value is 0.5 s. Inspect `phase` and `elapsed_ms` in transport-failure logs before changing it. [CI timeout analysis and reverting the connection limit](connection-timeout.en.md).
