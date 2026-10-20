@@ -3,7 +3,11 @@
   "pre_stop_sleep_seconds": 5,
   "gunicorn_graceful_timeout_seconds": 20,
   "get_max_attempts": 3,
-  "get_retry_delays_seconds": [0.05, 0.1],
+  "get_retry_delays_seconds": [
+    0.05,
+    0.1
+  ],
   "get_total_budget_seconds": 4,
-  "get_attempt_timeout_seconds": 3
+  "get_attempt_timeout_seconds": 3,
+  "get_connect_timeout_seconds": 0.5
 }

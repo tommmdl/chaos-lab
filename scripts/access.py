@@ -24,7 +24,17 @@ HOST = subprocess.check_output(
 ).strip()
 
 
-def upstream(method, path, data, headers, host, port, get_attempts=None, api=None):
+def upstream(
+    method,
+    path,
+    data,
+    headers,
+    host,
+    port,
+    get_attempts=None,
+    api=None,
+    connect_timeout=None,
+):
     retryable = method == "GET" and (port == 30434 if api is None else api)
     maximum = (
         (POLICY["get_max_attempts"] if get_attempts is None else get_attempts)
@@ -43,15 +53,50 @@ def upstream(method, path, data, headers, host, port, get_attempts=None, api=Non
             if retryable
             else 12
         )
+        phase = "connect"
+        attempt_started = time.monotonic()
         try:
-            connection = http.client.HTTPConnection(host, port, timeout=timeout)
+            dial_timeout = (
+                min(
+                    timeout,
+                    (
+                        POLICY["get_connect_timeout_seconds"]
+                        if connect_timeout is None
+                        else connect_timeout
+                    ),
+                )
+                if retryable
+                else timeout
+            )
+            connection = http.client.HTTPConnection(host, port, timeout=dial_timeout)
+            connection.connect()
+            # Establishment gets a short budget; an established GET keeps its read budget.
+            if retryable:
+                remaining = POLICY["get_total_budget_seconds"] - (
+                    time.monotonic() - started
+                )
+                if remaining <= 0:
+                    raise TimeoutError("GET budget exhausted after connect")
+                connection.sock.settimeout(
+                    min(POLICY["get_attempt_timeout_seconds"], remaining)
+                )
+            phase = "send"
             connection.request(method, path, body=data, headers=headers)
+            phase = "headers"
             response = connection.getresponse()
+            phase = "body"
             body = response.read()
             # An HTTP response, including 4xx/5xx, is returned without another attempt.
             return response.status, response.getheaders(), body, attempt, failures
         except (OSError, http.client.HTTPException) as error:
-            failures.append({"type": type(error).__name__, "message": str(error)[:300]})
+            failures.append(
+                {
+                    "type": type(error).__name__,
+                    "message": str(error)[:300],
+                    "phase": phase,
+                    "elapsed_ms": round((time.monotonic() - attempt_started) * 1000, 3),
+                }
+            )
             if attempt == maximum:
                 break
             delay = POLICY["get_retry_delays_seconds"][attempt - 1]
@@ -79,7 +124,15 @@ def upstream(method, path, data, headers, host, port, get_attempts=None, api=Non
     )
 
 
-def handler(port, host=None, get_attempts=None, observer=None, quiet=False, api=None):
+def handler(
+    port,
+    host=None,
+    get_attempts=None,
+    observer=None,
+    quiet=False,
+    api=None,
+    connect_timeout=None,
+):
     class Proxy(BaseHTTPRequestHandler):
         def request(self):
             data = self.rfile.read(int(self.headers.get("Content-Length", "0")))
@@ -97,6 +150,7 @@ def handler(port, host=None, get_attempts=None, observer=None, quiet=False, api=
                 port,
                 get_attempts,
                 api,
+                connect_timeout,
             )
             if failures and not quiet:
                 print(

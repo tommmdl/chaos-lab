@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
       - name: Prepara um cluster descartável com suporte a netem
         run: |
-          rm -f evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json
+          rm -f evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           python3 scripts/prepare-ci.py
       - name: Instala Chaos Mesh, aplicação e alertas isolados
         run: python3 scripts/lab.py up
@@ -30,6 +30,10 @@ jobs:
         run: python3 tests/access_policy.py
       - name: Compara remoção abrupta, encerramento e GET com tentativas limitadas
         run: python3 tests/resilience.py --rounds 4
+      - name: Mede o orçamento de conexão com descarte real de SYN
+        run: python3 tests/syn_budget.py
+      - name: Investiga fases TCP nas remoções e compara os dois acessos
+        run: python3 tests/connection_window.py --rounds 8
       - name: Guarda diagnóstico sem Secrets
         if: always()
         run: |
@@ -51,6 +55,8 @@ jobs:
             evidence/0*-*.json
             evidence/resilience.json
             evidence/access-policy.json
+            evidence/connection-window.json
+            evidence/syn-budget.json
             .local/status-*.txt
             .local/controller.log
             .local/daemon.log
