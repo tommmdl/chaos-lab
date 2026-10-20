@@ -94,6 +94,10 @@ The [follow-up investigation](docs/connection-timeout.en.md) separates TCP estab
 
 The [kernel-backed investigation](docs/rst-origin.en.md) identified the API Pods' TCP stacks as the origin of reproduced resets. Final automated analysis attributed 15 packets: three during listener shutdown in Gunicorn context and 12 with `NO_SOCKET`, matched across NAT, the Pod veth and kernel stack. Collection passed 42 checks, but the final workflow failed a later Pod-replacement assertion. That failure, the earlier 115-check success and recovered errors remain published. The historical six-second timeout remains unexplained.
 
+## The Pod replacement check
+
+The [replacement-check investigation](docs/pod-replacement.en.md) reproduces a race between two Kubernetes reads and fixes it by observing readiness and identity together. The control uses a real Chaos Mesh removal; results and the earlier failed CI remain available.
+
 ## Results and limits
 
 All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.

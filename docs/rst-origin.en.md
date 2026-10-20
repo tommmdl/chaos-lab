@@ -2,6 +2,8 @@
 
 [Português](rst-origin.md) · [Earlier capture](connection-timeout.en.md) · [Home](../README.en.md)
 
+Follow-up: the [Pod replacement check](pod-replacement.en.md) investigates the later CI failure and records the fix without changing this stage’s results.
+
 The previous capture showed resets using the NodePort address. That identified the packet reaching the client but not its sender before network translation. This stage correlates the same RST on both sides of NAT with the kernel event that sent it. The application, two replicas, draining wait and GET retry limits remain the same.
 
 ## Following each reset

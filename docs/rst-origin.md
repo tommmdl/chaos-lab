@@ -2,6 +2,8 @@
 
 [English](rst-origin.en.md) · [Captura anterior](connection-timeout.md) · [Início](../README.md)
 
+Continuação: a [checagem de substituição de Pod](pod-replacement.md) investiga a falha posterior do CI e registra a correção sem alterar os resultados desta etapa.
+
 A captura anterior mostrava resets com o endereço da NodePort. Isso identificava o pacote que chegou ao cliente, mas não o emissor antes da tradução de rede. Nesta etapa, cruzei o mesmo RST dos dois lados da tradução com o evento do kernel que o enviou. Mantive a aplicação, as duas réplicas, a espera de drenagem e os limites das tentativas de GET.
 
 ## Como acompanhei cada reset

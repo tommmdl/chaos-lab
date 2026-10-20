@@ -7,7 +7,7 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, access, experiment, packets, reset_origin
+import lab, access, experiment, packets, reset_origin, pod_replacement
 import verify as original
 import resilience
 
@@ -80,7 +80,9 @@ def raw_request(host, port):
 def trial(grace, number, servers):
     name = "06-api-graceful-removal" if grace else "01-api-pod-kill"
     initial_pods = original.pods("api")
-    before = {p["metadata"]["uid"] for p in initial_pods}
+    replacement = pod_replacement.Replacement()
+    replacement_evidence = {"grace_seconds": grace, "trial": number, "replacement": replacement.report}
+    REPORT.setdefault("replacement_checks", []).append(replacement_evidence)
     watches = resilience.Watches()
     watches.start(
         [
@@ -172,13 +174,14 @@ def trial(grace, number, servers):
         injected = time.time()
         kind = experiment.apply(name)
         active = True
-        lab.wait(
-            lambda: original.ready_pods("api", 2) and original.uids("api") != before,
-            120,
-        )
+        replacement.wait(kind, name)
         recovered = time.time()
         time.sleep(2)
         resource = lab.obj(lab.APP, kind, name)
+    except Exception as error:
+        replacement_evidence.update(error=str(error), samples=samples,
+                                    timeline=sorted(watches.events, key=lambda e: e["time"]))
+        raise
     finally:
         cleanup_errors = []
         stop.set()
@@ -313,7 +316,7 @@ def trial(grace, number, servers):
                       "rst_origins": dict(Counter(f.get("rst_origin",{}).get("classification") for f in (packet_report or {}).get("flows",[])))}), flush=True)
     check(
         f"Replica recovers after grace={grace}, trial={number}",
-        original.ready_pods("api", 2) and original.uids("api") != before,
+        replacement.confirm(),
     )
 
 

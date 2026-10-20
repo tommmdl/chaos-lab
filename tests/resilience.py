@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, experiment, access
+import lab, experiment, access, pod_replacement
 import verify as original
 
 REPORT = {
@@ -210,7 +210,7 @@ class Watches:
 
 def trial(drain, grace, number, proxy):
     name = "01-api-pod-kill" if grace == 0 else "06-api-graceful-removal"
-    before = original.uids("api")
+    replacement = pod_replacement.Replacement()
     w = Watches()
     w.start(
         [
@@ -263,19 +263,18 @@ def trial(drain, grace, number, proxy):
             t.start()
             workers.append(t)
     active = False
-    record = {}
+    record = {"drain": drain, "chaos_grace_seconds": grace, "trial": number,
+              "replacement": replacement.report, "samples": samples}
+    REPORT["trials"].append(record)
     try:
         time.sleep(1.5)
         injected = time.time()
         kind = experiment.apply(name)
         active = True
-        lab.wait(
-            lambda: original.ready_pods("api", 2) and original.uids("api") != before,
-            120,
-        )
+        replacement.wait(kind, name)
         time.sleep(1.5)
         resource = lab.obj(lab.APP, kind, name)
-        record = {
+        record.update({
             "drain": drain,
             "chaos_grace_seconds": grace,
             "trial": number,
@@ -284,15 +283,26 @@ def trial(drain, grace, number, proxy):
             "records": resource.get("status", {})
             .get("experiment", {})
             .get("containerRecords", []),
-        }
+        })
+    except Exception as error:
+        record["error"] = str(error)
+        raise
     finally:
         stop.set()
         for t in workers:
             t.join(timeout=8)
-        w.close()
-        if active:
-            experiment.remove(name)
-    record.update(samples=samples, timeline=sorted(w.events, key=lambda e: e["time"]))
+        cleanup_errors = []
+        for label, cleanup in [("watch processes", w.close),
+                               ("Chaos Mesh experiment", lambda: experiment.remove(name) if active else None)]:
+            try:
+                cleanup()
+            except Exception as error:
+                cleanup_errors.append(label + ": " + str(error))
+        record["timeline"] = sorted(w.events, key=lambda e: e["time"])
+        if cleanup_errors:
+            record["cleanup_errors"] = cleanup_errors
+            if sys.exc_info()[0] is None:
+                raise RuntimeError("Trial cleanup failed: " + "; ".join(cleanup_errors))
     for lane in ["raw", "get_retry"]:
         chosen = [s for s in samples if s["lane"] == lane]
         failed = [s for s in chosen if s["status"] != 200]
@@ -307,7 +317,6 @@ def trial(drain, grace, number, proxy):
                 latencies[int(0.95 * (len(latencies) - 1))] if latencies else None
             ),
         }
-    REPORT["trials"].append(record)
     print(
         json.dumps(
             {
@@ -319,7 +328,7 @@ def trial(drain, grace, number, proxy):
     )
     check(
         f"Pod replacement completes: drain={drain}, grace={grace}, trial={number}",
-        original.ready_pods("api", 2) and before != original.uids("api"),
+        replacement.confirm(),
     )
 
 
@@ -492,6 +501,8 @@ def main():
             except Exception as e:
                 REPORT["passed"] = False
                 REPORT["recovery_error"] = str(e)
+            if not REPORT.get("final_ready"):
+                REPORT["passed"] = False
             if proxy:
                 proxy.shutdown()
                 proxy.server_close()

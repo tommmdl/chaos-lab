@@ -1,0 +1,121 @@
+{
+  "source": "evidence/rst-origin-final-ci-resilience.json",
+  "run_url": "https://github.com/tommmdl/chaos-lab/actions/runs/39413620240",
+  "failed_check": "Pod replacement completes: drain=True, grace=30, trial=3",
+  "trial": {
+    "drain": true,
+    "chaos_grace_seconds": 30,
+    "trial": 3,
+    "injected_at": 1792495482.464274,
+    "experiment_uid": "0956a0ee-d0b2-4437-94f6-2851777a0c62",
+    "records": [
+      {
+        "events": [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-10-20T11:24:42Z",
+            "type": "Succeeded"
+          }
+        ],
+        "id": "chaos-demo/api-5459756fdf-grzwn",
+        "injectedCount": 1,
+        "phase": "Injected",
+        "recoveredCount": 0,
+        "selectorKey": "."
+      }
+    ]
+  },
+  "pod_events": [
+    {
+      "time": 1792495480.9554362,
+      "event": "ADDED",
+      "name": "api-5459756fdf-grzwn",
+      "uid": "b068f618-30f7-4a07-87a9-691a21b1527b",
+      "resource_version": "3963",
+      "phase": "Running",
+      "deletion_timestamp": null,
+      "ready": true
+    },
+    {
+      "time": 1792495480.9558718,
+      "event": "ADDED",
+      "name": "api-5459756fdf-r2d75",
+      "uid": "3b729418-5444-48b6-b3b8-0898c5f28549",
+      "resource_version": "3747",
+      "phase": "Running",
+      "deletion_timestamp": null,
+      "ready": true
+    },
+    {
+      "time": 1792495482.822008,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-grzwn",
+      "uid": "b068f618-30f7-4a07-87a9-691a21b1527b",
+      "resource_version": "4001",
+      "phase": "Running",
+      "deletion_timestamp": "2026-10-20T11:25:12Z",
+      "ready": true
+    },
+    {
+      "time": 1792495482.8586817,
+      "event": "ADDED",
+      "name": "api-5459756fdf-cntqs",
+      "uid": "cc58bbb9-1807-41ad-9131-c00ad52144f3",
+      "resource_version": "4004",
+      "phase": "Pending",
+      "deletion_timestamp": null,
+      "ready": false
+    },
+    {
+      "time": 1792495482.8639753,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-grzwn",
+      "uid": "b068f618-30f7-4a07-87a9-691a21b1527b",
+      "resource_version": "4007",
+      "phase": "Running",
+      "deletion_timestamp": "2026-10-20T11:25:12Z",
+      "ready": true
+    },
+    {
+      "time": 1792495482.8865652,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-cntqs",
+      "uid": "cc58bbb9-1807-41ad-9131-c00ad52144f3",
+      "resource_version": "4011",
+      "phase": "Pending",
+      "deletion_timestamp": null,
+      "ready": false
+    },
+    {
+      "time": 1792495482.9283857,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-cntqs",
+      "uid": "cc58bbb9-1807-41ad-9131-c00ad52144f3",
+      "resource_version": "4017",
+      "phase": "Pending",
+      "deletion_timestamp": null,
+      "ready": false
+    },
+    {
+      "time": 1792495483.3379054,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-cntqs",
+      "uid": "cc58bbb9-1807-41ad-9131-c00ad52144f3",
+      "resource_version": "4022",
+      "phase": "Pending",
+      "deletion_timestamp": null,
+      "ready": false
+    },
+    {
+      "time": 1792495483.4555817,
+      "event": "MODIFIED",
+      "name": "api-5459756fdf-cntqs",
+      "uid": "cc58bbb9-1807-41ad-9131-c00ad52144f3",
+      "resource_version": "4026",
+      "phase": "Running",
+      "deletion_timestamp": null,
+      "ready": false
+    }
+  ],
+  "limits": "The old test did not retain the exact PodList responses used by the predicate. The watch supports the early-exit diagnosis; the controlled real-cluster regression reproduces a valid interleaving rather than reconstructing those missing responses."
+}

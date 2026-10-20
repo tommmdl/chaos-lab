@@ -21,7 +21,7 @@ jobs:
       - name: Prepara um cluster descartável com suporte a netem
         run: |
           rm -rf .local/packets evidence/connection-packets
-          rm -f evidence/packet-archive.json evidence/reset-origins.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
+          rm -f evidence/packet-archive.json evidence/reset-origins.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/pod-replacement.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends tcpdump
           tcpdump --version
@@ -38,6 +38,8 @@ jobs:
         run: python3 tests/verify.py
       - name: Confere os limites das tentativas com falhas reais de HTTP
         run: python3 tests/access_policy.py
+      - name: Reproduz a corrida entre leituras e confere a substituição real
+        run: python3 tests/pod_replacement.py
       - name: Investiga fases TCP nas remoções e compara os dois acessos
         run: python3 tests/connection_window.py --rounds 8 --attribute-resets
       - name: Compara remoção abrupta, encerramento e GET com tentativas limitadas
@@ -70,6 +72,7 @@ jobs:
             evidence/verification.json
             evidence/0*-*.json
             evidence/resilience.json
+            evidence/pod-replacement.json
             evidence/access-policy.json
             evidence/connection-window.json
             evidence/syn-budget.json

@@ -92,6 +92,10 @@ A [continuação da investigação](docs/connection-timeout.md) separa estabelec
 
 A [investigação com o kernel](docs/rst-origin.md) identificou a origem dos RST reproduzidos: a pilha TCP dos Pods da API. A análise automática final atribuiu 15 pacotes: três no fechamento do listener em contexto Gunicorn e 12 por `NO_SOCKET`, com correspondência antes/depois da NAT, no veth e no stack do kernel. A coleta passou em 42 verificações, mas o workflow final falhou numa checagem posterior de substituição de Pod. Essa falha, o primeiro run com 115 verificações aprovadas e as falhas recuperadas continuam publicados. O timeout histórico de seis segundos permanece sem causa confirmada.
 
+## A checagem de substituição de Pod
+
+A [investigação da checagem](docs/pod-replacement.md) reproduz uma corrida entre duas leituras do Kubernetes e mostra a correção com uma única observação de prontidão e identidade. O controle usa uma remoção real com Chaos Mesh; os resultados e o CI anterior que falhou continuam disponíveis.
+
 ## Resultados e limites
 
 Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.

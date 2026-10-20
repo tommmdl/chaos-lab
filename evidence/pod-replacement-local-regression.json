@@ -1,0 +1,681 @@
+{
+  "started_utc": "2026-10-20T11:38:51.322513+00:00",
+  "checks": [
+    {
+      "name": "No existing fault is replaced",
+      "passed": true
+    },
+    {
+      "name": "The first readiness read sees two ready Pods",
+      "passed": true
+    },
+    {
+      "name": "Real deletion exposes changed UIDs while the replica pair is not ready",
+      "passed": true
+    },
+    {
+      "name": "The old predicate accepts an incomplete replacement; the new one rejects it",
+      "passed": true
+    },
+    {
+      "name": "The selected Pod is gone and exactly two Pods are ready after cleanup",
+      "passed": true
+    },
+    {
+      "name": "Rows and timestamps are unchanged",
+      "passed": true
+    },
+    {
+      "name": "PostgreSQL keeps its PVC",
+      "passed": true
+    },
+    {
+      "name": "Other labs keep their workloads, images and PVC identities",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "method": "Deliberately inject between the old readiness and UID reads; no mocked Kubernetes responses",
+  "replacement": {
+    "before": {
+      "time": 1792496333.5057294,
+      "resource_version": "",
+      "pods": [
+        {
+          "name": "api-5459756fdf-h6qwp",
+          "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+          "resource_version": "337118",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        },
+        {
+          "name": "api-5459756fdf-zrhwv",
+          "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+          "resource_version": "336812",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        }
+      ]
+    },
+    "observations": [
+      {
+        "time": 1792496334.8163168,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341188",
+            "deletion_timestamp": null,
+            "phase": "Pending",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496335.415876,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341191",
+            "deletion_timestamp": null,
+            "phase": "Pending",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496336.2761087,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496337.1925418,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496338.237434,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496339.1313398,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496339.9880013,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341177",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496340.7776763,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-h6qwp",
+            "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+            "resource_version": "341207",
+            "deletion_timestamp": "2026-10-20T11:39:24Z",
+            "phase": "Succeeded",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496341.6078548,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341195",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": false,
+            "containers_running_ready": false
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": false
+      },
+      {
+        "time": 1792496342.3720205,
+        "resource_version": "",
+        "pods": [
+          {
+            "name": "api-5459756fdf-bdcjv",
+            "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+            "resource_version": "341224",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          },
+          {
+            "name": "api-5459756fdf-zrhwv",
+            "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+            "resource_version": "336812",
+            "deletion_timestamp": null,
+            "phase": "Running",
+            "ready": true,
+            "containers_running_ready": true
+          }
+        ],
+        "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+        "records": [
+          {
+            "events": [
+              {
+                "operation": "Apply",
+                "timestamp": "2026-10-20T11:38:54Z",
+                "type": "Succeeded"
+              }
+            ],
+            "id": "chaos-demo/api-5459756fdf-h6qwp",
+            "injectedCount": 1,
+            "phase": "Injected",
+            "recoveredCount": 0,
+            "selectorKey": "."
+          }
+        ],
+        "target_uids": [
+          "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+        ],
+        "replacement_complete": true
+      }
+    ],
+    "completed": true,
+    "after_cleanup": {
+      "time": 1792496342.990902,
+      "resource_version": "",
+      "pods": [
+        {
+          "name": "api-5459756fdf-bdcjv",
+          "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+          "resource_version": "341224",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        },
+        {
+          "name": "api-5459756fdf-zrhwv",
+          "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+          "resource_version": "336812",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        }
+      ],
+      "replacement_complete": true
+    }
+  },
+  "controlled_interleaving": {
+    "first_read_ready": true,
+    "second_read_uids": [
+      "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+      "68b88547-e0cf-4508-b51b-7645f76e979b",
+      "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+    ],
+    "old_predicate_result": true,
+    "coherent_observation": {
+      "time": 1792496334.8163168,
+      "resource_version": "",
+      "pods": [
+        {
+          "name": "api-5459756fdf-bdcjv",
+          "uid": "22c873cf-19e9-46ea-b4a9-2ffab4d217e4",
+          "resource_version": "341188",
+          "deletion_timestamp": null,
+          "phase": "Pending",
+          "ready": false,
+          "containers_running_ready": false
+        },
+        {
+          "name": "api-5459756fdf-h6qwp",
+          "uid": "8f40bc6b-da7c-4741-89d8-0175e2364b98",
+          "resource_version": "341177",
+          "deletion_timestamp": "2026-10-20T11:39:24Z",
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        },
+        {
+          "name": "api-5459756fdf-zrhwv",
+          "uid": "68b88547-e0cf-4508-b51b-7645f76e979b",
+          "resource_version": "336812",
+          "deletion_timestamp": null,
+          "phase": "Running",
+          "ready": true,
+          "containers_running_ready": true
+        }
+      ],
+      "experiment_uid": "38431fe5-d3bf-4ad6-8883-cc42f4d2d154",
+      "records": [
+        {
+          "events": [
+            {
+              "operation": "Apply",
+              "timestamp": "2026-10-20T11:38:54Z",
+              "type": "Succeeded"
+            }
+          ],
+          "id": "chaos-demo/api-5459756fdf-h6qwp",
+          "injectedCount": 1,
+          "phase": "Injected",
+          "recoveredCount": 0,
+          "selectorKey": "."
+        }
+      ],
+      "target_uids": [
+        "8f40bc6b-da7c-4741-89d8-0175e2364b98"
+      ],
+      "replacement_complete": false
+    },
+    "new_predicate_result": false
+  },
+  "final_ready": true,
+  "duration_seconds": 12.83
+}
