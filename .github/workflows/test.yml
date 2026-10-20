@@ -23,6 +23,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends tcpdump
           tcpdump --version
+          if [ ! -f /sys/kernel/tracing/events/tcp/tcp_send_reset/format ]; then
+            sudo mount -t tracefs tracefs /sys/kernel/tracing
+          fi
+          sudo test -r /sys/kernel/tracing/events/tcp/tcp_send_reset/format
           rm -rf .local/packets evidence/connection-packets
           rm -f evidence/packet-archive.json evidence/verification.json evidence/0*-*.json evidence/resilience.json evidence/access-policy.json evidence/connection-window.json evidence/syn-budget.json
           python3 scripts/prepare-ci.py
@@ -33,7 +37,7 @@ jobs:
       - name: Confere os limites das tentativas com falhas reais de HTTP
         run: python3 tests/access_policy.py
       - name: Investiga fases TCP nas remoções e compara os dois acessos
-        run: python3 tests/connection_window.py --rounds 8 --capture-packets
+        run: python3 tests/connection_window.py --rounds 8 --attribute-resets
       - name: Compara remoção abrupta, encerramento e GET com tentativas limitadas
         run: python3 tests/resilience.py --rounds 4
       - name: Mede o orçamento de conexão com descarte real de SYN

@@ -7,7 +7,7 @@ from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, access, experiment, packets
+import lab, access, experiment, packets, reset_origin
 import verify as original
 import resilience
 
@@ -79,7 +79,8 @@ def raw_request(host, port):
 
 def trial(grace, number, servers):
     name = "06-api-graceful-removal" if grace else "01-api-pod-kill"
-    before = original.uids("api")
+    initial_pods = original.pods("api")
+    before = {p["metadata"]["uid"] for p in initial_pods}
     watches = resilience.Watches()
     watches.start(
         [
@@ -128,10 +129,13 @@ def trial(grace, number, servers):
         text=True,
     )
     capture = (
-        packets.Capture(f"removal-{grace}-{number}")
+        packets.Capture(f"removal-{grace}-{number}", backend_ips=(
+            [p["status"]["podIP"] for p in initial_pods] if REPORT.get("attribute_resets") else ()
+        ))
         if REPORT.get("capture_packets")
         else None
     )
+    origin = reset_origin.Observer(initial_pods) if REPORT.get("attribute_resets") else None
     stop = threading.Event()
     samples = []
     threads = []
@@ -152,6 +156,8 @@ def trial(grace, number, servers):
             stop.wait(max(0, 0.05 - (time.monotonic() - started)))
 
     try:
+        if origin:
+            origin.start()
         if capture:
             capture.start()
         for lane, port in [
@@ -184,6 +190,11 @@ def trial(grace, number, servers):
         except Exception as error:
             cleanup_errors.append("packet capture: " + str(error))
         try:
+            if origin:
+                origin.stop()
+        except Exception as error:
+            cleanup_errors.append("kernel trace: " + str(error))
+        try:
             watches.close()
         except Exception as error:
             cleanup_errors.append("watch processes: " + str(error))
@@ -215,6 +226,12 @@ def trial(grace, number, servers):
             except Exception as error:
                 cleanup_errors.append("Chaos Mesh experiment: " + str(error))
         if cleanup_errors:
+            REPORT.setdefault("partial_trials", []).append({
+                "grace_seconds":grace, "trial":number, "samples":samples,
+                "captures":capture.records if capture else [],
+                "trace":origin.report() if origin and hasattr(origin, "topology") else None,
+                "cleanup_errors":cleanup_errors,
+            })
             REPORT.setdefault("cleanup_errors", []).extend(cleanup_errors)
             raise RuntimeError("Trial cleanup failed: " + "; ".join(cleanup_errors))
     failed = [s for s in samples if s["status"] != 200]
@@ -249,15 +266,9 @@ def trial(grace, number, servers):
                 for s in selected
             ],
         }
-        check(
-            f"Packet capture is readable, header-only and has no reported capture drops: grace={grace}, trial={number}",
-            bool(stats)
-            and any(r["packets"] > 0 for r in stats)
-            and all(
-                r["dropped_by_capture_kernel"] == 0 and r["exit_code"] == 0
-                for r in stats
-            ),
-        )
+        if origin:
+            for flow in packet_report["flows"]:
+                flow["rst_origin"] = reset_origin.correlate(flow, index, origin.report())
     totals = {}
     for lane in ["direct", *servers]:
         rows = [s for s in samples if s["lane"] == lane]
@@ -285,10 +296,21 @@ def trial(grace, number, servers):
                 "note": "NodePort metadata only; retained tuples match failed direct source ports; no payload",
             },
             "packet_capture": packet_report,
+            "rst_trace": origin.report() if origin else None,
             "experiment_uid": resource.get("metadata", {}).get("uid"),
         }
     )
-    print(json.dumps({"grace": grace, "trial": number, "totals": totals}), flush=True)
+    if capture:
+        check(
+            f"Packet capture is readable, header-only and has no reported capture drops: grace={grace}, trial={number}",
+            bool(stats) and any(r["packets"] > 0 for r in stats) and all(
+                r["dropped_by_capture_kernel"] == 0 and r["exit_code"] == 0 for r in stats),
+        )
+    if origin:
+        check(f"Kernel reset trace has no overruns and its own instance is removed: grace={grace}, trial={number}",
+              reset_origin.intact(origin.report()))
+    print(json.dumps({"grace": grace, "trial": number, "totals": totals,
+                      "rst_origins": dict(Counter(f.get("rst_origin",{}).get("classification") for f in (packet_report or {}).get("flows",[])))}), flush=True)
     check(
         f"Replica recovers after grace={grace}, trial={number}",
         original.ready_pods("api", 2) and original.uids("api") != before,
@@ -299,8 +321,11 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--rounds", type=int, default=8)
     p.add_argument("--capture-packets", action="store_true")
+    p.add_argument("--attribute-resets", action="store_true")
     args = p.parse_args()
+    args.capture_packets = args.capture_packets or args.attribute_resets
     REPORT["capture_packets"] = args.capture_packets
+    REPORT["attribute_resets"] = args.attribute_resets
     if not 4 <= args.rounds <= 12:
         raise SystemExit("Use 4–12 graceful rounds; half as many abrupt controls")
     start = time.monotonic()
@@ -317,6 +342,10 @@ def main():
                         "items"
                     ],
                 )
+            if args.attribute_resets:
+                REPORT["rst_origin_positive_control"] = reset_origin.control()
+                check("Real unread-data socket close produces a traced kernel active reset",
+                      REPORT["rst_origin_positive_control"]["passed"])
             baseline = original.rows()
             outside = original.outside()
             pvc = lab.obj(lab.APP, "pvc", "postgres-data")["metadata"]["uid"]
@@ -392,6 +421,8 @@ def main():
                 REPORT["final_ready"] = False
                 REPORT["recovery_error"] = str(recovery)
             REPORT["duration_seconds"] = round(time.monotonic() - start, 2)
+            if not REPORT["final_ready"]:
+                REPORT["passed"] = False
             (lab.ROOT / "evidence/connection-window.json").write_text(
                 json.dumps(REPORT, indent=2) + "\n"
             )

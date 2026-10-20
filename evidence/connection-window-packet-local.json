@@ -18944,7 +18944,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-30-1-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-30-1-devops-notes-control-plane.pcap.gz",
             "sha256": "d5354a689febdfe0ddf1c4738ee0e3aaf89acc4af1d31a67422828a20aa315ad",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -18960,7 +18960,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-30-1-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-30-1-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -43493,7 +43493,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-30-2-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-30-2-devops-notes-control-plane.pcap.gz",
             "sha256": "0a1b324ddae9424af95a406a1dc34705d3d0079ab1f30b26c4a6accd117ee1d9",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -43509,7 +43509,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-30-2-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-30-2-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -62223,7 +62223,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-0-1-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-0-1-devops-notes-control-plane.pcap.gz",
             "sha256": "65b0037e9656ac38db172a99ee8473d53a508e42d46629a98de69f7e280b4e91",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -62239,7 +62239,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-0-1-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-0-1-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -83896,7 +83896,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-30-3-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-30-3-devops-notes-control-plane.pcap.gz",
             "sha256": "40560531f319354a837e0fc77e6c6057c279093557fa15566733853db4967183",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -83912,7 +83912,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-30-3-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-30-3-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -108777,7 +108777,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-30-4-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-30-4-devops-notes-control-plane.pcap.gz",
             "sha256": "625a5662561bd8e67c124c003b629339b211d41857327b99b2bec0493b36505c",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -108793,7 +108793,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-30-4-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-30-4-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -133408,7 +133408,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": ".local/packets/local-removal-0-2-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/removal-0-2-devops-notes-control-plane.pcap.gz",
             "sha256": "8cd2107d7fc9eee9dc48357be5cb927992506d3c07b69d4bef8e45d811c923e6",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -133424,7 +133424,7 @@
           },
           {
             "node": "devops-notes-worker",
-            "path": ".local/packets/local-removal-0-2-devops-notes-worker.pcap",
+            "path": "evidence/connection-packets/removal-0-2-devops-notes-worker.pcap.gz",
             "sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,

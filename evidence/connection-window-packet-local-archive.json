@@ -14,7 +14,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-1-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-1-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "1dd08c02a0262594275fe72423bc05e6a7efcd937f11b93dd2e69be549ea93ce",
       "bytes_uncompressed": 1082568,
       "bytes_compressed": 235477
@@ -32,7 +32,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-1-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-1-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36
@@ -50,7 +50,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-2-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-2-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "a9275a33e4c0b89ed407e022567562c2a3d2705e61ab445ee25e4c3a7a4c953c",
       "bytes_uncompressed": 1305324,
       "bytes_compressed": 284043
@@ -68,7 +68,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-2-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-2-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36
@@ -86,7 +86,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-0-1-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-0-1-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "c1bc94bc953c8ba9d5fdefdbde477943017594053de0554aead0e5d4201bc8ae",
       "bytes_uncompressed": 1288604,
       "bytes_compressed": 278889
@@ -104,7 +104,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-0-1-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-0-1-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36
@@ -122,7 +122,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-3-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-3-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "0d62b249ddee9a183c8076f7cb0b15d73e429f10a5d75f219a6e117af5e738ea",
       "bytes_uncompressed": 1432624,
       "bytes_compressed": 310409
@@ -140,7 +140,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-3-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-3-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36
@@ -158,7 +158,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-4-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-4-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "7afde7680516094b0907ce6ef9d38b8b9670cccc7f365e87169686cb6dac99b0",
       "bytes_uncompressed": 1464164,
       "bytes_compressed": 318851
@@ -176,7 +176,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-30-4-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-30-4-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36
@@ -194,7 +194,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-0-2-devops-notes-control-plane.pcap.gz",
+      "path": "evidence/connection-packets/removal-0-2-devops-notes-control-plane.pcap.gz",
       "sha256_gzip": "cca901ffc7a8436f6a1f5b4febcfe51f6080cc992d875662ef46667e1c525371",
       "bytes_uncompressed": 1333672,
       "bytes_compressed": 290314
@@ -212,7 +212,7 @@
         "datalink": "LINUX_SLL2",
         "tcpdump_version": "tcpdump version 4.99.6"
       },
-      "path": "evidence/connection-packets/local-removal-0-2-devops-notes-worker.pcap.gz",
+      "path": "evidence/connection-packets/removal-0-2-devops-notes-worker.pcap.gz",
       "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
       "bytes_uncompressed": 24,
       "bytes_compressed": 36

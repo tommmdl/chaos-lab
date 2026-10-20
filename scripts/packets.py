@@ -19,10 +19,11 @@ def privileged():
 
 
 class Capture:
-    def __init__(self, name, scope="nodes", port=None):
+    def __init__(self, name, scope="nodes", port=None, backend_ips=()):
         self.name = name
         self.scope = scope
         self.port = port
+        self.backend_ips = tuple(backend_ips)
         self.handles = []
         self.records = []
         self.version = None
@@ -81,6 +82,10 @@ class Capture:
                     # The measured flow is the direct NodePort lane. Capture only that
                     # boundary; pod-side port 8000 includes unrelated probes and scrapes.
                     expression = "ip and tcp and port 30434"
+                if self.backend_ips:
+                    # Only resets from the initial API Pods, not their probe/HTTP traffic.
+                    addresses = " or ".join("host " + socket.inet_ntoa(socket.inet_aton(ip)) for ip in self.backend_ips)
+                    expression = f"({expression}) or (ip and tcp and port 8000 and (tcp[tcpflags] & tcp-rst != 0) and ({addresses}))"
                 command = (["nsenter", "-t", str(pid), "-n"] if pid else []) + [
                     "tcpdump",
                     "-i",
@@ -337,21 +342,23 @@ def archive_report():
     ARCHIVE.mkdir(parents=True, exist_ok=True)
     result = {"created_utc": time.time(), "captures": [], "errors": []}
     seen = set()
+    report = None
     if report_path.exists():
         report = json.loads(report_path.read_text())
         for trial in report.get("trials", []):
             packet_report = trial.get("packet_capture") or {}
             for capture in packet_report.get("captures", []):
                 source = (lab.ROOT / capture["path"]).resolve()
-                if not source.is_relative_to(DIRECTORY.resolve()):
+                archived = source.is_relative_to(ARCHIVE.resolve()) and source.suffix == ".gz"
+                if not source.is_relative_to(DIRECTORY.resolve()) and not archived:
                     result["errors"].append(
                         {
                             "path": str(source),
-                            "error": "capture path is outside .local/packets",
+                            "error": "capture path is outside owned raw/archive directories",
                         }
                     )
                     continue
-                seen.add(source)
+                seen.add(DIRECTORY.resolve() / source.name.removesuffix(".gz") if archived else source)
                 row = {
                     "node": capture.get("node"),
                     "grace_seconds": trial.get("grace_seconds"),
@@ -374,23 +381,24 @@ def archive_report():
                     result["errors"].append(row)
                     result["captures"].append(row)
                     continue
-                digest = hashlib.sha256(source.read_bytes()).hexdigest()
+                raw_bytes = gzip.decompress(source.read_bytes()) if archived else source.read_bytes()
+                digest = hashlib.sha256(raw_bytes).hexdigest()
                 if digest != capture.get("sha256"):
                     row["error"] = "capture SHA-256 differs from the test report"
                     result["errors"].append(row)
                     result["captures"].append(row)
                     continue
-                destination = ARCHIVE / (source.name + ".gz")
-                with source.open("rb") as inp, destination.open("wb") as raw:
-                    with gzip.GzipFile(
-                        filename="", mode="wb", fileobj=raw, compresslevel=9, mtime=0
-                    ) as out:
-                        while block := inp.read(1024 * 1024):
-                            out.write(block)
+                destination = source if archived else ARCHIVE / (source.name + ".gz")
+                if not archived:
+                    with destination.open("wb") as raw:
+                        with gzip.GzipFile(
+                            filename="", mode="wb", fileobj=raw, compresslevel=9, mtime=0
+                        ) as out:
+                            out.write(raw_bytes)
                 row.update(
                     path=str(destination.relative_to(lab.ROOT)),
                     sha256_gzip=hashlib.sha256(destination.read_bytes()).hexdigest(),
-                    bytes_uncompressed=source.stat().st_size,
+                    bytes_uncompressed=len(raw_bytes),
                     bytes_compressed=destination.stat().st_size,
                 )
                 capture["path"] = row["path"]
@@ -419,5 +427,7 @@ def archive_report():
         except Exception as error:
             result["errors"].append({"path": str(source), "error": str(error)})
     result["complete"] = not result["errors"] and bool(result["captures"])
+    if report is not None:
+        report_path.write_text(json.dumps(report, indent=2) + "\n")
     archive_path.write_text(json.dumps(result, indent=2) + "\n")
     return result

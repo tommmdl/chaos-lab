@@ -1,0 +1,126 @@
+{
+  "complete": true,
+  "captures": [
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-1-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "b12bd8a79d62258d790253c3346f065b3e9c2cb816aa738876e45922533ef081",
+      "sha256_gzip": "91718fc03c9bbc249b4e231d8cd887134aa6cf344d90710b47815ee92d32111e",
+      "grace_seconds": 30,
+      "trial": 1,
+      "node": "devops-notes-control-plane",
+      "packets": 16373,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-1-devops-notes-worker.pcap.gz",
+      "source_sha256": "c363f7e6c05fcaf4079edbe12cbf2158776f7208308aa7229c71fee8fd47df13",
+      "sha256_gzip": "36f259687e0c8f6e22fa10e256ac8a2ba6392c3d22b741e09b89015f8b6085fd",
+      "grace_seconds": 30,
+      "trial": 1,
+      "node": "devops-notes-worker",
+      "packets": 1,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-2-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "8b7b0c4c012c691478fdddc0491a0f1037a43c9b696683f67e90c1620ebb9a8b",
+      "sha256_gzip": "8caf72a55b2744c7b7ffef6c5c817ac5d06464df03fbf76637edeae221fc2b9f",
+      "grace_seconds": 30,
+      "trial": 2,
+      "node": "devops-notes-control-plane",
+      "packets": 17634,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-2-devops-notes-worker.pcap.gz",
+      "source_sha256": "00034f06db7ba25cfe6cc5af184d0eb76b99af37d5cbc0a477db9f6ac4709dca",
+      "sha256_gzip": "3db25ee00fda6c73c8239dac9544229e6e1e1bfe72e1d7ffd790180c1aa996ac",
+      "grace_seconds": 30,
+      "trial": 2,
+      "node": "devops-notes-worker",
+      "packets": 2,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-0-1-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "bd0e2d64b6776d740e46abb51ec00c4a704dab0fa353dfe93e81365c0a821ba4",
+      "sha256_gzip": "06b093e789a1c7a6d643657c10ff33923a1ccca2e746e931d6e9cd33d05ce719",
+      "grace_seconds": 0,
+      "trial": 1,
+      "node": "devops-notes-control-plane",
+      "packets": 16078,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-0-1-devops-notes-worker.pcap.gz",
+      "source_sha256": "05918bb31524ad89b3e1872225072f29350de98af5efc2249ce4e966534bd52e",
+      "sha256_gzip": "754c1d686bfe8cc70dc9e32e6713a2a1b85089893aabb3356b2486e1735d3373",
+      "grace_seconds": 0,
+      "trial": 1,
+      "node": "devops-notes-worker",
+      "packets": 0,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-3-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "358ad78913ce9c1b545a37c2377d1ad029db2558377d64ee74d61d46ac15c9d3",
+      "sha256_gzip": "9aefd2d145b526119c5577ab30353cb0ac72a1ae5ea3ac465b994b60e88c8b95",
+      "grace_seconds": 30,
+      "trial": 3,
+      "node": "devops-notes-control-plane",
+      "packets": 18447,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-3-devops-notes-worker.pcap.gz",
+      "source_sha256": "1032360354770c33f668a5deb9669339d9fce04cef22a5885d72c6749c1a239d",
+      "sha256_gzip": "de912807d363c8381b05872d72718e86eb47635096f7bc9fbacdcfea38c067cb",
+      "grace_seconds": 30,
+      "trial": 3,
+      "node": "devops-notes-worker",
+      "packets": 1,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-4-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "c5b7068023ffbd59504217a4757428713ca03718a504252ccd8bd76966de2754",
+      "sha256_gzip": "6e6bf744ae686ed75da7e5a74a23d893cb21972d7ba5855966c9d83ff76f1f44",
+      "grace_seconds": 30,
+      "trial": 4,
+      "node": "devops-notes-control-plane",
+      "packets": 15584,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-30-4-devops-notes-worker.pcap.gz",
+      "source_sha256": "67d5588a49123135f52644e7f7104dbd4f1c113f73f0ea8aab8a0c7a26faa59a",
+      "sha256_gzip": "f97aae90ef37be544cb86d7481561c551b8f2e7eb348dc065baceb8bb61c3bf1",
+      "grace_seconds": 30,
+      "trial": 4,
+      "node": "devops-notes-worker",
+      "packets": 1,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-0-2-devops-notes-control-plane.pcap.gz",
+      "source_sha256": "4dee04b5f5fb0960a4f4c98836c4c264c7d38ea852de7d01e76738f84909938e",
+      "sha256_gzip": "2b5eb78f78f5dfe8a51190fe5786eced2f7723b043ef485f56f5a599ae6e23df",
+      "grace_seconds": 0,
+      "trial": 2,
+      "node": "devops-notes-control-plane",
+      "packets": 18106,
+      "dropped_by_capture_kernel": 0
+    },
+    {
+      "path": "evidence/rst-origin/local-packets/removal-0-2-devops-notes-worker.pcap.gz",
+      "source_sha256": "23d71cd98a2dd0d39fc76d5d5478bf4d18a57da8b5108d117a78439293d460e2",
+      "sha256_gzip": "fd8f088c8c6c75ef754cd97758ce89083a05468b14512098bb38472288541075",
+      "grace_seconds": 0,
+      "trial": 2,
+      "node": "devops-notes-worker",
+      "packets": 20,
+      "dropped_by_capture_kernel": 0
+    }
+  ],
+  "errors": []
+}

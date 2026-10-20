@@ -15850,7 +15850,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-1-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-1-devops-notes-control-plane.pcap.gz",
             "sha256": "17279dd6b98c2aca23b9f377b56190d7f3908e7823407dcf5c1015510968124a",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -29380,7 +29380,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-2-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-2-devops-notes-control-plane.pcap.gz",
             "sha256": "92b98b7c2fd08cca1f4aa96294cf986a51021de4ca0f99dbf34af72ec5b2243e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -40204,7 +40204,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-0-1-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-0-1-devops-notes-control-plane.pcap.gz",
             "sha256": "641afbc06faf7d5224e7d65aa98c1d646306697123bf79a276fb7befa1a7215a",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -53841,7 +53841,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-3-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-3-devops-notes-control-plane.pcap.gz",
             "sha256": "15d57ef1bf87f39192070b613045f65c3f41e6e4b6c19f572097e3188c637492",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -67405,7 +67405,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-4-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-4-devops-notes-control-plane.pcap.gz",
             "sha256": "0737968e27c8ae5f685a2cae6255ee874c4c035754c729d93bc85867e2d0cd2c",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -78237,7 +78237,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-0-2-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-0-2-devops-notes-control-plane.pcap.gz",
             "sha256": "5388037f8671d18e6b9ef16967ba04163ee47757949616790d3b080071e17152",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -91940,7 +91940,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-5-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-5-devops-notes-control-plane.pcap.gz",
             "sha256": "8b8a6fb42b7b5efd73ec80c2cae2ca1fd8a49651b6f5a4f7a7895b7b839f90f8",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -105415,7 +105415,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-6-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-6-devops-notes-control-plane.pcap.gz",
             "sha256": "4180552ddc158b54767ec4cb6f852a1a03a0eeb345bef47b12920f4a813e5674",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -116223,7 +116223,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-0-3-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-0-3-devops-notes-control-plane.pcap.gz",
             "sha256": "e93b25683aaae33ec1ac5524ea2d746312330b7f8a56e8c45155884b5e29df3e",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -129871,7 +129871,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-7-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-7-devops-notes-control-plane.pcap.gz",
             "sha256": "a6bc4a8e9b4755c8b13cbbc57cc235d930f72bfdbd71acdb2f4debfbe3e53cff",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -143511,7 +143511,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-30-8-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-30-8-devops-notes-control-plane.pcap.gz",
             "sha256": "e6ee51e9f6dbd20bfb743f6bac200affeb798960501f225deff542131632fedc",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
@@ -156847,7 +156847,7 @@
         "captures": [
           {
             "node": "devops-notes-control-plane",
-            "path": "evidence/connection-packets/ci-39409055794/removal-0-4-devops-notes-control-plane.pcap",
+            "path": "evidence/connection-packets/ci-39409055794/removal-0-4-devops-notes-control-plane.pcap.gz",
             "sha256": "dbbd2fd8e3eeae0113f429721ab82da5d0761c97d50acb5b29bb2039cf0d73f1",
             "filter": "ip and tcp and port 30434",
             "snaplen": 60,
