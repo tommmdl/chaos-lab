@@ -124,3 +124,5 @@ Local packet capture requires `tcpdump` and permission to enter the nodes' netwo
 Restart `python3 scripts/access.py` to activate the browser change. To return only to the earlier connection limit, set `get_connect_timeout_seconds` to 3 and restart that process; no image or data change is required. Set `get_max_attempts: 1` to disable GET retries. Reports and direct access remain available in either case.
 
 500 ms is a choice for this lab's local network. A slow network may require more time to connect, and abandoned attempts add load. Testing does not guarantee that a higher-latency remote service benefits from this value. Uncertain writes still require reconciliation before any retry.
+
+The [next stage](rst-origin.en.md) adds Pod veth observations and TCP-send kernel stacks to identify reproduced resets, including connections recovered by retries.

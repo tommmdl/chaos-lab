@@ -1,0 +1,258 @@
+{
+  "run": 39411512758,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39411512758",
+  "commit": "5a481b8316c4c6ef8cfe65e9bbcc86d3ba667712",
+  "conclusion": "success",
+  "started_at": "2026-10-20T10:57:04Z",
+  "completed_at": "2026-10-20T11:07:53Z",
+  "total_checks": 115,
+  "target_checks": 42,
+  "target_passed": true,
+  "target_duration_seconds": 141.57,
+  "summary": [
+    {
+      "grace_seconds": 30,
+      "lane": "direct",
+      "requests": 3488,
+      "failures": 0,
+      "attempts": 3488,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "previous",
+      "requests": 3486,
+      "failures": 0,
+      "attempts": 3486,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "short_connect",
+      "requests": 3485,
+      "failures": 0,
+      "attempts": 3485,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "direct",
+      "requests": 1462,
+      "failures": 0,
+      "attempts": 1462,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "previous",
+      "requests": 1460,
+      "failures": 0,
+      "attempts": 1462,
+      "transport_failures": 2
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "short_connect",
+      "requests": 1461,
+      "failures": 0,
+      "attempts": 1462,
+      "transport_failures": 1
+    }
+  ],
+  "failures": [],
+  "capture_files": 12,
+  "frames": 166143,
+  "capture_drops": 0,
+  "other_test_reports": {
+    "verification": {
+      "passed": true,
+      "checks": 43,
+      "duration_seconds": 185.72,
+      "error": null
+    },
+    "resilience": {
+      "passed": true,
+      "checks": 23,
+      "duration_seconds": 191.35,
+      "error": null
+    },
+    "access-policy": {
+      "passed": true,
+      "checks": 4,
+      "duration_seconds": null,
+      "error": null
+    },
+    "syn-budget": {
+      "passed": true,
+      "checks": 3,
+      "duration_seconds": null,
+      "error": null
+    }
+  },
+  "positive_control": {
+    "events": [
+      {
+        "time": 1792494123.3787081,
+        "monotonic_seconds": 324.714595,
+        "cpu": 0,
+        "task": "python3-18616",
+        "src": "127.0.0.1",
+        "sport": 55273,
+        "dst": "127.0.0.1",
+        "dport": 44794,
+        "reason": "TCP_ABORT_ON_CLOSE",
+        "event": "         python3-18616   [000] .....   324.714595: tcp_send_reset: skbaddr=0000000000000000 skaddr=00000000fbd804a7 src=127.0.0.1:55273 dest=127.0.0.1:44794 state=TCP_CLOSE reason=TCP_ABORT_ON_CLOSE",
+        "stack": [
+          "=> trace_event_raw_event_tcp_send_reset",
+          "=> tcp_send_active_reset",
+          "=> __tcp_close",
+          "=> tcp_close",
+          "=> inet_release",
+          "=> __sock_release",
+          "=> sock_close",
+          "=> __fput",
+          "=> fput_close_sync",
+          "=> __x64_sys_close",
+          "=> x64_sys_call",
+          "=> do_syscall_64",
+          "=> entry_SYSCALL_64_after_hwframe"
+        ]
+      }
+    ],
+    "per_cpu_stats": {
+      "cpu0": "entries: 2\noverrun: 0\ncommit overrun: 0\nbytes: 220\noldest event ts:   324.714595\nnow ts:   324.748791\ndropped events: 0\nread events: 0\n",
+      "cpu1": "entries: 0\noverrun: 0\ncommit overrun: 0\nbytes: 0\noldest event ts:     0.000000\nnow ts:   324.748818\ndropped events: 0\nread events: 0\n",
+      "cpu2": "entries: 0\noverrun: 0\ncommit overrun: 0\nbytes: 0\noldest event ts:     0.000000\nnow ts:   324.748836\ndropped events: 0\nread events: 0\n",
+      "cpu3": "entries: 2\noverrun: 0\ncommit overrun: 0\nbytes: 428\noldest event ts:   324.696240\nnow ts:   324.748851\ndropped events: 0\nread events: 0\n"
+    },
+    "trace_header": [
+      "# tracer: nop",
+      "#",
+      "# entries-in-buffer/entries-written: 4/4   #P:4",
+      "#",
+      "#                                _-----=> irqs-off/BH-disabled",
+      "#                               / _----=> need-resched",
+      "#                              | / _---=> hardirq/softirq",
+      "#                              || / _--=> preempt-depth",
+      "#                              ||| / _-=> migrate-disable",
+      "#                              |||| /     delay",
+      "#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION",
+      "#              | |         |   |||||     |         |"
+    ],
+    "scope": "Only records with a scoped IP and TCP port 55273 are retained; no packet payload.",
+    "instance": "chaos-lab-reset-9041cf90f9954f3e97f57d3433a632b3",
+    "tool": {
+      "instance": "chaos-lab-reset-9041cf90f9954f3e97f57d3433a632b3",
+      "epoch_minus_mono": 1792493798.664113,
+      "kernel": "6.17.0-1022-azure",
+      "event_format": "name: tcp_send_reset\nID: 1698\nformat:\n\tfield:unsigned short common_type;\toffset:0;\tsize:2;\tsigned:0;\n\tfield:unsigned char common_flags;\toffset:2;\tsize:1;\tsigned:0;\n\tfield:unsigned char common_preempt_count;\toffset:3;\tsize:1;\tsigned:0;\n\tfield:int common_pid;\toffset:4;\tsize:4;\tsigned:1;\n\n\tfield:const void * skbaddr;\toffset:8;\tsize:8;\tsigned:0;\n\tfield:const void * skaddr;\toffset:16;\tsize:8;\tsigned:0;\n\tfield:int state;\toffset:24;\tsize:4;\tsigned:1;\n\tfield:enum sk_rst_reason reason;\toffset:28;\tsize:4;\tsigned:0;\n\tfield:__u8 saddr[28];\toffset:32;\tsize:28;\tsigned:0;\n\tfield:__u8 daddr[28];\toffset:60;\tsize:28;\tsigned:0;\n\nprint fmt: \"skbaddr=%p skaddr=%p src=%pISpc dest=%pISpc state=%s reason=%s\", REC->skbaddr, REC->skaddr, REC->saddr, REC->daddr, REC->state ? __print_symbolic(REC->state, { TCP_ESTABLISHED, \"TCP_ESTABLISHED\" }, { TCP_SYN_SENT, \"TCP_SYN_SENT\" }, { TCP_SYN_RECV, \"TCP_SYN_RECV\" }, { TCP_FIN_WAIT1, \"TCP_FIN_WAIT1\" }, { TCP_FIN_WAIT2, \"TCP_FIN_WAIT2\" }, { TCP_TIME_WAIT, \"TCP_TIME_WAIT\" }, { TCP_CLOSE, \"TCP_CLOSE\" }, { TCP_CLOSE_WAIT, \"TCP_CLOSE_WAIT\" }, { TCP_LAST_ACK, \"TCP_LAST_ACK\" }, { TCP_LISTEN, \"TCP_LISTEN\" }, { TCP_CLOSING, \"TCP_CLOSING\" }, { TCP_NEW_SYN_RECV, \"TCP_NEW_SYN_RECV\" }) : \"UNKNOWN\", __print_symbolic(REC->reason, { 0, \"NOT_SPECIFIED\" }, { 1, \"NO_SOCKET\" }, { 2, \"TCP_INVALID_ACK_SEQUENCE\" }, { 3, \"TCP_RFC7323_PAWS\" }, { 4, \"TCP_TOO_OLD_ACK\" }, { 5, \"TCP_ACK_UNSENT_DATA\" }, { 6, \"TCP_FLAGS\" }, { 7, \"TCP_OLD_ACK\" }, { 8, \"TCP_ABORT_ON_DATA\" }, { 9, \"TCP_TIMEWAIT_SOCKET\" }, { 10, \"INVALID_SYN\" }, { 11, \"TCP_ABORT_ON_CLOSE\" }, { 12, \"TCP_ABORT_ON_LINGER\" }, { 13, \"TCP_ABORT_ON_MEMORY\" }, { 14, \"TCP_STATE\" }, { 15, \"TCP_KEEPALIVE_TIMEOUT\" }, { 16, \"TCP_DISCONNECT_WITH_DATA\" }, { 17, \"MPTCP_RST_EUNSPEC\" }, { 18, \"MPTCP_RST_EMPTCP\" }, { 19, \"MPTCP_RST_ERESOURCE\" }, { 20, \"MPTCP_RST_EPROHIBIT\" }, { 21, \"MPTCP_RST_EWQ2BIG\" }, { 22, \"MPTCP_RST_EBADPERF\" }, { 23, \"MPTCP_RST_EMIDDLEBOX\" }, { 24, \"ERROR\" }, { 25, \"MAX\" })\n",
+      "clock": "mono",
+      "buffer_kb_per_cpu": 2048,
+      "cleaned_up": true
+    },
+    "client_result": "ConnectionResetError",
+    "server_port": 55273,
+    "passed": true
+  },
+  "kernel": "6.17.0-1022-azure",
+  "job_steps": [
+    {
+      "number": 1,
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 2,
+      "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 3,
+      "name": "Prepara um cluster descart\u00e1vel com suporte a netem",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 4,
+      "name": "Instala Chaos Mesh, aplica\u00e7\u00e3o e alertas isolados",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 5,
+      "name": "Executa os experimentos reais e confere a recupera\u00e7\u00e3o",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 6,
+      "name": "Confere os limites das tentativas com falhas reais de HTTP",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 7,
+      "name": "Investiga fases TCP nas remo\u00e7\u00f5es e compara os dois acessos",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 8,
+      "name": "Compara remo\u00e7\u00e3o abrupta, encerramento e GET com tentativas limitadas",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 9,
+      "name": "Mede o or\u00e7amento de conex\u00e3o com descarte real de SYN",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 10,
+      "name": "Preserva PCAPs sem payload e confere seus hashes",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 11,
+      "name": "Guarda diagn\u00f3stico sem Secrets",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 12,
+      "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 13,
+      "name": "Remove apenas o cluster criado no runner",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 26,
+      "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 27,
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "direct_failure_origins": {},
+  "all_nodeport_reset_observations": 3,
+  "nodeport_reset_classifications": {
+    "api_pod_tcp_close_active_reset": 1,
+    "api_pod_tcp_no_socket_reset": 2
+  },
+  "unresolved_nodeport_reset_observations": 0,
+  "lane_limit": "PCAP tuples identify connections, not proxy request IDs. Internal proxy failure logs do not retain attempt source ports, so a recovered RST is not assigned to a particular retrying lane."
+}

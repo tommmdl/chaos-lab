@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "GET transport retries stop after three attempts",
+      "passed": true,
+      "detail": {
+        "status": 502,
+        "attempts": 3,
+        "errors": [
+          {
+            "type": "RemoteDisconnected",
+            "message": "Remote end closed connection without response",
+            "phase": "headers",
+            "elapsed_ms": 0.734
+          },
+          {
+            "type": "RemoteDisconnected",
+            "message": "Remote end closed connection without response",
+            "phase": "headers",
+            "elapsed_ms": 0.867
+          },
+          {
+            "type": "RemoteDisconnected",
+            "message": "Remote end closed connection without response",
+            "phase": "headers",
+            "elapsed_ms": 0.87
+          }
+        ]
+      }
+    },
+    {
+      "name": "An actual HTTP 503 is returned without retry",
+      "passed": true,
+      "detail": {
+        "status": 503,
+        "attempts": 1
+      }
+    },
+    {
+      "name": "DELETE transport failure is never retried",
+      "passed": true,
+      "detail": {
+        "status": 502,
+        "attempts": 1
+      }
+    },
+    {
+      "name": "Slow GET response exhausts the retry budget without unbounded waiting",
+      "passed": true,
+      "detail": {
+        "status": 502,
+        "attempts": 2,
+        "elapsed_seconds": 4.002
+      }
+    }
+  ],
+  "passed": true
+}

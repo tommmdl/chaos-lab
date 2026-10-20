@@ -205,6 +205,8 @@ class Capture:
 
 def read(path):
     data = Path(path).read_bytes()
+    if Path(path).suffix == ".gz":
+        data = gzip.decompress(data)
     if len(data) < 24:
         raise ValueError("Missing PCAP global header")
     if data[:4] == b"\xd4\xc3\xb2\xa1":
@@ -255,7 +257,7 @@ def read(path):
         rows.append(
             {
                 "time": sec + fraction / scale,
-                "node": Path(path).stem,
+                "node": Path(path).name.removesuffix(".gz").removesuffix(".pcap"),
                 "interface_index": struct.unpack_from("!I", frame, 4)[0],
                 "packet_type": frame[10],
                 "src": socket.inet_ntoa(ip[12:16]),

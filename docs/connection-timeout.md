@@ -124,3 +124,5 @@ A captura local requer `tcpdump` e privilégios para entrar no namespace de rede
 Para ativar a mudança no navegador, reinicie `python3 scripts/access.py`. Para retornar somente ao limite anterior, mude `get_connect_timeout_seconds` para 3 e reinicie esse processo; não é necessário trocar a imagem nem tocar nos dados. Para remover as tentativas de GET, use `get_max_attempts: 1`. Os relatórios e o acesso direto continuam disponíveis nas duas opções.
 
 500 ms é uma escolha para a rede local deste lab. Uma rede lenta pode precisar de mais tempo para conectar, e uma tentativa abandonada acrescenta carga. O teste não garante que um serviço remoto com latência maior se beneficie desse valor. Escritas com resultado incerto continuam exigindo conferência antes de qualquer repetição.
+
+A [etapa seguinte](rst-origin.md) acrescenta o veth dos Pods e os stacks de envio TCP do kernel para identificar a origem de resets reproduzidos, incluindo conexões recuperadas por novas tentativas.

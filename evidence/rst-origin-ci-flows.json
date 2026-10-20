@@ -1,0 +1,646 @@
+{
+  "collection_passed": true,
+  "trials": [
+    {
+      "grace_seconds": 30,
+      "trial": 1,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 2,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 0,
+      "trial": 1,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 3,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 4,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 0,
+      "trial": 2,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 3,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": [
+        {
+          "nodeport_rst": {
+            "time": 1792494185.248734,
+            "node": "removal-0-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "172.18.0.1",
+            "sport": 30434,
+            "dport": 35592,
+            "seq": 2823445774,
+            "ack": 4179599065,
+            "flags": 20,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 72
+          },
+          "nodeport_flow_context": [
+            {
+              "time": 1792494185.206941,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 0,
+              "src": "172.18.0.1",
+              "dst": "172.18.0.2",
+              "sport": 35592,
+              "dport": 30434,
+              "seq": 4179598937,
+              "ack": 0,
+              "flags": 2,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 80
+            },
+            {
+              "time": 1792494185.207022,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 4,
+              "src": "172.18.0.2",
+              "dst": "172.18.0.1",
+              "sport": 30434,
+              "dport": 35592,
+              "seq": 2823445773,
+              "ack": 4179598938,
+              "flags": 18,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 80
+            },
+            {
+              "time": 1792494185.207039,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 0,
+              "src": "172.18.0.1",
+              "dst": "172.18.0.2",
+              "sport": 35592,
+              "dport": 30434,
+              "seq": 4179598938,
+              "ack": 2823445774,
+              "flags": 16,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 72
+            },
+            {
+              "time": 1792494185.207156,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 0,
+              "src": "172.18.0.1",
+              "dst": "172.18.0.2",
+              "sport": 35592,
+              "dport": 30434,
+              "seq": 4179598938,
+              "ack": 2823445774,
+              "flags": 24,
+              "tcp_payload_length": 127,
+              "captured_bytes": 60,
+              "wire_bytes": 199
+            },
+            {
+              "time": 1792494185.207166,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 4,
+              "src": "172.18.0.2",
+              "dst": "172.18.0.1",
+              "sport": 30434,
+              "dport": 35592,
+              "seq": 2823445774,
+              "ack": 4179599065,
+              "flags": 16,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 72
+            },
+            {
+              "time": 1792494185.248734,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 4,
+              "src": "172.18.0.2",
+              "dst": "172.18.0.1",
+              "sport": 30434,
+              "dport": 35592,
+              "seq": 2823445774,
+              "ack": 4179599065,
+              "flags": 20,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 72
+            }
+          ],
+          "origin": {
+            "classification": "api_pod_tcp_close_active_reset",
+            "matching_rule": "NodePort/backend RST flags, seq and ack equal; timestamps within 20 ms. Kernel event must match the backend 4-tuple within 20 ms; Pod ingress requires its pre-recorded veth ifindex and packet_type=0.",
+            "backend_packets": [
+              {
+                "time": 1792494185.248699,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 32186,
+                "seq": 2823445774,
+                "ack": 4179599065,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 72
+              }
+            ],
+            "pod_ingress_packets": [
+              {
+                "time": 1792494185.248699,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 32186,
+                "seq": 2823445774,
+                "ack": 4179599065,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 72
+              }
+            ],
+            "kernel_events": [
+              {
+                "time": 1792494185.2486794,
+                "monotonic_seconds": 386.584566,
+                "cpu": 3,
+                "task": "gunicorn-26201",
+                "src": "10.244.0.25",
+                "sport": 8000,
+                "dst": "10.244.0.1",
+                "dport": 32186,
+                "reason": "TCP_STATE",
+                "event": "        gunicorn-26201   [003] b....   386.584566: tcp_send_reset: skbaddr=0000000000000000 skaddr=000000009a4230ef src=10.244.0.25:8000 dest=10.244.0.1:32186 state=TCP_CLOSE reason=TCP_STATE",
+                "stack": [
+                  "=> trace_event_raw_event_tcp_send_reset",
+                  "=> tcp_send_active_reset",
+                  "=> tcp_disconnect",
+                  "=> inet_child_forget",
+                  "=> inet_csk_listen_stop",
+                  "=> __tcp_close",
+                  "=> tcp_close",
+                  "=> inet_release",
+                  "=> __sock_release",
+                  "=> sock_close",
+                  "=> __fput",
+                  "=> fput_close_sync",
+                  "=> __x64_sys_close",
+                  "=> x64_sys_call",
+                  "=> do_syscall_64",
+                  "=> entry_SYSCALL_64_after_hwframe"
+                ]
+              }
+            ],
+            "process_owners": [
+              {
+                "pod": "api-5459756fdf-6fhmq",
+                "pod_uid": "50a9def7-e1a9-4b92-8476-a8bf216244cf",
+                "netns": "net:[4026532975]",
+                "event_task": "gunicorn-26201",
+                "matched_process": {
+                  "host_pid": 26201,
+                  "comm": "gunicorn",
+                  "netns": "net:[4026532975]",
+                  "nspid": "NSpid:\t26201\t11303\t16"
+                }
+              }
+            ],
+            "limits": "Unmatched events remain unresolved. NAT does not retain sender identity in the client-visible address alone. A task name in softirq context is not proof that that task generated the reset."
+          }
+        },
+        {
+          "nodeport_rst": {
+            "time": 1792494185.264481,
+            "node": "removal-0-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "172.18.0.1",
+            "sport": 30434,
+            "dport": 35654,
+            "seq": 0,
+            "ack": 4051883643,
+            "flags": 20,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 60
+          },
+          "nodeport_flow_context": [
+            {
+              "time": 1792494185.264407,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 0,
+              "src": "172.18.0.1",
+              "dst": "172.18.0.2",
+              "sport": 35654,
+              "dport": 30434,
+              "seq": 4051883642,
+              "ack": 0,
+              "flags": 2,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 80
+            },
+            {
+              "time": 1792494185.264481,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 4,
+              "src": "172.18.0.2",
+              "dst": "172.18.0.1",
+              "sport": 30434,
+              "dport": 35654,
+              "seq": 0,
+              "ack": 4051883643,
+              "flags": 20,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 60
+            }
+          ],
+          "origin": {
+            "classification": "api_pod_tcp_no_socket_reset",
+            "matching_rule": "NodePort/backend RST flags, seq and ack equal; timestamps within 20 ms. Kernel event must match the backend 4-tuple within 20 ms; Pod ingress requires its pre-recorded veth ifindex and packet_type=0.",
+            "backend_packets": [
+              {
+                "time": 1792494185.264471,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 57214,
+                "seq": 0,
+                "ack": 4051883643,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 60
+              }
+            ],
+            "pod_ingress_packets": [
+              {
+                "time": 1792494185.264471,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 57214,
+                "seq": 0,
+                "ack": 4051883643,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 60
+              }
+            ],
+            "kernel_events": [
+              {
+                "time": 1792494185.2644553,
+                "monotonic_seconds": 386.600342,
+                "cpu": 1,
+                "task": "python3-27704",
+                "src": "10.244.0.25",
+                "sport": 8000,
+                "dst": "10.244.0.1",
+                "dport": 57214,
+                "reason": "NO_SOCKET",
+                "event": "         python3-27704   [001] ..s1.   386.600342: tcp_send_reset: skbaddr=00000000a155221f skaddr=0000000000000000 src=10.244.0.25:8000 dest=10.244.0.1:57214 state=UNKNOWN reason=NO_SOCKET",
+                "stack": [
+                  "=> trace_event_raw_event_tcp_send_reset",
+                  "=> tcp_v4_send_reset",
+                  "=> tcp_v4_rcv",
+                  "=> ip_protocol_deliver_rcu",
+                  "=> ip_local_deliver_finish",
+                  "=> ip_local_deliver",
+                  "=> ip_rcv",
+                  "=> __netif_receive_skb_one_core",
+                  "=> __netif_receive_skb",
+                  "=> process_backlog",
+                  "=> __napi_poll",
+                  "=> net_rx_action",
+                  "=> handle_softirqs",
+                  "=> __do_softirq",
+                  "=> do_softirq",
+                  "=> __local_bh_enable_ip",
+                  "=> __dev_queue_xmit",
+                  "=> neigh_hh_output",
+                  "=> ip_finish_output2",
+                  "=> __ip_finish_output",
+                  "=> ip_finish_output",
+                  "=> ip_output",
+                  "=> __ip_queue_xmit",
+                  "=> ip_queue_xmit",
+                  "=> __tcp_transmit_skb",
+                  "=> tcp_connect",
+                  "=> tcp_v4_connect",
+                  "=> __inet_stream_connect",
+                  "=> inet_stream_connect",
+                  "=> __sys_connect_file",
+                  "=> __sys_connect",
+                  "=> __x64_sys_connect",
+                  "=> x64_sys_call",
+                  "=> do_syscall_64",
+                  "=> entry_SYSCALL_64_after_hwframe"
+                ]
+              }
+            ],
+            "process_owners": [
+              {
+                "pod": "api-5459756fdf-6fhmq",
+                "pod_uid": "50a9def7-e1a9-4b92-8476-a8bf216244cf",
+                "netns": "net:[4026532975]",
+                "event_task": "python3-27704",
+                "matched_process": null
+              }
+            ],
+            "limits": "Unmatched events remain unresolved. NAT does not retain sender identity in the client-visible address alone. A task name in softirq context is not proof that that task generated the reset."
+          }
+        },
+        {
+          "nodeport_rst": {
+            "time": 1792494185.27018,
+            "node": "removal-0-2-devops-notes-control-plane",
+            "interface_index": 2,
+            "packet_type": 4,
+            "src": "172.18.0.2",
+            "dst": "172.18.0.1",
+            "sport": 30434,
+            "dport": 35664,
+            "seq": 0,
+            "ack": 3389391674,
+            "flags": 20,
+            "tcp_payload_length": 0,
+            "captured_bytes": 60,
+            "wire_bytes": 60
+          },
+          "nodeport_flow_context": [
+            {
+              "time": 1792494185.270108,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 0,
+              "src": "172.18.0.1",
+              "dst": "172.18.0.2",
+              "sport": 35664,
+              "dport": 30434,
+              "seq": 3389391673,
+              "ack": 0,
+              "flags": 2,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 80
+            },
+            {
+              "time": 1792494185.27018,
+              "node": "removal-0-2-devops-notes-control-plane",
+              "interface_index": 2,
+              "packet_type": 4,
+              "src": "172.18.0.2",
+              "dst": "172.18.0.1",
+              "sport": 30434,
+              "dport": 35664,
+              "seq": 0,
+              "ack": 3389391674,
+              "flags": 20,
+              "tcp_payload_length": 0,
+              "captured_bytes": 60,
+              "wire_bytes": 60
+            }
+          ],
+          "origin": {
+            "classification": "api_pod_tcp_no_socket_reset",
+            "matching_rule": "NodePort/backend RST flags, seq and ack equal; timestamps within 20 ms. Kernel event must match the backend 4-tuple within 20 ms; Pod ingress requires its pre-recorded veth ifindex and packet_type=0.",
+            "backend_packets": [
+              {
+                "time": 1792494185.27017,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 49854,
+                "seq": 0,
+                "ack": 3389391674,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 60
+              }
+            ],
+            "pod_ingress_packets": [
+              {
+                "time": 1792494185.27017,
+                "node": "removal-0-2-devops-notes-control-plane",
+                "interface_index": 26,
+                "packet_type": 0,
+                "src": "10.244.0.25",
+                "dst": "10.244.0.1",
+                "sport": 8000,
+                "dport": 49854,
+                "seq": 0,
+                "ack": 3389391674,
+                "flags": 20,
+                "tcp_payload_length": 0,
+                "captured_bytes": 60,
+                "wire_bytes": 60
+              }
+            ],
+            "kernel_events": [
+              {
+                "time": 1792494185.2701573,
+                "monotonic_seconds": 386.606044,
+                "cpu": 2,
+                "task": "python3-27706",
+                "src": "10.244.0.25",
+                "sport": 8000,
+                "dst": "10.244.0.1",
+                "dport": 49854,
+                "reason": "NO_SOCKET",
+                "event": "         python3-27706   [002] ..s1.   386.606044: tcp_send_reset: skbaddr=00000000233e3310 skaddr=0000000000000000 src=10.244.0.25:8000 dest=10.244.0.1:49854 state=UNKNOWN reason=NO_SOCKET",
+                "stack": [
+                  "=> trace_event_raw_event_tcp_send_reset",
+                  "=> tcp_v4_send_reset",
+                  "=> tcp_v4_rcv",
+                  "=> ip_protocol_deliver_rcu",
+                  "=> ip_local_deliver_finish",
+                  "=> ip_local_deliver",
+                  "=> ip_rcv",
+                  "=> __netif_receive_skb_one_core",
+                  "=> __netif_receive_skb",
+                  "=> process_backlog",
+                  "=> __napi_poll",
+                  "=> net_rx_action",
+                  "=> handle_softirqs",
+                  "=> __do_softirq",
+                  "=> do_softirq",
+                  "=> __local_bh_enable_ip",
+                  "=> __dev_queue_xmit",
+                  "=> neigh_hh_output",
+                  "=> ip_finish_output2",
+                  "=> __ip_finish_output",
+                  "=> ip_finish_output",
+                  "=> ip_output",
+                  "=> __ip_queue_xmit",
+                  "=> ip_queue_xmit",
+                  "=> __tcp_transmit_skb",
+                  "=> tcp_connect",
+                  "=> tcp_v4_connect",
+                  "=> __inet_stream_connect",
+                  "=> inet_stream_connect",
+                  "=> __sys_connect_file",
+                  "=> __sys_connect",
+                  "=> __x64_sys_connect",
+                  "=> x64_sys_call",
+                  "=> do_syscall_64",
+                  "=> entry_SYSCALL_64_after_hwframe"
+                ]
+              }
+            ],
+            "process_owners": [
+              {
+                "pod": "api-5459756fdf-6fhmq",
+                "pod_uid": "50a9def7-e1a9-4b92-8476-a8bf216244cf",
+                "netns": "net:[4026532975]",
+                "event_task": "python3-27706",
+                "matched_process": null
+              }
+            ],
+            "limits": "Unmatched events remain unresolved. NAT does not retain sender identity in the client-visible address alone. A task name in softirq context is not proof that that task generated the reset."
+          }
+        }
+      ]
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 5,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 6,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 0,
+      "trial": 3,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 7,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 30,
+      "trial": 8,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    },
+    {
+      "grace_seconds": 0,
+      "trial": 4,
+      "capture_hashes_verified": true,
+      "capture_integrity": true,
+      "kernel_trace_integrity": true,
+      "kernel_event_count": 0,
+      "unmatched_kernel_events": [],
+      "nodeport_rst_observations": []
+    }
+  ],
+  "errors": [],
+  "lane_limit": "PCAP tuples identify connections, not proxy request IDs. Internal proxy failure logs do not retain attempt source ports, so a recovered RST is not assigned to a particular retrying lane.",
+  "matching_rule": "Exact RST flags/sequence/ACK plus a 20 ms window across NAT. Exact backend 4-tuple and a 20 ms window for the kernel event; ingress must match the Pod veth recorded before deletion.",
+  "nodeport_rst_observations": 3,
+  "classifications": {
+    "api_pod_tcp_close_active_reset": 1,
+    "api_pod_tcp_no_socket_reset": 2
+  },
+  "unresolved_observations": 0,
+  "all_observed_resets_attributed": true,
+  "analysis_integrity_passed": true
+}

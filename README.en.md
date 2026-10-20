@@ -90,6 +90,10 @@ The follow-up passed 70 checks locally and 70 in CI. Graceful removal went from 
 
 The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. Local packet capture confirmed resets while reading headers and resets after SYN during abrupt controls, with no capture drops. CI run 39409055794 passed 102 checks: no direct failures across 8 graceful removals, and 7 failures in 1,390 requests during abrupt controls. Capture found six RSTs after handshake and one after SYN, with no drops. The first CI run, which stopped before capture, is preserved too. The historical graceful-removal timeout remains unexplained.
 
+## Where the RSTs originate
+
+The [kernel-backed investigation](docs/rst-origin.en.md) attributed three reproduced CI resets to the API Pod's TCP stack. One occurred when Gunicorn closed its listener with a connection still awaiting acceptance; two answered SYNs without a valid socket after listener closure. Packets before/after NAT were matched to the Pod veth, backend tuple and kernel stack. The suite passed 115 checks; recovered failures and regression errors remain in the report. The historical six-second timeout remains unexplained.
+
 ## Results and limits
 
 All 43 checks passed locally and the same 43 passed in CI. The [test results](docs/validation.en.md) and [experiment reports](evidence) record what was executed. Initial execution was assistant-assisted; repeating the scenarios and explaining the decisions remain part of the learning work.

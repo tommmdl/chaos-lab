@@ -88,6 +88,10 @@ A investigação agora compara remoção abrupta e remoção com prazo, espera d
 
 A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. A captura local confirmou RST durante leitura de cabeçalhos e RST após SYN em controles abruptos, sem drops na captura. O CI 39409055794 passou em 102 verificações: 8 remoções graciosas sem falha direta e 7 falhas em 1.390 requisições nos cortes abruptos. A captura encontrou seis RST depois do handshake e um RST após SYN, sem drops. O primeiro CI, que parou antes da captura, também ficou registrado. A causa do timeout histórico na remoção graciosa continua sem confirmação.
 
+## De onde vêm os RST
+
+A [investigação com o kernel](docs/rst-origin.md) identificou a origem de três RST reproduzidos no CI: a pilha TCP do Pod da API. Um ocorreu quando um processo Gunicorn fechou o listener com uma conexão pendente de aceitação; dois vieram de SYNs sem socket válido após esse fechamento. Cruzei os pacotes antes/depois da NAT com o veth do Pod, o tuple e o stack do kernel. A suíte passou em 115 verificações; as falhas recuperadas e a regressão com erros permanecem no relatório. A causa do timeout histórico de seis segundos continua aberta.
+
 ## Resultados e limites
 
 Passaram 43 verificações locais e as mesmas 43 no CI. Os [resultados](docs/validation.md) e os [relatórios dos experimentos](evidence) registram o que foi executado. A execução inicial teve auxílio do assistente; repetir os cenários e explicar as decisões faz parte do estudo.

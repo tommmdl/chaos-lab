@@ -45,6 +45,9 @@ jobs:
       - name: Preserva PCAPs sem payload e confere seus hashes
         if: always()
         run: python3 scripts/archive_packets.py
+      - name: Correlaciona todos os RST, incluindo leituras recuperadas
+        if: always()
+        run: python3 scripts/analyze_resets.py evidence/connection-window.json --output evidence/reset-origins.json
       - name: Guarda diagnóstico sem Secrets
         if: always()
         run: |
@@ -69,6 +72,7 @@ jobs:
             evidence/connection-window.json
             evidence/syn-budget.json
             evidence/packet-archive.json
+            evidence/reset-origins.json
             evidence/connection-packets/*.pcap.gz
             .local/packets/*.pcap
             .local/packets/*.log
