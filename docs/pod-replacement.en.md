@@ -16,7 +16,7 @@ To verify the defect, we injected a real Chaos Mesh removal between the old pred
 
 The shared [pod_replacement.py](../scripts/pod_replacement.py) module evaluates readiness and identity from the same list response. It requires exactly two running Pods, all containers ready, no terminating Pod, and a UID set different from the initial pair. It also matches the target recorded as successfully injected by Chaos Mesh to an initial Pod and requires that UID to be absent.
 
-Both the resilience matrix and the TCP investigation use this module. After deleting the experiment resource, a fresh complete read confirms the outcome. The deadline remains 120 seconds. We did not raise the timeout or rerun the suite until it passed.
+The resilience matrix, the TCP investigation and the initial experiment suite use this module. The latter also checks PostgreSQL replacement with an expected count of one Pod. After deleting the experiment resource, a fresh complete read confirms the outcome. The deadline remains 120 seconds. We did not raise the timeout or rerun the suite until it passed.
 
 Each attempt retains its initial state, resource versions, observations while waiting, experiment target, and state after cleanup. On timeout or error, collected samples and states remain in the report. Final recovery must also be healthy before a report can declare success.
 
@@ -26,7 +26,16 @@ This follows Kubernetes' distinction between [Pod identity, phase, readiness and
 
 The [local control](../evidence/pod-replacement-local-regression.json) passed all eight checks: it reproduced the old false positive, rejected that state with the new predicate, and verified recovery. Database rows, timestamps, the PostgreSQL PVC, and other labs' resources were unchanged.
 
-The complete traffic and GitHub Actions results will be recorded here after execution. This sentence marks work in progress, not a passing result.
+The [local resilience matrix](../evidence/pod-replacement-local-resilience.json) completed all 16 removals and passed 23 checks in 270.96 seconds. Every retained observation confirms that the selected UID disappeared and two Pods were ready after cleanup. Rows, timestamps and the database PVC survived. GET retry limits and the committed POST with a lost response also passed their real HTTP controls.
+
+| Draining | Chaos grace | Direct failures/requests | GET failures/requests |
+|---|---:|---:|---:|
+| no | 0 s | 41/1415 | 3/1882 |
+| no | 30 s | 5/2016 | 0/2075 |
+| yes | 0 s | 1/1974 | 0/1969 |
+| yes | 30 s | 0/1787 | 0/1783 |
+
+The matrix passed its recovery assertions; this does not mean every request succeeded. Three GETs still failed during abrupt removals without draining. Their attempts and errors remain in the samples. Results from the TCP suite and GitHub Actions will be added after execution.
 
 ## Reproduce in your environment
 

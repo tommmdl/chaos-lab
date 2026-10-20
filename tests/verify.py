@@ -5,7 +5,7 @@ import copy, datetime, fcntl, hashlib, json, subprocess, sys, time, urllib.error
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import lab, experiment
+import lab, experiment, pod_replacement
 
 IP = lab.run(
     [
@@ -343,7 +343,8 @@ def verify():
     )
 
     name = "01-api-pod-kill"
-    before = uids("api")
+    replacement = pod_replacement.Replacement()
+    REPORT.setdefault("replacement_checks", []).append(replacement.report)
     after = cursor()
     kind = start(name)
     samples = []
@@ -351,12 +352,8 @@ def verify():
         status, _ = request(API, "/healthz")
         samples.append(status)
         time.sleep(0.3)
-    lab.wait(lambda: ready_pods("api", 2) and uids("api") != before, 100)
+    replacement.wait(kind, name, timeout=100)
     lab.wait(healthy)
-    check(
-        "Chaos Mesh removes an API Pod and Kubernetes replaces it",
-        uids("api") != before and len(uids("api")) == 2,
-    )
     check(
         "API service serves successful requests during the replica experiment",
         200 in samples,
@@ -369,6 +366,7 @@ def verify():
     )
     capture(kind, name, "completed")
     finish(name)
+    check("Chaos Mesh removes an API Pod and Kubernetes replaces it", replacement.confirm())
     REPORT["experiments"].append(
         {"name": name, "sample_statuses": samples, "data_equal": rows() == baseline}
     )
@@ -474,17 +472,14 @@ def verify():
     )
 
     name = "05-database-pod-kill"
-    before = uids("postgres")
+    replacement = pod_replacement.Replacement(name="postgres", count=1)
+    REPORT.setdefault("replacement_checks", []).append(replacement.report)
     kind = start(name)
-    lab.wait(lambda: ready_pods("postgres", 1) and uids("postgres") != before, 100)
+    replacement.wait(kind, name, timeout=100)
     lab.wait(lambda: lab.sql("SELECT 1;").strip() == "1", 100)
     lab.wait(lambda: ready_pods("api", 2), 100)
     recovered_at = time.time()
     lab.wait(lambda: fresh_healthy(recovered_at), 120)
-    check(
-        "Chaos Mesh kills PostgreSQL and Kubernetes creates a new Pod",
-        uids("postgres") != before,
-    )
     check(
         "Database returns on the same PVC without losing committed data",
         lab.obj(lab.APP, "pvc", "postgres-data")["metadata"]["uid"] == pvc_uid
@@ -492,6 +487,7 @@ def verify():
     )
     capture(kind, name, "completed")
     finish(name)
+    check("Chaos Mesh kills PostgreSQL and Kubernetes creates a new Pod", replacement.confirm())
     REPORT["experiments"].append(
         {"name": name, "pvc_uid": pvc_uid, "data_equal": rows() == baseline}
     )

@@ -16,7 +16,7 @@ Para conferir o defeito, fizemos uma remoção real com o Chaos Mesh entre as du
 
 O módulo compartilhado [pod_replacement.py](../scripts/pod_replacement.py) avalia prontidão e identidade na mesma resposta de listagem. O teste só avança quando encontra exatamente dois Pods em execução, todos os containers prontos, nenhum Pod em exclusão e um conjunto de UIDs diferente do inicial. Também cruza o alvo registrado como aplicado com sucesso pelo Chaos Mesh com os Pods iniciais e exige que esse UID tenha desaparecido.
 
-A validação usa o mesmo módulo na matriz de resiliência e na investigação TCP. Depois de remover o recurso do experimento, faz uma nova leitura completa para confirmar o resultado. O limite continua em 120 segundos. Não aumentamos o timeout nem repetimos a suíte até obter uma aprovação.
+A matriz de resiliência, a investigação TCP e a suíte inicial de experimentos usam o mesmo módulo. A última também confere a substituição do PostgreSQL, esperando um Pod. Depois de remover o recurso do experimento, faz uma nova leitura completa para confirmar o resultado. O limite continua em 120 segundos. Não aumentamos o timeout nem repetimos a suíte até obter uma aprovação.
 
 Cada tentativa guarda o estado inicial, versões dos recursos, observações durante a espera, alvo do experimento e estado após a limpeza. Se houver timeout ou erro, as amostras e os estados já coletados continuam no relatório. A recuperação final também precisa estar saudável para o relatório marcar sucesso.
 
@@ -26,7 +26,16 @@ Isso segue a distinção do Kubernetes entre [identidade, fase, prontidão e enc
 
 O [controle local](../evidence/pod-replacement-local-regression.json) passou nas oito verificações: reproduziu o falso positivo antigo, rejeitou esse estado com a nova regra e confirmou a recuperação. Linhas, timestamps, PVC do PostgreSQL e os recursos dos outros labs continuaram iguais.
 
-A validação completa sob tráfego e no GitHub Actions será registrada aqui após a execução. Essa frase indica trabalho em andamento, não um resultado aprovado.
+A [matriz local de resiliência](../evidence/pod-replacement-local-resilience.json) completou as 16 remoções e passou nas 23 verificações em 270,96 segundos. As observações guardadas confirmam que o UID selecionado desapareceu e havia dois Pods prontos após cada limpeza. Linhas, timestamps e PVC sobreviveram. Os controles reais de HTTP também conferiram o limite de tentativas de GET e o POST já gravado cuja resposta se perdeu.
+
+| Drenagem | Prazo no Chaos | Falhas/requisições diretas | Falhas/requisições GET |
+|---|---:|---:|---:|
+| não | 0 s | 41/1415 | 3/1882 |
+| não | 30 s | 5/2016 | 0/2075 |
+| sim | 0 s | 1/1974 | 0/1969 |
+| sim | 30 s | 0/1787 | 0/1783 |
+
+A matriz passou nas verificações de recuperação; isso não significa que todas as requisições funcionaram. Três GETs ainda falharam nos cortes abruptos sem drenagem. Suas tentativas e erros continuam nas amostras. Os resultados da suíte TCP e do GitHub Actions serão acrescentados após a execução.
 
 ## Repetir no próprio ambiente
 

@@ -6,8 +6,8 @@ import time
 import lab
 
 
-def snapshot():
-    value = json.loads(lab.k(lab.APP, "get", "pods", "-l", "app=api", "-o", "json").stdout)
+def snapshot(name="api"):
+    value = json.loads(lab.k(lab.APP, "get", "pods", "-l", "app=" + name, "-o", "json").stdout)
     items = []
     for pod in value["items"]:
         metadata, status = pod["metadata"], pod.get("status", {})
@@ -27,8 +27,8 @@ def snapshot():
             "pods": sorted(items, key=lambda p: p["name"])}
 
 
-def ready(view):
-    return len(view["pods"]) == 2 and all(
+def ready(view, count=2):
+    return len(view["pods"]) == count and all(
         p["phase"] == "Running" and p["ready"] and p["containers_running_ready"]
         and not p["deletion_timestamp"] for p in view["pods"])
 
@@ -38,16 +38,17 @@ def uids(view):
 
 
 class Replacement:
-    def __init__(self, baseline=None):
-        self.before = snapshot() if baseline is None else baseline
-        self.report = {"before": self.before, "observations": [], "completed": False}
+    def __init__(self, baseline=None, *, name="api", count=2):
+        self.name, self.count = name, count
+        self.before = snapshot(name) if baseline is None else baseline
+        self.report = {"app": name, "expected_count": count, "before": self.before, "observations": [], "completed": False}
         self.targets = set()
-        if not ready(self.before):
-            raise RuntimeError("Pod replacement requires exactly two ready API Pods before injection")
+        if not ready(self.before, count):
+            raise RuntimeError(f"Pod replacement requires exactly {count} ready {name} Pods before injection")
 
     def complete(self, view):
         current = uids(view)
-        return (ready(view) and current != uids(self.before) and bool(self.targets)
+        return (ready(view, self.count) and current != uids(self.before) and bool(self.targets)
                 and self.targets.isdisjoint(current))
 
     def observe(self, kind, name):
@@ -58,7 +59,7 @@ class Replacement:
                         if r.get("id") in before_by_name and any(
                             e.get("operation") == "Apply" and e.get("type") == "Succeeded"
                             for e in r.get("events", []))}
-        view = snapshot()
+        view = snapshot(self.name)
         view.update(experiment_uid=resource["metadata"]["uid"], records=records,
                     target_uids=sorted(self.targets))
         view["replacement_complete"] = self.complete(view)
@@ -78,11 +79,11 @@ class Replacement:
                 self.report["completed"] = True
                 return view
             time.sleep(0.5)
-        self.report["error"] = "Timed out waiting for the selected Pod to disappear and two ready API Pods"
+        self.report["error"] = f"Timed out waiting for the selected Pod to disappear and {self.count} ready {self.name} Pods"
         raise TimeoutError(self.report["error"])
 
     def confirm(self):
-        view = snapshot()
+        view = snapshot(self.name)
         view["replacement_complete"] = self.complete(view)
         self.report["after_cleanup"] = view
         return view["replacement_complete"]
