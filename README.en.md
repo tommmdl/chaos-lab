@@ -88,7 +88,7 @@ The follow-up passed 70 checks locally and 70 in CI. Graceful removal went from 
 
 ## The remaining CI timeout
 
-The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. Local packet capture confirmed resets while reading headers and resets after SYN during abrupt controls, with no capture drops. The first CI run stopped at a Pod-replacement check before capture; its report and final state are preserved. I reordered the workflow to collect packets before that check. The historical timeout’s cause remains unconfirmed.
+The [follow-up investigation](docs/connection-timeout.en.md) separates TCP establishment from HTTP response, compares three-second and 500 ms connection limits, and exercises actual SYN drops. All 90 checks passed locally and in CI. Local packet capture confirmed resets while reading headers and resets after SYN during abrupt controls, with no capture drops. CI run 39409055794 passed 102 checks: no direct failures across 8 graceful removals, and 7 failures in 1,390 requests during abrupt controls. Capture found six RSTs after handshake and one after SYN, with no drops. The first CI run, which stopped before capture, is preserved too. The historical graceful-removal timeout remains unexplained.
 
 ## Results and limits
 

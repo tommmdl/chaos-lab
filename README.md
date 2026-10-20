@@ -86,7 +86,7 @@ A investigação agora compara remoção abrupta e remoção com prazo, espera d
 
 ## O timeout que restou no CI
 
-A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. A captura local confirmou RST durante leitura de cabeçalhos e RST após SYN em controles abruptos, sem drops na captura. O primeiro CI parou numa checagem de substituição anterior à captura; mantive o relatório e o estado final sem mascarar a falha. Reordenei o workflow para coletar pacotes antes dessa checagem. A causa do timeout histórico continua sem confirmação.
+A [continuação da investigação](docs/connection-timeout.md) separa estabelecimento TCP e resposta HTTP, compara o acesso com limites de conexão de três segundos e 500 ms e exercita um descarte real de SYN. Passaram 90 verificações locais e 90 no CI. A captura local confirmou RST durante leitura de cabeçalhos e RST após SYN em controles abruptos, sem drops na captura. O CI 39409055794 passou em 102 verificações: 8 remoções graciosas sem falha direta e 7 falhas em 1.390 requisições nos cortes abruptos. A captura encontrou seis RST depois do handshake e um RST após SYN, sem drops. O primeiro CI, que parou antes da captura, também ficou registrado. A causa do timeout histórico na remoção graciosa continua sem confirmação.
 
 ## Resultados e limites
 

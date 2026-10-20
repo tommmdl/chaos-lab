@@ -1,0 +1,83 @@
+{
+  "run": 39409055794,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39409055794",
+  "commit": "96d63d5c430130c87130063925fc39978e7dfa9e",
+  "started_utc": "2026-10-20T10:35:49Z",
+  "completed_utc": "2026-10-20T10:46:02Z",
+  "conclusion": "success",
+  "workflow_checks_total": 102,
+  "previous_first_attempt": {
+    "run": 39408074914,
+    "conclusion": "failure",
+    "reason": "A preceding Pod replacement UID assertion failed before packet capture. Preserved in connection-timeout-packet-ci-gate-failure.json. The workflow was reordered so packet capture runs first."
+  },
+  "packet_test": {
+    "passed": true,
+    "checks": 29,
+    "duration_seconds": 130.3,
+    "graceful_trials": 8,
+    "abrupt_controls": 4,
+    "summary": [
+      {
+        "grace_seconds": 30,
+        "lane": "direct",
+        "requests": 3358,
+        "failures": 0,
+        "attempts": 3358,
+        "transport_failures": 0
+      },
+      {
+        "grace_seconds": 30,
+        "lane": "previous",
+        "requests": 3353,
+        "failures": 0,
+        "attempts": 3353,
+        "transport_failures": 0
+      },
+      {
+        "grace_seconds": 30,
+        "lane": "short_connect",
+        "requests": 3354,
+        "failures": 0,
+        "attempts": 3354,
+        "transport_failures": 0
+      },
+      {
+        "grace_seconds": 0,
+        "lane": "direct",
+        "requests": 1390,
+        "failures": 7,
+        "attempts": 1390,
+        "transport_failures": 7
+      },
+      {
+        "grace_seconds": 0,
+        "lane": "previous",
+        "requests": 1388,
+        "failures": 0,
+        "attempts": 1392,
+        "transport_failures": 4
+      },
+      {
+        "grace_seconds": 0,
+        "lane": "short_connect",
+        "requests": 1388,
+        "failures": 0,
+        "attempts": 1392,
+        "transport_failures": 4
+      }
+    ],
+    "capture_files": 12,
+    "capture_integrity": true,
+    "nodes_observed": [
+      "devops-notes-control-plane"
+    ],
+    "kernel_drops": 0,
+    "packets_captured": 170008,
+    "snaplen": 60,
+    "datalink": "LINUX_SLL2",
+    "payload_bytes_captured": 0,
+    "artifact_retention_days": 30
+  },
+  "interpretation": "Seven direct failures occurred only during abrupt-removal controls: six completed the TCP handshake and had request data acknowledged before an RST arrived from the observed NodePort-side tuple while waiting for HTTP headers; one failed during connect with SYN followed by RST and no SYN-ACK. All eight graceful trials had zero direct failures. The capture does not identify which node service/network component emitted the RST and does not establish the cause of the older six-second timeout, which was observed during graceful removal and was not reproduced."
+}

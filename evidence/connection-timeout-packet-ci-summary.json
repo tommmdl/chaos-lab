@@ -1,0 +1,172 @@
+{
+  "run": 39409055794,
+  "duration_seconds": 130.3,
+  "checks": [
+    {
+      "name": "No existing podchaos",
+      "passed": true
+    },
+    {
+      "name": "No existing networkchaos",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=0, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=0, trial=1",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=3",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=3",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=4",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=4",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=0, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=0, trial=2",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=5",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=5",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=6",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=6",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=0, trial=3",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=0, trial=3",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=7",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=7",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=30, trial=8",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=30, trial=8",
+      "passed": true
+    },
+    {
+      "name": "Packet capture is readable, header-only and has no reported capture drops: grace=0, trial=4",
+      "passed": true
+    },
+    {
+      "name": "Replica recovers after grace=0, trial=4",
+      "passed": true
+    },
+    {
+      "name": "All original rows and timestamps survive",
+      "passed": true
+    },
+    {
+      "name": "PostgreSQL keeps its PVC",
+      "passed": true
+    },
+    {
+      "name": "Other labs retain their workload specs, images and PVCs",
+      "passed": true
+    }
+  ],
+  "summary": [
+    {
+      "grace_seconds": 30,
+      "lane": "direct",
+      "requests": 3358,
+      "failures": 0,
+      "attempts": 3358,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "previous",
+      "requests": 3353,
+      "failures": 0,
+      "attempts": 3353,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 30,
+      "lane": "short_connect",
+      "requests": 3354,
+      "failures": 0,
+      "attempts": 3354,
+      "transport_failures": 0
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "direct",
+      "requests": 1390,
+      "failures": 7,
+      "attempts": 1390,
+      "transport_failures": 7
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "previous",
+      "requests": 1388,
+      "failures": 0,
+      "attempts": 1392,
+      "transport_failures": 4
+    },
+    {
+      "grace_seconds": 0,
+      "lane": "short_connect",
+      "requests": 1388,
+      "failures": 0,
+      "attempts": 1392,
+      "transport_failures": 4
+    }
+  ]
+}
