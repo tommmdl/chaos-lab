@@ -32,12 +32,12 @@ jobs:
         run: python3 tests/verify.py
       - name: Confere os limites das tentativas com falhas reais de HTTP
         run: python3 tests/access_policy.py
+      - name: Investiga fases TCP nas remoções e compara os dois acessos
+        run: python3 tests/connection_window.py --rounds 8 --capture-packets
       - name: Compara remoção abrupta, encerramento e GET com tentativas limitadas
         run: python3 tests/resilience.py --rounds 4
       - name: Mede o orçamento de conexão com descarte real de SYN
         run: python3 tests/syn_budget.py
-      - name: Investiga fases TCP nas remoções e compara os dois acessos
-        run: python3 tests/connection_window.py --rounds 8 --capture-packets
       - name: Preserva PCAPs sem payload e confere seus hashes
         if: always()
         run: python3 scripts/archive_packets.py

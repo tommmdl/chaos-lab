@@ -1,0 +1,318 @@
+{
+  "workflow_run": 39408074914,
+  "url": "https://github.com/tommmdl/chaos-lab/actions/runs/39408074914",
+  "commit": "fd178c6b99315139d2d75d02f1d6615650048eb0",
+  "conclusion": "failure",
+  "failed_step": "Compara remo\u00e7\u00e3o abrupta, encerramento e GET com tentativas limitadas",
+  "reason": "Pod replacement completes: drain=False, grace=0, trial=3",
+  "passed": false,
+  "packet_capture_step": "not reached; the comparator is later in the workflow",
+  "packet_archive": {
+    "created_utc": 1792492415.6088688,
+    "captures": [],
+    "errors": [],
+    "complete": false
+  },
+  "checks": [
+    {
+      "name": "Pod replacement completes: drain=False, grace=0, trial=3",
+      "passed": false
+    }
+  ],
+  "trials": [
+    {
+      "scenario": {
+        "drain": false,
+        "grace_seconds": 0,
+        "trial": 1
+      },
+      "raw": {
+        "requests": 89,
+        "failures": 9,
+        "failure_rate": 0.10112359550561797,
+        "attempts": 89,
+        "transport_failures": 9,
+        "p95_ms": 6.42
+      },
+      "get_retry": {
+        "requests": 91,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "attempts": 98,
+        "transport_failures": 7,
+        "p95_ms": 7.085
+      },
+      "pod_events": [
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-tzfln",
+          "uid": "e7d06f97-9614-40a5-9e89-dc3c25ca17ff",
+          "deletion_timestamp": null,
+          "resource_version": "1799"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-wsj5n",
+          "uid": "4c2ec1f6-333a-4cb8-a1e9-44500490f993",
+          "deletion_timestamp": null,
+          "resource_version": "1848"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-wsj5n",
+          "uid": "4c2ec1f6-333a-4cb8-a1e9-44500490f993",
+          "deletion_timestamp": "2026-10-20T10:33:01Z",
+          "resource_version": "1905"
+        },
+        {
+          "event": "DELETED",
+          "name": "api-778d7d4d78-wsj5n",
+          "uid": "4c2ec1f6-333a-4cb8-a1e9-44500490f993",
+          "deletion_timestamp": "2026-10-20T10:33:01Z",
+          "resource_version": "1906"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1910"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1913"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1920"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1929"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1934"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1943"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1948"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "drain": false,
+        "grace_seconds": 0,
+        "trial": 2
+      },
+      "raw": {
+        "requests": 89,
+        "failures": 7,
+        "failure_rate": 0.07865168539325842,
+        "attempts": 89,
+        "transport_failures": 7,
+        "p95_ms": 7.364
+      },
+      "get_retry": {
+        "requests": 257,
+        "failures": 2,
+        "failure_rate": 0.007782101167315175,
+        "attempts": 268,
+        "transport_failures": 13,
+        "p95_ms": 6.063
+      },
+      "pod_events": [
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1948"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-tzfln",
+          "uid": "e7d06f97-9614-40a5-9e89-dc3c25ca17ff",
+          "deletion_timestamp": null,
+          "resource_version": "1799"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-tzfln",
+          "uid": "e7d06f97-9614-40a5-9e89-dc3c25ca17ff",
+          "deletion_timestamp": "2026-10-20T10:33:09Z",
+          "resource_version": "1978"
+        },
+        {
+          "event": "DELETED",
+          "name": "api-778d7d4d78-tzfln",
+          "uid": "e7d06f97-9614-40a5-9e89-dc3c25ca17ff",
+          "deletion_timestamp": "2026-10-20T10:33:09Z",
+          "resource_version": "1980"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "1981"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "1991"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "1995"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "2001"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "2004"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "2014"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "2015"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "drain": false,
+        "grace_seconds": 0,
+        "trial": 3
+      },
+      "raw": {
+        "requests": 144,
+        "failures": 1,
+        "failure_rate": 0.006944444444444444,
+        "attempts": 144,
+        "transport_failures": 1,
+        "p95_ms": 4.407
+      },
+      "get_retry": {
+        "requests": 142,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "attempts": 144,
+        "transport_failures": 2,
+        "p95_ms": 5.981
+      },
+      "pod_events": [
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-8l9k6",
+          "uid": "6479dec4-d45c-42d3-9dc9-1a7fdede4aa4",
+          "deletion_timestamp": null,
+          "resource_version": "2015"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": null,
+          "resource_version": "1948"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": "2026-10-20T10:33:18Z",
+          "resource_version": "2049"
+        },
+        {
+          "event": "DELETED",
+          "name": "api-778d7d4d78-fxmf2",
+          "uid": "8e45c823-8a4a-4979-9805-62982c97fe8d",
+          "deletion_timestamp": "2026-10-20T10:33:18Z",
+          "resource_version": "2054"
+        },
+        {
+          "event": "ADDED",
+          "name": "api-778d7d4d78-2kz8z",
+          "uid": "38df8425-b29e-4e7f-8a16-abec85e9e481",
+          "deletion_timestamp": null,
+          "resource_version": "2055"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-2kz8z",
+          "uid": "38df8425-b29e-4e7f-8a16-abec85e9e481",
+          "deletion_timestamp": null,
+          "resource_version": "2063"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-2kz8z",
+          "uid": "38df8425-b29e-4e7f-8a16-abec85e9e481",
+          "deletion_timestamp": null,
+          "resource_version": "2069"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-2kz8z",
+          "uid": "38df8425-b29e-4e7f-8a16-abec85e9e481",
+          "deletion_timestamp": null,
+          "resource_version": "2072"
+        },
+        {
+          "event": "MODIFIED",
+          "name": "api-778d7d4d78-2kz8z",
+          "uid": "38df8425-b29e-4e7f-8a16-abec85e9e481",
+          "deletion_timestamp": null,
+          "resource_version": "2076"
+        }
+      ]
+    }
+  ],
+  "final_runner_state": "NAME                            READY   STATUS    RESTARTS   AGE\npod/api-5459756fdf-7x9n9        1/1     Running   0          8s\npod/api-5459756fdf-jnt2p        1/1     Running   0          15s\npod/postgres-7f8555b8c4-z9p2c   1/1     Running   0          106s\n\nNAME                                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE\npersistentvolumeclaim/postgres-data   Bound    pvc-6975e88c-970b-48a4-a475-45e1f4a8adc1   1Gi        RWO            standard       <unset>                 4m47s\n\nNAME                       READY   UP-TO-DATE   AVAILABLE   AGE\ndeployment.apps/api        2/2     2            2           4m28s\ndeployment.apps/postgres   1/1     1            1           4m47s\n",
+  "note": "The final runner snapshot had two ready API Pods, one ready PostgreSQL Pod, and a Bound postgres-data PVC. The run is retained as a failed CI result; no packet evidence exists for this run."
+}
